@@ -25,13 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/email"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/it_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,9 +57,9 @@
     <TextView
         android:id="@+id/tv_sign_in"
         style="@style/HyperlinkTextStyle"
-        android:text="@string/create_account_link"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"
+        android:text="@string/create_account_link"
         android:textColor="@color/blue_hyperlink" />
 
     <FrameLayout

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         binding?.run {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, AuthFragment())
+                .replace(R.id.container, RegistrationFragment())
                 .commit()
         }
     }

@@ -3,6 +3,7 @@ package com.example.charityapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.charityapp.databinding.ActivityMainBinding
+import com.example.sign_up.presentation.RegistrationFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -14,3 +14,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CharityApp"
 include ':app'
+include ':core'
+include ':core:theme'
+include ':features'
+include ':features:sign-up'
+include ':core:presentation'
+include ':core:common'
+include ':core:common-impl'
+include ':features:sign-in'

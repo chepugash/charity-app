@@ -3,7 +3,7 @@ package com.example.charityapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.charityapp.databinding.ActivityMainBinding
-import com.example.sign_up.presentation.RegistrationFragment
+import com.example.sign_up.presentation.SignUpFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         binding?.run {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, RegistrationFragment())
+                .replace(R.id.container, SignUpFragment())
                 .commit()
         }
     }

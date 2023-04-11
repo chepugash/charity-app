@@ -25,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/features_sign_up_email"
         app:errorEnabled="true">
 
@@ -54,6 +53,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_repeat_password"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/features_sign_up_repeat_password"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/it_repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +86,7 @@
         <TextView
             android:id="@+id/tv_sign_in"
             style="@style/HyperlinkTextStyle"
+            android:focusable="true"
             android:text="@string/features_sign_up_enter"
             android:textColor="@color/blue_hyperlink" />
 

@@ -6,4 +6,5 @@
     <string name="features_sign_up_do_you_have_acc">Уже есть аккаунт?</string>
     <string name="features_sign_up_enter">Войти</string>
     <string name="features_sign_up_create">создать</string>
+    <string name="features_sign_up_repeat_password">Повторите пароль</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.sign_up.di
 import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.example.sign_up.presentation.SignUpFragment
+import com.example.sign_up.presentation.SignUpRouter
 import dagger.Component
 import javax.inject.Scope
 import kotlin.properties.Delegates.notNull
@@ -23,6 +24,7 @@ internal interface SignUpComponent {
 
 interface SignUpDeps {
 
+    val router: SignUpRouter
 }
 
 interface SignUpDepsProvider {

@@ -8,16 +8,14 @@ import timber.log.Timber
 
 class App : Application() {
 
-    val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
-            .build()
-    }
+    private lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
 
+        appComponent = AppComponent.init(this)
+        appComponent.inject(this)
         SignUpDepsStore.deps = appComponent
-
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

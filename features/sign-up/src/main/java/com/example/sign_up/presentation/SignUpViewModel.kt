@@ -1,18 +1,16 @@
 package com.example.sign_up.presentation
 
-import androidx.appcompat.app.ActionBar.NavigationMode
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.common.base.BaseViewModel
 import com.example.sign_up.domain.entity.SignUpUserEntity
 import com.example.sign_up.domain.usecase.SignUpUseCase
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Provider
 
 class SignUpViewModel(
     private val signUpUseCase: SignUpUseCase,
-): ViewModel() {
+): BaseViewModel() {
 
     private val _userEntity = MutableLiveData<SignUpUserEntity?>(null)
     val userEntity: LiveData<SignUpUserEntity?>

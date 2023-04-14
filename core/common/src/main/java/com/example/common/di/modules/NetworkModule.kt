@@ -25,7 +25,6 @@ class NetworkModule {
     }
 
     @Provides
-    @Named("logger")
     @ApplicationScope
     fun provideLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         level = if (BuildConfig.DEBUG) {
@@ -39,7 +38,8 @@ class NetworkModule {
     @ApplicationScope
     fun provideOkHttpClient(
         networkProperties: NetworkProperties,
-        @Named("logger") loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        loggingInterceptor: Interceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .connectTimeout(networkProperties.connectTimeout, TimeUnit.SECONDS)

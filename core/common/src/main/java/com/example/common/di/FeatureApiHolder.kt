@@ -1,6 +1,7 @@
 package com.example.common.di
 
 import java.util.concurrent.locks.ReentrantLock
+import javax.inject.Inject
 
 abstract class FeatureApiHolder(
     private val mFeatureContainer: FeatureContainer

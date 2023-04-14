@@ -1,8 +1,7 @@
 package com.example.charityapp
 
 import android.app.Application
-import com.example.charityapp.di.AppComponent
-import com.example.charityapp.di.DaggerAppComponent
+import com.example.charityapp.di.app.AppComponent
 import com.example.sign_up.di.SignUpDepsStore
 import timber.log.Timber
 

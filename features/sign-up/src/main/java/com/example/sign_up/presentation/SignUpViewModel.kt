@@ -4,39 +4,23 @@ import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.common.base.BaseViewModel
+import com.example.sign_up.SignUpRouter
 import com.example.sign_up.domain.entity.SignUpUserEntity
 import com.example.sign_up.domain.usecase.SignUpUseCase
+import com.example.sign_up.presentation.di.SignUpModule
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
     private val signUpUseCase: SignUpUseCase,
+    private val router: SignUpRouter
 ): BaseViewModel() {
 
-    private val _userEntity = MutableLiveData<SignUpUserEntity?>(null)
-    val userEntity: LiveData<SignUpUserEntity?>
-        get() =_userEntity
+    private val _userLiveData = MutableLiveData<SignUpUserEntity>()
+    val userLiveData: LiveData<SignUpUserEntity> = _userLiveData
 
-    private val _error = MutableLiveData<Throwable?>(null)
-    val error: LiveData<Throwable?>
-        get() = _error
-
-    fun signUp(userEntity: SignUpUserEntity) {
-        viewModelScope.launch {
-            try {
-                signUpUseCase.signUp(userEntity)
-            } catch (error: Throwable) {
-                _error.value = error
-            }
-        }
+    private fun userUpdateSuccess() {
     }
 
-    companion object {
-        fun provideFactory(
-            signUpUseCase: SignUpUseCase
-        ): ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                SignUpViewModel(signUpUseCase)
-            }
-        }
+    private fun userUpdateError(error: Throwable) {
     }
 }

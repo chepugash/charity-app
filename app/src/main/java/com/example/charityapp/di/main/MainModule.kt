@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.charityapp.MainViewModel
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -20,12 +21,12 @@ class MainModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun provideViewModel(): ViewModel {
+    fun provideViewModel() : ViewModel {
         return MainViewModel()
     }
 
     @Provides
     fun provideViewModelCreator(activity: AppCompatActivity, viewModelFactory: ViewModelProvider.Factory): MainViewModel {
-        return ViewModelProvider(activity, viewModelFactory).get(MainViewModel::class.java)
+        return ViewModelProvider(activity, viewModelFactory)[MainViewModel::class.java]
     }
 }

@@ -42,7 +42,7 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
     }
 
     override fun subscribe(viewModel: SignUpViewModel) {
-        TODO("Not yet implemented")
+
     }
 
 

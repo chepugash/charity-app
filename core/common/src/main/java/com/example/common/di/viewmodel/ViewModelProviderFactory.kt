@@ -2,12 +2,11 @@ package com.example.common.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 
-// фабрика для вью моделей
 class ViewModelProviderFactory @Inject constructor(
-    // out нужен для ковариантности, те наследуемые классы могут использоваться
     private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 

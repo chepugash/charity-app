@@ -45,6 +45,12 @@ buildscript {
 
         kotlinDep = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
+        timberDep = "com.jakewharton.timber:timber:$timberVersion"
+        coilDep = "io.coil-kt:coil:$coilVersion"
+
+        coreDep = "androidx.core:core-ktx:$coreVersion"
+        materialDep = "com.google.android.material:material:$materialVersion"
+        fragmentDep = "androidx.fragment:fragment-ktx:$fragmentVersion"
         androidDep = "androidx.appcompat:appcompat:$supportVersion"
         cardViewDep = "androidx.cardview:cardview:$cardViewVersion"
         recyclerViewDep = "androidx.recyclerview:recyclerview:$recyclerViewVersion"
@@ -56,7 +62,7 @@ buildscript {
         coroutinesPlayServiceDep = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
 
         navFragmentDep = "androidx.navigation:navigation-fragment-ktx:$navControllerVersion"
-        navUiDep = "androidx.navigation:navigat ion-ui-ktx:$navControllerVersion"
+        navUiDep = "androidx.navigation:navigation-ui-ktx:$navControllerVersion"
 
         retrofitDep = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         converterGsonDep = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
@@ -68,7 +74,7 @@ buildscript {
 
         lifecycleViewmodelDep = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
         lifecycleLivedataDep = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-        lifecycelRuntimeDep = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+        lifecycleRuntimeDep = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
 
         daggerDep = "com.google.dagger:dagger:$daggerVersion"
         daggerKaptDep = "com.google.dagger:dagger-compiler:$daggerVersion"

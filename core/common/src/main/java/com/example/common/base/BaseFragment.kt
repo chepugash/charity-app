@@ -21,17 +21,17 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         initViews()
         subscribe(viewModel)
 
-        viewModel.errorLiveData.observe(EventObserver {
-            showError(it)
-        })
-
-        viewModel.errorWithTitleLiveData.observe(EventObserver {
-            showErrorWithTitle(it.first, it.second)
-        })
-
-        viewModel.errorFromResourceLiveData.observe(EventObserver {
-            showErrorFromResponse(it)
-        })
+//        viewModel.errorLiveData.observe(EventObserver {
+//            showError(it)
+//        })
+//
+//        viewModel.errorWithTitleLiveData.observe(EventObserver {
+//            showErrorWithTitle(it.first, it.second)
+//        })
+//
+//        viewModel.errorFromResourceLiveData.observe(EventObserver {
+//            showErrorFromResponse(it)
+//        })
     }
 
     protected fun showError(errorMessage: String) {
@@ -63,10 +63,10 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         super.onDestroyView()
     }
 
-    protected fun <T> LiveData<T>.observe(observer: Observer<T>) {
-        observe(viewLifecycleOwner, observer)
-        observables.add(this)
-    }
+//    protected fun <T> LiveData<T>.observe(observer: Observer<T>) {
+//        observe(viewLifecycleOwner, observer)
+//        observables.add(this)
+//    }
 
     abstract fun initViews()
 

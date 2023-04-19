@@ -1,4 +1,6 @@
 package com.example.sign_in.presentation
 
-class SignInViewModel {
+import com.example.common.base.BaseViewModel
+
+class SignInViewModel : BaseViewModel() {
 }

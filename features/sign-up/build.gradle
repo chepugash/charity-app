@@ -37,34 +37,31 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation "androidx.fragment:fragment-ktx:1.5.6"
-
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation coreDep
+    implementation androidDep
+    implementation materialDep
+    implementation fragmentDep
 
     // region dagger2
-    def dagger = '2.45'
-    implementation "com.google.dagger:dagger:${dagger}"
-    kapt "com.google.dagger:dagger-compiler:${dagger}"
+    implementation daggerDep
+    kapt daggerKaptDep
     // endregion
 
     // region coroutines
-    def coroutines = '1.6.4'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines"
+    implementation coroutinesCoreDep
+    implementation coroutinesAndroidDep
+    implementation coroutinesPlayServiceDep
     // endregion
 
     // region mvvm
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    implementation lifecycleViewmodelDep
+    implementation lifecycleLivedataDep
+    implementation lifecycleRuntimeDep
     // endregion
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation junitDep
+    androidTestImplementation extJunitDep
+    androidTestImplementation espressoDep
 
     implementation project(":core:common")
 }

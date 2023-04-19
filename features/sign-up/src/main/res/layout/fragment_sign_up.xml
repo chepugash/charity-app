@@ -1,109 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="16dp"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_create"
-        style="@style/HeaderTextStyle"
-        android:layout_margin="16dp"
-        android:text="@string/features_sign_up_create_account" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/registration" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_email"
-        style="?attr/textInputOutlinedDenseStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/features_sign_up_email"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/it_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_password"
-        style="?attr/textInputOutlinedDenseStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/features_sign_up_password"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/it_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_repeat_password"
-        style="?attr/textInputOutlinedDenseStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/features_sign_up_repeat_password"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/it_repeat_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal">
+        android:padding="16dp"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_is_exist"
-            style="@style/CommonTextStyle"
-            android:layout_marginEnd="4dp"
-            android:text="@string/features_sign_up_do_you_have_acc" />
+            android:id="@+id/tv_create"
+            style="@style/HeaderTextStyle"
+            android:layout_margin="16dp"
+            android:text="@string/features_sign_up_create_account" />
 
-        <TextView
-            android:id="@+id/tv_sign_in"
-            style="@style/HyperlinkTextStyle"
-            android:focusable="true"
-            android:text="@string/features_sign_up_enter"
-            android:textColor="@color/blue_hyperlink" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/registration" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_email"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/features_sign_up_email"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/it_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_password"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/features_sign_up_password"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/it_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_repeat_password"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/features_sign_up_repeat_password"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/it_repeat_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="32dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_is_exist"
+                style="@style/CommonTextStyle"
+                android:layout_marginEnd="4dp"
+                android:text="@string/features_sign_up_do_you_have_acc" />
+
+            <TextView
+                android:id="@+id/tv_sign_in"
+                style="@style/HyperlinkTextStyle"
+                android:focusable="true"
+                android:text="@string/features_sign_up_enter"
+                android:textColor="@color/blue_hyperlink" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="12dp"
+                android:text="@string/features_sign_up_create" />
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:padding="12dp"
-            android:text="@string/features_sign_up_create" />
-
-    </FrameLayout>
-
-</LinearLayout>
+</ScrollView>

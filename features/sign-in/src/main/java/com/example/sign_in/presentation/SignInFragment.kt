@@ -5,9 +5,6 @@ import com.example.common.base.BaseFragment
 import com.example.sign_in.R
 
 class SignInFragment : BaseFragment<SignInViewModel>() {
-    override fun initViews() {
-    }
-
     override fun inject() {
     }
 

@@ -4,8 +4,8 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
-import com.example.sign_up.di.SignUpFeatureApi
-import com.example.sign_up.di.SignUpFeatureHolder
+import com.example.sign.di.SignFeatureApi
+import com.example.sign.di.SignFeatureHolder
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.ClassKey
@@ -20,7 +20,7 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
-    @ClassKey(SignUpFeatureApi::class)
+    @ClassKey(SignFeatureApi::class)
     @IntoMap
-    fun provideSignUpFeatureHolder(signUpFeatureHolder: SignUpFeatureHolder): FeatureApiHolder
+    fun provideSignFeatureHolder(signFeatureHolder: SignFeatureHolder): FeatureApiHolder
 }

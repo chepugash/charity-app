@@ -81,8 +81,7 @@ dependencies {
     testImplementation junitDep
     androidTestImplementation extJunitDep
     androidTestImplementation espressoDep
+    implementation project(':features:sign')
 
-    implementation project(':features:sign-up')
-    implementation project(':features:sign-in')
     implementation project(':core:common')
 }

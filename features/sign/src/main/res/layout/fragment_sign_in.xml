@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tv_create"
             style="@style/HeaderTextStyle"
             android:layout_margin="16dp"
-            android:text="@string/features_sign_in_sign_in" />
+            android:text="@string/features_sign_sign_in" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -30,8 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:hint="@string/features_sign_in_email"
+            android:hint="@string/features_sign_email"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,7 +46,7 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/features_sign_in_password"
+            android:hint="@string/features_sign_password"
             app:endIconMode="password_toggle"
             app:errorEnabled="true">
 
@@ -64,7 +63,7 @@
             style="@style/HyperlinkTextStyle"
             android:layout_gravity="center"
             android:layout_margin="32dp"
-            android:text="@string/features_sign_in_create_account_link"
+            android:text="@string/features_sign_create_account_link"
             android:textColor="@color/blue_hyperlink" />
 
         <Space
@@ -72,13 +71,19 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btn_submit"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:padding="12dp"
-            android:text="@string/features_sign_in_enter" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="12dp"
+                android:text="@string/features_sign_enter" />
+
+        </FrameLayout>
 
         <ProgressBar
             android:id="@+id/pb_loading"

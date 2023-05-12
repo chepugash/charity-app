@@ -4,5 +4,5 @@ import com.example.sign.domain.entity.SignUserEntity
 
 interface SignRepository {
 
-    suspend fun signUp(signUpUserEntity: SignUserEntity)
+    suspend fun signUp(signUserEntity: SignUserEntity)
 }

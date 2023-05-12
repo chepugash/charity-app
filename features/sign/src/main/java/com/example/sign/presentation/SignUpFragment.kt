@@ -7,18 +7,13 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.sign.di.SignFeatureApi
+import com.example.sign.data.SignApi
 import com.example.sign.di.SignFeatureComponent
 import com.example.sign_up.databinding.FragmentSignUpBinding
 
 class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
     private lateinit var binding: FragmentSignUpBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        inject()
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
@@ -44,7 +39,7 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<SignFeatureComponent>(this, SignFeatureApi::class.java)
+        FeatureUtils.getFeature<SignFeatureComponent>(this, SignApi::class.java)
             .signUpComponentFactory()
             .create(this)
             .inject(this)

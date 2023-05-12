@@ -5,10 +5,10 @@ import com.example.sign.domain.repository.SignRepository
 import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(
-    private val signUpRepository: SignRepository
+    private val signRepository: SignRepository
 ) {
 
-    suspend fun signUp(signUpUserEntity: SignUserEntity) {
-        signUpRepository.signUp(signUpUserEntity)
+    suspend fun signUp(signUserEntity: SignUserEntity) {
+        signRepository.signUp(signUserEntity)
     }
 }

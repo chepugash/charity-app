@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.common.core.ResourceManager
 import com.example.common.core.config.AppProperties
 import com.example.common.data.network.NetworkApiCreator
+import com.google.firebase.firestore.FirebaseFirestore
 
 interface CommonApi {
 
@@ -12,6 +13,8 @@ interface CommonApi {
     fun provideResourceManager(): ResourceManager
 
     fun provideNetworkApiCreator(): NetworkApiCreator
+
+    fun provideFirestore(): FirebaseFirestore
 
     fun provideAppProperties(): AppProperties
 }

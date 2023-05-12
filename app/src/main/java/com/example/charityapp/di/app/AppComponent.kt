@@ -8,6 +8,7 @@ import com.example.common.di.CommonApi
 import com.example.common.di.modules.CommonModule
 import com.example.common.di.modules.NetworkModule
 import com.example.common.di.scope.ApplicationScope
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.BindsInstance
 import dagger.Component
 
@@ -24,7 +25,7 @@ import dagger.Component
     ]
 )
 interface AppComponent : MainDependencies, CommonApi {
-
+    override fun provideFirestore(): FirebaseFirestore
     companion object {
 
         fun init(application: App): AppComponent {

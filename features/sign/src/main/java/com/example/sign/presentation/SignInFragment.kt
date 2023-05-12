@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.sign.di.SignFeatureApi
+import com.example.sign.data.SignApi
 import com.example.sign.di.SignFeatureComponent
 import com.example.sign_up.databinding.FragmentSignInBinding
 
@@ -40,7 +40,7 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<SignFeatureComponent>(this, SignFeatureApi::class.java)
+        FeatureUtils.getFeature<SignFeatureComponent>(this, SignApi::class.java)
             .signInComponentFactory()
             .create(this)
             .inject(this)

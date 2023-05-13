@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.charityapp.MainViewModel
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

@@ -2,9 +2,10 @@ package com.example.charityapp
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.charityapp.di.app.AppComponent
 import com.example.charityapp.di.deps.findComponentDependencies
 import com.example.charityapp.di.main.MainComponent
 import com.example.charityapp.navigation.Navigator

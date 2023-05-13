@@ -25,6 +25,7 @@ class App : Application(), FeatureContainer, HasComponentDependencies {
 
         appComponent = AppComponent.init(this)
         appComponent.inject(this)
+
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

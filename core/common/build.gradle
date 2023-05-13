@@ -33,33 +33,34 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.fragment:fragment-ktx:1.5.6'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation coreDep
+    implementation androidDep
+    implementation materialDep
+    implementation fragmentDep
+
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
     // region dagger2
-    def dagger = '2.45'
-    implementation "com.google.dagger:dagger:${dagger}"
-    kapt "com.google.dagger:dagger-compiler:${dagger}"
+    implementation daggerDep
+    kapt daggerKaptDep
     // endregion
 
     // region Network
-    def retrofit = '2.9.0'
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation retrofitDep
+    implementation converterGsonDep
 
-    def okhttp = '4.10.0'
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation okhttpDep
+    implementation loggingInterceptor
 
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    retrofitSerializationDep
+    kotlinSerializationDep
     // endregion
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation junitDep
+    androidTestImplementation extJunitDep
+    androidTestImplementation espressoDep
 
     api project(":core:theme")
 }

@@ -7,6 +7,7 @@ import com.example.common.core.config.NetworkProperties
 import com.example.common.data.network.NetworkApiCreator
 import com.example.common.di.scope.ApplicationScope
 import com.google.firebase.FirebaseOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -69,16 +70,14 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideFirestore(
-        context: Context
-    ): FirebaseFirestore {
-        val options = FirebaseOptions.Builder()
-            .setProjectId("charity-a31da")
-            .setApplicationId("1:641315015950:android:ad56eef2d76bcd8b3c5b5f")
-            .setApiKey("AIzaSyAD3GD0G5PNbOioXtjdbfvrqiYT2394C7s")
-            .build()
-        Firebase.initialize(context, options)
+    fun provideFirestore(): FirebaseFirestore {
         return FirebaseFirestore.getInstance()
+    }
+
+    @Provides
+    @ApplicationScope
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
 
 }

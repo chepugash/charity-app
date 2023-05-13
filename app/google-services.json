@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "641315015950-86q5lic4q5gkgibliq2msvrhs8pa9un3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.charityapp",
+            "certificate_hash": "ea1b467d7c7f2d426a955a5bbea0049d3ce62237"
+          }
+        },
+        {
           "client_id": "641315015950-89ctuhfs4jdd7qpvh7rtovjqg80v1ac1.apps.googleusercontent.com",
           "client_type": 3
         }

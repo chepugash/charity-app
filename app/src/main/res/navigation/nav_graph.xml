@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.sign.presentation.SignUpFragment"
+        android:name="com.example.sign.presentation.sign_up.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up"/>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.sign.presentation.SignInFragment"
+        android:name="com.example.sign.presentation.sign_in.SignInFragment"
         android:label="SignInFragment"
         tools:layout="@layout/fragment_sign_in"/>
 </navigation>

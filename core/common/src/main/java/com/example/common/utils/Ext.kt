@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 
 fun Activity.showShortToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
@@ -38,3 +39,17 @@ fun View.hide() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+fun View.showSnackbar(
+    @StringRes message: Int,
+    duration: Int = Snackbar.LENGTH_SHORT
+) = Snackbar
+    .make(this, message, duration)
+    .show()
+
+fun View.showSnackbar(
+    message: CharSequence,
+    duration: Int = Snackbar.LENGTH_SHORT
+) = Snackbar
+    .make(this, message, duration)
+    .show()

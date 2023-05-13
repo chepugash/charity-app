@@ -4,7 +4,7 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
-import com.example.sign.data.SignApi
+import com.example.sign.data.api.SignApi
 import com.example.sign.di.SignFeatureHolder
 import dagger.Binds
 import dagger.Module

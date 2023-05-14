@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="features_profile_email">Email:</string>
+    <string name="features_profile_name">Имя:</string>
+    <string name="features_profile_exact_name">Иван</string>
+    <string name="features_profile_surname">Фамилия:</string>
+    <string name="features_profile_exact_surname">Иванов</string>
+    <string name="features_profile_history">История пожертвований</string>
+    <string name="features_profile_statistics">Статистика</string>
+    <string name="features_profile_change_password">Изменить пароль</string>
+    <string name="features_profile_delete_profile">Удалить профиль</string>
+    <string name="features_profile_exact_email">asylgareeva03@inbox.ru</string>
+</resources>

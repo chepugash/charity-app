@@ -2,11 +2,13 @@ package com.example.sign
 
 import android.content.Context
 
-interface SignUpRouter {
+interface SignRouter {
 
     fun launchSignIn()
 
     fun launchSignUp()
+
+    fun launchProfile()
 
     fun openMain(context: Context)
 }

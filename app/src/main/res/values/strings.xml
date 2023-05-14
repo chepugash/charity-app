@@ -1,26 +1,3 @@
 <resources>
     <string name="app_name">CharityApp</string>
-
-    <string name="email">Email:</string>
-    <string name="name">Имя:</string>
-    <string name="tv_profile_name">Иван</string>
-    <string name="surname">Фамилия:</string>
-    <string name="tv_profile_surname">Иванов</string>
-    <string name="tv_profile_history">История пожертвований</string>
-    <string name="tv_profile_statistics">Статистика</string>
-    <string name="tv_change_password">Изменить пароль</string>
-    <string name="tv_profile_delete">Удалить профиль</string>
-    <string name="tv_profile_email">asylgareeva03@inbox.ru</string>
-
-    <string name="create_account">Создайте аккаунт</string>
-    <string name="email">Email</string>
-    <string name="password">Пароль</string>
-    <string name="do_you_have_acc">Уже есть аккаунт?</string>
-    <string name="enter">Войти</string>
-    <string name="create">создать</string>
-    <string name="signin">Войдите в аккаунт</string>
-    <string name="create_account_link">Создать аккаунт</string>
-    <string name="enter_button">Войти</string>
-    <string name="success">Пожертвование отправлено</string>
-    <string name="share">Поделиться</string>
 </resources>

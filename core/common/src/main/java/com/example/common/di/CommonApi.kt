@@ -16,6 +16,7 @@ interface CommonApi {
     fun provideNetworkApiCreator(): NetworkApiCreator
 
     fun provideFirestore(): FirebaseFirestore
+
     fun provideFirebaseAuth(): FirebaseAuth
 
     fun provideAppProperties(): AppProperties

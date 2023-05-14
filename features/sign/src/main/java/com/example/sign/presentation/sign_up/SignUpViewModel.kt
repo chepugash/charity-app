@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
-import com.example.sign.SignUpRouter
+import com.example.sign.SignRouter
 import com.example.sign.domain.entity.AuthResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.usecase.SignUpUseCase
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel(
     private val signUpUseCase: SignUpUseCase,
-    private val router: SignUpRouter
+    private val router: SignRouter
 ): BaseViewModel() {
 
     private val _authResult = MutableLiveData<AuthResult>()

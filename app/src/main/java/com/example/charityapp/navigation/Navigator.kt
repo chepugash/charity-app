@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.navigation.NavController
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
-import com.example.sign.SignUpRouter
+import com.example.profile.ProfileRouter
+import com.example.sign.SignRouter
 
-class Navigator : SignUpRouter {
+class Navigator : SignRouter, ProfileRouter {
 
     private var navController: NavController? = null
 
@@ -27,6 +28,10 @@ class Navigator : SignUpRouter {
 
     override fun launchSignUp() {
         navController?.navigate(R.id.signUpFragment)
+    }
+
+    override fun launchProfile() {
+        navController?.navigate(R.id.profileFragment)
     }
 
     override fun openMain(context: Context) {

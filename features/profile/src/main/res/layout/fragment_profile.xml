@@ -27,9 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start"
-            android:text="@string/email"
+            android:text="@string/features_profile_email"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +41,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/tv_profile_email"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:text="@string/features_profile_exact_email" />
 
     </LinearLayout>
 
@@ -69,9 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start"
-            android:text="@string/name"
+            android:text="@string/features_profile_name"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,9 +81,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/tv_profile_name"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:text="@string/features_profile_exact_name" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -117,22 +113,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start"
-            android:text="@string/surname"
+            android:text="@string/features_profile_surname"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_profile_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/tv_profile_surname"
+            tools:text="@string/features_profile_exact_surname"
             android:textSize="18sp" />
 
         <ImageView
@@ -159,8 +154,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="12dp"
         android:enabled="false"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/tv_profile_history"
+        android:text="@string/features_profile_history"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -180,8 +174,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="12dp"
         android:enabled="false"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/tv_profile_statistics"
+        android:text="@string/features_profile_statistics"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -203,14 +196,13 @@
         android:paddingTop="9dp">
 
         <TextView
-            android:id="@+id/change_password"
+            android:id="@+id/tv_change_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start"
-            android:text="@string/tv_change_password"
+            android:text="@string/features_profile_change_password"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -242,14 +234,13 @@
         android:paddingTop="9dp">
 
         <TextView
-            android:id="@+id/delete_prof"
+            android:id="@+id/tv_delete_prof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start"
-            android:text="@string/tv_profile_delete"
+            android:text="@string/features_profile_delete_profile"
             android:textColor="@color/red"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -262,6 +253,5 @@
             android:src="@drawable/ic_delete"
             app:tint="@color/red" />
     </LinearLayout>
-
 
 </LinearLayout>

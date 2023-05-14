@@ -51,7 +51,7 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
             authResult.observe(viewLifecycleOwner) {
                 when (it) {
                     is AuthResult.Success -> {
-                        viewModel.launchSignUp()
+                        viewModel.launchProfile()
                     }
                     is AuthResult.Error -> {
                         showError(it.message)

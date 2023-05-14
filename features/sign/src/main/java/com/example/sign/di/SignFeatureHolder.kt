@@ -2,12 +2,12 @@ package com.example.sign.di
 
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
-import com.example.sign.SignUpRouter
+import com.example.sign.SignRouter
 import javax.inject.Inject
 
 class SignFeatureHolder @Inject constructor(
     featureContainer: FeatureContainer,
-    private val signUpRouter: SignUpRouter
+    private val signRouter: SignRouter
 ) : FeatureApiHolder(featureContainer) {
 
     override fun initializeDependencies(): Any {
@@ -17,7 +17,7 @@ class SignFeatureHolder @Inject constructor(
                 .build()
         return DaggerSignFeatureComponent.builder()
             .withDependencies(signFeatureDependencies)
-            .router(signUpRouter)
+            .router(signRouter)
             .build()
     }
 }

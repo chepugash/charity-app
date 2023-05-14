@@ -15,4 +15,9 @@
         android:name="com.example.sign.presentation.sign_in.SignInFragment"
         android:label="SignInFragment"
         tools:layout="@layout/fragment_sign_in"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.profile.presentation.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
 </navigation>

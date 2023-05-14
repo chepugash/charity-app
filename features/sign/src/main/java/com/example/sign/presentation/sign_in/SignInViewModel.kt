@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
-import com.example.sign.SignUpRouter
+import com.example.sign.SignRouter
 import com.example.sign.domain.entity.AuthResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.usecase.SignInUseCase
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class SignInViewModel(
     private val signInUseCase: SignInUseCase,
-    private val router: SignUpRouter
+    private val router: SignRouter
 ): BaseViewModel() {
 
     private val _authResult = MutableLiveData<AuthResult>()
@@ -37,7 +37,7 @@ class SignInViewModel(
                     repeatPassword = password
                 )
                 _authResult.value = signInUseCase.signIn(user)
-                router.launchSignUp()
+                router.launchProfile()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {
@@ -47,12 +47,16 @@ class SignInViewModel(
     }
 
     fun onSignUpClick() {
-        launchSignUp()
-    }
-
-    fun launchSignUp() {
         try {
             router.launchSignUp()
+        } catch (error: Throwable) {
+            _error.value = error
+        }
+    }
+
+    fun launchProfile() {
+        try {
+            router.launchProfile()
         } catch (error: Throwable) {
             _error.value = error
         }

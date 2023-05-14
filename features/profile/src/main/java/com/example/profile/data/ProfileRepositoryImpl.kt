@@ -5,6 +5,7 @@ import com.example.profile.data.api.toProfileUserEntity
 import com.example.profile.domain.entity.ApiResult
 import com.example.profile.domain.entity.ProfileUserEntity
 import com.example.profile.domain.repository.ProfileRepository
+import com.google.android.gms.tasks.Task
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -15,16 +16,14 @@ class ProfileRepositoryImpl @Inject constructor(
         return profileApi.getUser()?.toProfileUserEntity()
     }
 
-    override suspend fun changeName(userId: String, name: String): ApiResult {
-        return null!!
+    override suspend fun changeName(name: String): Task<Void>? {
+        return profileApi.changeUserName(name)
     }
 
     override suspend fun changePassword(
-        userId: String,
-        password: String,
-        repeatPassword: String
-    ): ApiResult {
-        return null!!
+        password: String
+    ): Task<Void>? {
+        return profileApi.changeUserPassword(password)
     }
 
     override suspend fun deleteProfile(userId: String): ApiResult {

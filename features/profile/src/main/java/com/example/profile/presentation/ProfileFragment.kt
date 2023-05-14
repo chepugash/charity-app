@@ -10,6 +10,7 @@ import com.example.common.utils.showSnackbar
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.di.ProfileFeatureComponent
+import com.example.profile.domain.entity.ApiResult
 
 class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
@@ -24,10 +25,13 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
 
-        viewModel.getUser()
-
         binding.run {
-
+            tvProfileName.setOnClickListener {
+                viewModel.changeName("Adel")
+            }
+            tvChangePassword.setOnClickListener {
+                viewModel.changePassword("87654321")
+            }
         }
     }
 
@@ -43,6 +47,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             user.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showUserInfo(it.email, it.name)
+            }
+            apiResult.observe(viewLifecycleOwner) {
+                when (it) {
+                    is ApiResult.Success -> {
+                        viewModel.getUser()
+                        showError("Data changed")
+                    }
+                    is ApiResult.Error -> {
+                        showError(it.message)
+                    }
+                }
+            }
+            error.observe(viewLifecycleOwner) {
+                if (it == null) return@observe
+                showError(it)
             }
         }
     }

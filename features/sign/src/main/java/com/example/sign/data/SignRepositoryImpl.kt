@@ -1,9 +1,11 @@
 package com.example.sign.data
 
 import com.example.sign.data.api.SignApi
-import com.example.sign.domain.entity.AuthResult
+import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.repository.SignRepository
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import javax.inject.Inject
 
 class SignRepositoryImpl @Inject constructor(
@@ -12,7 +14,7 @@ class SignRepositoryImpl @Inject constructor(
 
     override suspend fun signUp(
         signUserEntity: SignUserEntity
-    ): AuthResult {
+    ): Task<AuthResult> {
         if (signUserEntity.password != signUserEntity.repeatPassword) {
             throw Exception("Password mismatch")
         }
@@ -21,5 +23,5 @@ class SignRepositoryImpl @Inject constructor(
 
     override suspend fun signIn(
         signUserEntity: SignUserEntity
-    ): AuthResult = signApi.signIn(signUserEntity)
+    ): Task<AuthResult> = signApi.signIn(signUserEntity)
 }

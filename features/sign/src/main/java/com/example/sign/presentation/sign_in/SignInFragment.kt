@@ -10,7 +10,8 @@ import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
 import com.example.sign.data.api.SignApi
 import com.example.sign.di.SignFeatureComponent
-import com.example.sign.domain.entity.AuthResult
+import com.example.sign.domain.entity.ApiResult
+import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign_up.databinding.FragmentSignInBinding
 
 class SignInFragment : BaseFragment<SignInViewModel>() {
@@ -28,7 +29,10 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                viewModel.onSubmitClick(itEmail.text.toString(), itPassword.text.toString())
+                viewModel.onSubmitClick(SignUserEntity(
+                    itEmail.text.toString(),
+                    itPassword.text.toString()
+                ))
             }
             tvSignIn.setOnClickListener {
                 viewModel.onSignUpClick()
@@ -48,12 +52,12 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
             loading.observe(viewLifecycleOwner) {
                 binding.pbLoading.isVisible = it
             }
-            authResult.observe(viewLifecycleOwner) {
+            apiResult.observe(viewLifecycleOwner) {
                 when (it) {
-                    is AuthResult.Success -> {
+                    is ApiResult.Success -> {
                         viewModel.launchProfile()
                     }
-                    is AuthResult.Error -> {
+                    is ApiResult.Error -> {
                         showError(it.message)
                     }
                 }

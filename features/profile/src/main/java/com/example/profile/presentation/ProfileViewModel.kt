@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.profile.ProfileRouter
+import com.example.profile.domain.entity.ApiResult
 import com.example.profile.domain.entity.ProfileUserEntity
 import com.example.profile.domain.usecase.ChangeNameUseCase
 import com.example.profile.domain.usecase.ChangePasswordUseCase
@@ -20,7 +21,11 @@ class ProfileViewModel(
     private val router: ProfileRouter
 ): BaseViewModel() {
 
-    private val _user = MutableLiveData<ProfileUserEntity?>()
+    private val _apiResult = MutableLiveData<ApiResult>(ApiResult.Success)
+    val apiResult: LiveData<ApiResult>
+        get() = _apiResult
+
+    private val _user = MutableLiveData<ProfileUserEntity?>(null)
     val user: LiveData<ProfileUserEntity?>
         get() = _user
 
@@ -37,6 +42,46 @@ class ProfileViewModel(
             try {
                 _loading.value = true
                 _user.value = getUserUseCase.getUser()
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun changeName(name: String) {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                changeNameUseCase.changeName(name)
+                    ?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            _apiResult.value = ApiResult.Success
+                        } else {
+                            _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
+                        }
+                    }
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun changePassword(password: String) {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                changePasswordUseCase.changePassword(password)
+                    ?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            _apiResult.value = ApiResult.Success
+                        } else {
+                            _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
+                        }
+                    }
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

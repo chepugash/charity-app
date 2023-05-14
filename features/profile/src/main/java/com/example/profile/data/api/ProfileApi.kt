@@ -2,19 +2,18 @@ package com.example.profile.data.api
 
 import com.example.profile.domain.entity.ApiResult
 import com.example.profile.domain.entity.ProfileUserEntity
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseUser
 
 interface ProfileApi {
 
     suspend fun getUser(): FirebaseUser?
 
-    suspend fun changeUserName(userId: String, name: String): ApiResult
+    suspend fun changeUserName(name: String): Task<Void>?
 
     suspend fun changeUserPassword(
-        userId: String,
-        password: String,
-        repeatPassword: String
-    ): ApiResult
+        password: String
+    ): Task<Void>?
 
-    suspend fun deleteProfile(userId: String): ApiResult
+    suspend fun deleteProfile(): ApiResult
 }

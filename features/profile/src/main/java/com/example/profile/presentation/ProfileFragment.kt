@@ -33,7 +33,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
                 viewModel.changePassword("12345678")
             }
             lDeleteProfile.setOnClickListener {
-
+                viewModel.deleteProfile()
+            }
+            lSignOut.setOnClickListener {
+                viewModel.signOut()
             }
         }
     }

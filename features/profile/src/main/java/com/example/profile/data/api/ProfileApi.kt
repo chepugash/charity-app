@@ -15,5 +15,5 @@ interface ProfileApi {
 
     suspend fun deleteProfile(): Task<Void>?
 
-    suspend fun signOut(): Task<Void>?
+    suspend fun signOut()
 }

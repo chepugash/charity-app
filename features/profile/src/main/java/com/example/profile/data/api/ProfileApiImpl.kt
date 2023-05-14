@@ -30,7 +30,7 @@ class ProfileApiImpl @Inject constructor(
 
     override suspend fun deleteProfile(): Task<Void>? = getUser()?.delete()
 
-    override suspend fun signOut(): Task<Void>? {
-        return null!!
+    override suspend fun signOut() {
+        auth.signOut()
     }
 }

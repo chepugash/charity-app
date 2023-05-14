@@ -10,4 +10,5 @@
     <string name="features_profile_change_password">Изменить пароль</string>
     <string name="features_profile_delete_profile">Удалить профиль</string>
     <string name="features_profile_exact_email">asylgareeva03@inbox.ru</string>
+    <string name="feature_profile_exit">Выйти</string>
 </resources>

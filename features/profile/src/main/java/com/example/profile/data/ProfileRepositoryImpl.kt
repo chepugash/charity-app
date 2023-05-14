@@ -23,4 +23,8 @@ class ProfileRepositoryImpl @Inject constructor(
     ): Task<Void>? = profileApi.changeUserPassword(password)
 
     override suspend fun deleteProfile(): Task<Void>? = profileApi.deleteProfile()
+
+    override suspend fun signOut() {
+        profileApi.signOut()
+    }
 }

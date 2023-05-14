@@ -13,4 +13,6 @@ interface ProfileRepository {
     suspend fun changePassword(password: String): Task<Void>?
 
     suspend fun deleteProfile(): Task<Void>?
+
+    suspend fun signOut()
 }

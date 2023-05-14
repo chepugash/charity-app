@@ -11,6 +11,7 @@ import com.example.profile.domain.usecase.ChangeNameUseCase
 import com.example.profile.domain.usecase.ChangePasswordUseCase
 import com.example.profile.domain.usecase.DeleteProfileUseCase
 import com.example.profile.domain.usecase.GetUserUseCase
+import com.example.profile.domain.usecase.SignOutUseCase
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
@@ -18,6 +19,7 @@ class ProfileViewModel(
     private val changePasswordUseCase: ChangePasswordUseCase,
     private val deleteProfileUseCase: DeleteProfileUseCase,
     private val getUserUseCase: GetUserUseCase,
+    private val signOutUseCase: SignOutUseCase,
     private val router: ProfileRouter
 ): BaseViewModel() {
 
@@ -88,5 +90,43 @@ class ProfileViewModel(
                 _loading.value = false
             }
         }
+    }
+
+    fun deleteProfile() {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                deleteProfileUseCase.deleteProfile()
+                    ?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            launchSignIn()
+                        } else {
+                            _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
+                        }
+                    }
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun signOut() {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                signOutUseCase.signOut()
+                launchSignIn()
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun launchSignIn() {
+        router.launchSignIn()
     }
 }

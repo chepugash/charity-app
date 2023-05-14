@@ -10,6 +10,7 @@ import com.example.profile.domain.usecase.ChangeNameUseCase
 import com.example.profile.domain.usecase.ChangePasswordUseCase
 import com.example.profile.domain.usecase.DeleteProfileUseCase
 import com.example.profile.domain.usecase.GetUserUseCase
+import com.example.profile.domain.usecase.SignOutUseCase
 import com.example.profile.presentation.ProfileViewModel
 import dagger.Module
 import dagger.Provides
@@ -38,12 +39,14 @@ class ProfileModule {
         changePasswordUseCase: ChangePasswordUseCase,
         deleteProfileUseCase: DeleteProfileUseCase,
         getUserUseCase: GetUserUseCase,
+        signOutUseCase: SignOutUseCase,
         router: ProfileRouter
     ): ViewModel = ProfileViewModel(
         changeNameUseCase,
         changePasswordUseCase,
         deleteProfileUseCase,
         getUserUseCase,
+        signOutUseCase,
         router
     )
 }

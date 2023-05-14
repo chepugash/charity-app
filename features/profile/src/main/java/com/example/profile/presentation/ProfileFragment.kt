@@ -26,11 +26,14 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         subscribe(viewModel)
 
         binding.run {
-            tvProfileName.setOnClickListener {
+            lName.setOnClickListener {
                 viewModel.changeName("Adel")
             }
-            tvChangePassword.setOnClickListener {
-                viewModel.changePassword("87654321")
+            lChangePassword.setOnClickListener {
+                viewModel.changePassword("12345678")
+            }
+            lDeleteProfile.setOnClickListener {
+
             }
         }
     }

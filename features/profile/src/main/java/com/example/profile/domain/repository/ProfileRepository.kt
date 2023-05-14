@@ -12,5 +12,5 @@ interface ProfileRepository {
 
     suspend fun changePassword(password: String): Task<Void>?
 
-    suspend fun deleteProfile(userId: String): ApiResult
+    suspend fun deleteProfile(): Task<Void>?
 }

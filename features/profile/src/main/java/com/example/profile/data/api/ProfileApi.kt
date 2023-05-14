@@ -11,9 +11,9 @@ interface ProfileApi {
 
     suspend fun changeUserName(name: String): Task<Void>?
 
-    suspend fun changeUserPassword(
-        password: String
-    ): Task<Void>?
+    suspend fun changeUserPassword(password: String): Task<Void>?
 
-    suspend fun deleteProfile(): ApiResult
+    suspend fun deleteProfile(): Task<Void>?
+
+    suspend fun signOut(): Task<Void>?
 }

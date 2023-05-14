@@ -14,9 +14,7 @@ class ProfileApiImpl @Inject constructor(
     private val auth: FirebaseAuth,
 ) : ProfileApi {
 
-    override suspend fun getUser(): FirebaseUser? {
-        return auth.currentUser
-    }
+    override suspend fun getUser(): FirebaseUser? = auth.currentUser
 
     override suspend fun changeUserName(name: String): Task<Void>? {
         val user = getUser()
@@ -28,11 +26,11 @@ class ProfileApiImpl @Inject constructor(
 
     override suspend fun changeUserPassword(
         password: String
-    ): Task<Void>? {
-        return getUser()?.updatePassword(password)
-    }
+    ): Task<Void>? = getUser()?.updatePassword(password)
 
-    override suspend fun deleteProfile(): ApiResult {
+    override suspend fun deleteProfile(): Task<Void>? = getUser()?.delete()
+
+    override suspend fun signOut(): Task<Void>? {
         return null!!
     }
 }

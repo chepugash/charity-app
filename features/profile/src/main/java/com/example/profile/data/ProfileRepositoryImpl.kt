@@ -12,21 +12,15 @@ class ProfileRepositoryImpl @Inject constructor(
     private val profileApi: ProfileApi
 ) : ProfileRepository {
 
-    override suspend fun getUser(): ProfileUserEntity? {
-        return profileApi.getUser()?.toProfileUserEntity()
-    }
+    override suspend fun getUser(): ProfileUserEntity? = profileApi.getUser()?.toProfileUserEntity()
 
-    override suspend fun changeName(name: String): Task<Void>? {
-        return profileApi.changeUserName(name)
-    }
+    override suspend fun changeName(
+        name: String
+    ): Task<Void>? = profileApi.changeUserName(name)
 
     override suspend fun changePassword(
         password: String
-    ): Task<Void>? {
-        return profileApi.changeUserPassword(password)
-    }
+    ): Task<Void>? = profileApi.changeUserPassword(password)
 
-    override suspend fun deleteProfile(userId: String): ApiResult {
-        return null!!
-    }
+    override suspend fun deleteProfile(): Task<Void>? = profileApi.deleteProfile()
 }

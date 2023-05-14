@@ -12,17 +12,17 @@ class SignApiImpl @Inject constructor(
     private val auth: FirebaseAuth
 ) : SignApi {
 
-    override suspend fun signUp(userEntity: SignUserEntity): Task<AuthResult> {
-        return auth.createUserWithEmailAndPassword(
-                userEntity.email,
-                userEntity.password
+    override suspend fun signUp(
+        userEntity: SignUserEntity
+    ): Task<AuthResult> = auth.createUserWithEmailAndPassword(
+        userEntity.email,
+        userEntity.password
         )
-    }
 
-    override suspend fun signIn(userEntity: SignUserEntity): Task<AuthResult> {
-        return auth.signInWithEmailAndPassword(
-            userEntity.email,
-            userEntity.password
+    override suspend fun signIn(
+        userEntity: SignUserEntity
+    ): Task<AuthResult> = auth.signInWithEmailAndPassword(
+        userEntity.email,
+        userEntity.password
         )
-    }
 }

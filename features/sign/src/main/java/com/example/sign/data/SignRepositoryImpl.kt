@@ -15,10 +15,11 @@ class SignRepositoryImpl @Inject constructor(
     override suspend fun signUp(
         signUserEntity: SignUserEntity
     ): Task<AuthResult> {
-        if (signUserEntity.password != signUserEntity.repeatPassword) {
+        return if (signUserEntity.password == signUserEntity.repeatPassword) {
+            signApi.signUp(signUserEntity)
+        } else {
             throw Exception("Password mismatch")
         }
-        return signApi.signUp(signUserEntity)
     }
 
     override suspend fun signIn(

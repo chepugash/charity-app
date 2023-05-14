@@ -55,6 +55,7 @@
         android:background="@android:color/darker_gray" />
 
     <LinearLayout
+        android:id="@+id/l_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -140,6 +141,7 @@
         android:background="@android:color/darker_gray" />
 
     <LinearLayout
+        android:id="@+id/l_change_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -178,6 +180,7 @@
         android:background="@android:color/darker_gray" />
 
     <LinearLayout
+        android:id="@+id/l_delete_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

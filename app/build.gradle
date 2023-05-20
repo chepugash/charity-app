@@ -89,5 +89,6 @@ dependencies {
 
     implementation project(':features:sign')
     implementation project(':features:profile')
+    implementation project(':features:categories')
     implementation project(':core:common')
 }

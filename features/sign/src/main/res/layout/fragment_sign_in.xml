@@ -20,7 +20,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/step25"
+            android:layout_height="@dimen/step50"
             android:layout_marginBottom="@dimen/step4"
             android:src="@drawable/auth" />
 

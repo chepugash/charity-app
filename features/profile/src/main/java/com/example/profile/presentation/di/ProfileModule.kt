@@ -3,8 +3,6 @@ package com.example.profile.presentation.di
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.common.di.scope.FeatureScope
-import com.example.common.di.scope.ScreenScope
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.profile.ProfileRouter

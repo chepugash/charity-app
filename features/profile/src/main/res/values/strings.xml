@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="features_profile_email">Email:</string>
+    <string name="features_profile_email" translatable="false">Email:</string>
     <string name="features_profile_name">Имя:</string>
     <string name="features_profile_exact_name">Иван</string>
     <string name="features_profile_surname">Фамилия:</string>
@@ -12,4 +12,6 @@
     <string name="features_profile_exact_email">asylgareeva03@inbox.ru</string>
     <string name="feature_profile_exit">Выйти</string>
     <string name="feature_profile">Профиль</string>
+    <string name="feature_profile_confirmation">Вы уверены?</string>
+    <string name="feature_profile_yes">Да</string>
 </resources>

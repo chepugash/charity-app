@@ -27,7 +27,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
         binding.run {
             lName.setOnClickListener {
-                viewModel.changeName("Adel")
+                viewModel.onChangeName()
             }
             lChangePassword.setOnClickListener {
                 viewModel.changePassword("12345678")

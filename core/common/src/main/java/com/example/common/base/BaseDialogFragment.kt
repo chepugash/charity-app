@@ -1,10 +1,10 @@
 package com.example.common.base
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import javax.inject.Inject
 
-abstract class BaseFragment<T : BaseViewModel> : Fragment() {
+abstract class BaseDialogFragment<T : BaseViewModel> : DialogFragment() {
 
     @Inject
     protected open lateinit var viewModel: T
@@ -17,5 +17,4 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     abstract fun inject()
 
     abstract fun subscribe(viewModel: T)
-
 }

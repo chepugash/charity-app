@@ -7,4 +7,8 @@ interface ProfileRouter {
     fun launchNameDialog()
 
     fun launchSignOutDialog()
+
+    fun launchDeleteDialog()
+
+    fun launchPasswordDialog()
 }

@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import com.example.common.di.scope.ScreenScope
 import com.example.profile.presentation.dialog.NameDialogFragment
 import com.example.profile.presentation.ProfileFragment
+import com.example.profile.presentation.dialog.DeleteDialogFragment
+import com.example.profile.presentation.dialog.PasswordDialogFragment
 import com.example.profile.presentation.dialog.SignOutDialogFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
@@ -29,4 +31,8 @@ interface ProfileComponent {
     fun inject(fragment: NameDialogFragment)
 
     fun inject(fragment: SignOutDialogFragment)
+
+    fun inject(fragment: DeleteDialogFragment)
+
+    fun inject(fragment: PasswordDialogFragment)
 }

@@ -135,6 +135,14 @@ class ProfileViewModel(
         router.launchSignOutDialog()
     }
 
+    fun onDelete() {
+        router.launchDeleteDialog()
+    }
+
+    fun onChangePassword() {
+        router.launchPasswordDialog()
+    }
+
     fun launchSignIn() {
         router.launchSignIn()
     }

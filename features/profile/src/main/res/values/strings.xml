@@ -9,7 +9,7 @@
     <string name="features_profile_statistics">Статистика</string>
     <string name="features_profile_change_password">Изменить пароль</string>
     <string name="features_profile_delete_profile">Удалить профиль</string>
-    <string name="features_profile_exact_email">asylgareeva03@inbox.ru</string>
+    <string name="features_profile_exact_email">sample@inbox.ru</string>
     <string name="feature_profile_exit">Выйти</string>
     <string name="feature_profile">Профиль</string>
 
@@ -19,4 +19,6 @@
     <string name="feature_profile_change_name">Изменить имя</string>
     <string name="feature_profile_change">Изменить</string>
     <string name="feature_profile_back">Назад</string>
+    <string name="feature_profile_new_password">Новый пароль</string>
+    <string name="feature_profile_repeat_password">Повторите пароль</string>
 </resources>

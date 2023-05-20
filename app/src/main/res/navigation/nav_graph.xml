@@ -29,4 +29,12 @@
         android:id="@+id/signOutDialogFragment"
         android:name="com.example.profile.presentation.dialog.SignOutDialogFragment"
         android:label="SignOutDialogFragment" />
+    <dialog
+        android:id="@+id/deleteDialogFragment"
+        android:name="com.example.profile.presentation.dialog.DeleteDialogFragment"
+        android:label="DeleteDialogFragment" />
+    <dialog
+        android:id="@+id/passwordDialogFragment"
+        android:name="com.example.profile.presentation.dialog.PasswordDialogFragment"
+        android:label="PasswordDialogFragment" />
 </navigation>

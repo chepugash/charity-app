@@ -42,6 +42,14 @@ class Navigator : SignRouter, ProfileRouter {
         navController?.navigate(R.id.signOutDialogFragment)
     }
 
+    override fun launchDeleteDialog() {
+        navController?.navigate((R.id.deleteDialogFragment))
+    }
+
+    override fun launchPasswordDialog() {
+        navController?.navigate(R.id.passwordDialogFragment)
+    }
+
     override fun openMain(context: Context) {
         MainActivity.start(context)
     }

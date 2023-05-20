@@ -6,6 +6,7 @@ import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.repository.SignRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseUser
 import javax.inject.Inject
 
 class SignRepositoryImpl @Inject constructor(

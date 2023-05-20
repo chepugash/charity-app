@@ -73,10 +73,6 @@ class ProfileViewModel(
         }
     }
 
-    fun onChangeName() {
-        router.launchInputDialog()
-    }
-
     fun changePassword(password: String) {
         viewModelScope.launch {
             try {
@@ -129,6 +125,14 @@ class ProfileViewModel(
                 _loading.value = false
             }
         }
+    }
+
+    fun onChangeName() {
+        router.launchNameDialog()
+    }
+
+    fun onSignOut() {
+        router.launchSignOutDialog()
     }
 
     fun launchSignIn() {

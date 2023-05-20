@@ -34,8 +34,12 @@ class Navigator : SignRouter, ProfileRouter {
         navController?.navigate(R.id.profileFragment)
     }
 
-    override fun launchInputDialog() {
-        navController?.navigate(R.id.alertDialogFragment)
+    override fun launchNameDialog() {
+        navController?.navigate(R.id.nameDialogFragment)
+    }
+
+    override fun launchSignOutDialog() {
+        navController?.navigate(R.id.signOutDialogFragment)
     }
 
     override fun openMain(context: Context) {

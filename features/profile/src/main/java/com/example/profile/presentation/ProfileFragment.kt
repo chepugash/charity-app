@@ -36,7 +36,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
                 viewModel.deleteProfile()
             }
             ivSignOut.setOnClickListener {
-                viewModel.signOut()
+                viewModel.onSignOut()
             }
         }
     }

@@ -21,8 +21,12 @@
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
     <dialog
-        android:id="@+id/alertDialogFragment"
-        android:name="com.example.profile.presentation.NameDialogFragment"
-        android:label="AlertDialogFragment"
-        tools:layout="@layout/fragment_dialog_input" />
+        android:id="@+id/nameDialogFragment"
+        android:name="com.example.profile.presentation.dialog.NameDialogFragment"
+        android:label="NameDialogFragment"
+        tools:layout="@layout/fragment_dialog_name" />
+    <dialog
+        android:id="@+id/signOutDialogFragment"
+        android:name="com.example.profile.presentation.dialog.SignOutDialogFragment"
+        android:label="SignOutDialogFragment" />
 </navigation>

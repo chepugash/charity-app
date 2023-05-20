@@ -4,5 +4,7 @@ interface ProfileRouter {
 
     fun launchSignIn()
 
-    fun launchInputDialog()
+    fun launchNameDialog()
+
+    fun launchSignOutDialog()
 }

@@ -1,5 +1,7 @@
 package com.example.charityapp.di.deps
 
+import com.example.categories.data.api.CategoriesApi
+import com.example.categories.di.CategoriesFeatureHolder
 import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
@@ -31,4 +33,10 @@ interface ComponentHolderModule {
     @ClassKey(ProfileApi::class)
     @IntoMap
     fun provideProfileFeatureHolder(profileFeatureHolder: ProfileFeatureHolder): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(CategoriesApi::class)
+    @IntoMap
+    fun provideCategoriesFeatureHolder(categoriesFeatureHolder: CategoriesFeatureHolder): FeatureApiHolder
 }

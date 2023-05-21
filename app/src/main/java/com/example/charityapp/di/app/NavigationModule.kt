@@ -1,5 +1,6 @@
 package com.example.charityapp.di.app
 
+import com.example.categories.CategoriesRouter
 import com.example.charityapp.navigation.Navigator
 import com.example.common.di.scope.ApplicationScope
 import com.example.profile.ProfileRouter
@@ -21,4 +22,8 @@ class NavigationModule {
     @ApplicationScope
     @Provides
     fun provideProfileRouter(navigator: Navigator): ProfileRouter = navigator
+
+    @ApplicationScope
+    @Provides
+    fun provideCategoriesRouter(navigator: Navigator): CategoriesRouter = navigator
 }

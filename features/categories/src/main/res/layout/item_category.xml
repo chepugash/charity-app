@@ -13,11 +13,14 @@
         android:padding="@dimen/step3">
 
         <ImageView
+            android:id="@+id/iv_preview"
             android:layout_width="@dimen/step30"
             android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             tools:src="@drawable/profile" />
 
         <TextView
+            android:id="@+id/tv_name"
             style="@style/HeaderTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

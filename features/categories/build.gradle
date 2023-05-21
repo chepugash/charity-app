@@ -42,13 +42,12 @@ dependencies {
     implementation materialDep
     implementation fragmentDep
 
-    implementation 'io.coil-kt:coil:2.3.0'
-
+    implementation coilDep
 
     // region firebase
-    implementation platform('com.google.firebase:firebase-bom:32.0.0')
-    implementation 'com.google.firebase:firebase-firestore-ktx'
-    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation platform(firebaseBomDep)
+    implementation firebaseFirestoreDep
+    implementation firebaseAuthDep
     // endregion
 
     // region retrofit

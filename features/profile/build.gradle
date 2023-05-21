@@ -42,9 +42,9 @@ dependencies {
     implementation materialDep
     implementation fragmentDep
 
-    implementation platform('com.google.firebase:firebase-bom:32.0.0')
-    implementation 'com.google.firebase:firebase-firestore-ktx'
-    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation platform(firebaseBomDep)
+    implementation firebaseFirestoreDep
+    implementation firebaseAuthDep
 
     // region dagger2
     implementation daggerDep

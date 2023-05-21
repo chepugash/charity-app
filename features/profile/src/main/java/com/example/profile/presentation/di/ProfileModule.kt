@@ -28,7 +28,7 @@ class ProfileModule {
         fragment: Fragment,
         factory: ViewModelProvider.Factory
     ): ProfileViewModel {
-        return ViewModelProvider(fragment, factory)[ProfileViewModel::class.java]
+        return ViewModelProvider(fragment.requireActivity(), factory)[ProfileViewModel::class.java]
     }
 
     @Provides

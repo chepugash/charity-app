@@ -42,7 +42,7 @@ dependencies {
     implementation materialDep
     implementation fragmentDep
 
-    implementation 'io.coil-kt:coil-svg:2.3.0'
+    implementation 'io.coil-kt:coil:2.3.0'
 
 
     // region firebase

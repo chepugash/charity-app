@@ -12,6 +12,7 @@
     <dimen name="step6">24dp</dimen>
     <dimen name="step8">32dp</dimen>
     <dimen name="step14">56dp</dimen>
+    <dimen name="step16">64dp</dimen>
     <dimen name="step50">200dp</dimen>
     <dimen name="step30">120dp</dimen>
     <dimen name="line">1dp</dimen>

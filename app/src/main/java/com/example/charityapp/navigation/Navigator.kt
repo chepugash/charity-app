@@ -51,6 +51,10 @@ class Navigator : SignRouter, ProfileRouter, CategoriesRouter {
         navController?.navigate(R.id.passwordDialogFragment)
     }
 
+    override fun launchFoundations(id: Int) {
+        navController?.navigate(R.id.foundationsFragment, )
+    }
+
     override fun openMain(context: Context) {
         MainActivity.start(context)
     }

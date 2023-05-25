@@ -42,4 +42,9 @@
         android:name="com.example.categories.presentation.CategoriesFragment"
         android:label="CategoriesFragment"
         tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/foundationsFragment"
+        android:name="com.example.foundations.presentation.FoundationsFragment"
+        android:label="FoundationsFragment"
+        tools:layout="@layout/fragment_foundations" />
 </navigation>

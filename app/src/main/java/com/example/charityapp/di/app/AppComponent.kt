@@ -26,6 +26,7 @@ import dagger.Component
 )
 interface AppComponent : MainDependencies, CommonApi {
     override fun provideFirestore(): FirebaseFirestore
+
     companion object {
 
         fun init(application: App): AppComponent {

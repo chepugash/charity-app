@@ -10,18 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/step4">
 
         <TextView
             android:id="@+id/tv_create"
             style="@style/HeaderTextStyle"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/step4"
             android:text="@string/features_sign_sign_in" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="@dimen/step50"
+            android:layout_marginBottom="@dimen/step4"
             android:src="@drawable/auth" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -29,7 +29,7 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/step4"
             android:hint="@string/features_sign_email"
             app:errorEnabled="true">
 
@@ -62,7 +62,7 @@
             android:id="@+id/tv_sign_in"
             style="@style/HyperlinkTextStyle"
             android:layout_gravity="center"
-            android:layout_margin="32dp"
+            android:layout_margin="@dimen/step8"
             android:text="@string/features_sign_create_account_link"
             android:textColor="@color/blue_hyperlink" />
 
@@ -80,19 +80,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:padding="12dp"
+                android:padding="@dimen/step3"
                 android:text="@string/features_sign_enter" />
 
         </FrameLayout>
 
         <ProgressBar
             android:id="@+id/pb_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/green_main"
-            android:indeterminateTintMode="src_atop"
+            style="@style/CommonProgressBar"
             android:visibility="gone"
             tools:visibility="visible" />
 

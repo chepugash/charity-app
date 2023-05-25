@@ -18,5 +18,4 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     abstract fun subscribe(viewModel: T)
 
-
 }

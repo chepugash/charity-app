@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="features_profile_email" translatable="false">Email:</string>
+    <string name="features_profile_name">Имя:</string>
+    <string name="features_profile_exact_name">Иван</string>
+    <string name="features_profile_surname">Фамилия:</string>
+    <string name="features_profile_exact_surname">Иванов</string>
+    <string name="features_profile_history">История пожертвований</string>
+    <string name="features_profile_statistics">Статистика</string>
+    <string name="features_profile_change_password">Изменить пароль</string>
+    <string name="features_profile_delete_profile">Удалить профиль</string>
+    <string name="features_profile_exact_email">sample@inbox.ru</string>
+    <string name="feature_profile_exit">Выйти</string>
+    <string name="feature_profile">Профиль</string>
+
+    <string name="feature_profile_confirmation">Вы уверены?</string>
+    <string name="feature_profile_yes">Да</string>
+    <string name="feature_profile_no">Нет</string>
+    <string name="feature_profile_change_name">Изменить имя</string>
+    <string name="feature_profile_change">Изменить</string>
+    <string name="feature_profile_back">Назад</string>
+    <string name="feature_profile_new_password">Новый пароль</string>
+    <string name="feature_profile_repeat_password">Повторите пароль</string>
+</resources>

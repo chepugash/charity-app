@@ -20,7 +20,5 @@ class SignFeatureModule {
 
     @Provides
     @FeatureScope
-    fun provideSignApi(api: FirebaseAuth): SignApi {
-        return SignApiImpl(api)
-    }
+    fun provideSignApi(api: FirebaseAuth): SignApi = SignApiImpl(api)
 }

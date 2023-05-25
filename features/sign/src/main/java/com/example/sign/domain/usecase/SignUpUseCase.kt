@@ -1,8 +1,10 @@
 package com.example.sign.domain.usecase
 
-import com.example.sign.domain.entity.AuthResult
+import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.repository.SignRepository
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(
@@ -11,5 +13,5 @@ class SignUpUseCase @Inject constructor(
 
     suspend fun signUp(
         signUserEntity: SignUserEntity
-    ): AuthResult = signRepository.signUp(signUserEntity)
+    ): Task<AuthResult> = signRepository.signUp(signUserEntity)
 }

@@ -2,7 +2,7 @@ package com.example.sign.di
 
 import com.example.common.di.CommonApi
 import com.example.common.di.scope.FeatureScope
-import com.example.sign.SignUpRouter
+import com.example.sign.SignRouter
 import com.example.sign.presentation.sign_in.di.SignInComponent
 import com.example.sign.presentation.sign_up.di.SignUpComponent
 import dagger.BindsInstance
@@ -27,7 +27,7 @@ interface SignFeatureComponent {
     interface Builder {
 
         @BindsInstance
-        fun router(signUpRouter: SignUpRouter): Builder
+        fun router(signRouter: SignRouter): Builder
 
         fun withDependencies(deps: SignFeatureDependencies): Builder
 

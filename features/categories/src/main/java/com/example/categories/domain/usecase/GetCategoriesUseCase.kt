@@ -8,5 +8,5 @@ class GetCategoriesUseCase @Inject constructor(
     private val categoriesRepository: CategoriesRepository
 ) {
 
-    suspend fun invoke(): List<CategoryEntity> = categoriesRepository.getCategories()
+    suspend operator fun invoke(): List<CategoryEntity> = categoriesRepository.getCategories()
 }

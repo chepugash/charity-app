@@ -1,5 +1,6 @@
 package com.example.categories.presentation
 
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -37,5 +38,16 @@ class CategoriesViewModel(
                 _loading.value = false
             }
         }
+    }
+
+    fun launchFoundations(id: Int) {
+        val bundle = Bundle().apply {
+            putInt(ARG_NAME, id)
+        }
+        router.launchFoundations(bundle)
+    }
+
+    companion object {
+        private const val ARG_NAME = "categoryId"
     }
 }

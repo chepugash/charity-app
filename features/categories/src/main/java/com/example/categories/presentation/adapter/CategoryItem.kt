@@ -13,11 +13,11 @@ class CategoryItem(
     fun onBind(category: CategoryEntity) {
         with(binding) {
             tvName.text = category.name
-            ivPreview.load("http://192.168.153.30:9999/image?name=${category.image}") {
+            ivPreview.load("http://192.168.21.30:9999/image?name=${category.image}") {
                 crossfade(true)
             }
             root.setOnClickListener {
-
+                action(category.id)
             }
         }
     }

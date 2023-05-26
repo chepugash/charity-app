@@ -4,7 +4,7 @@ import com.example.categories.data.api.response.CategoriesResponse
 import com.example.categories.data.api.response.CategoriesResponseItem
 import com.example.categories.domain.entity.CategoryEntity
 
-fun CategoriesResponseItem.toCategoryEntity(): CategoryEntity = CategoryEntity(
+private fun CategoriesResponseItem.toCategoryEntity(): CategoryEntity = CategoryEntity(
     id = id,
     name = name,
     image = image.src.substring(0, image.src.length - 4)

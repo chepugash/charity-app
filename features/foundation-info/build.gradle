@@ -1,22 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.example.charityapp'
+    namespace 'com.example.foundation_info'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.charityapp"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -25,8 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    def keystoreProperties = new Properties()
-    keystoreProperties.load(new FileInputStream(rootProject.file("keys.properties")))
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,6 +29,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     viewBinding {
         enabled true
     }
@@ -45,32 +41,18 @@ dependencies {
     implementation androidDep
     implementation materialDep
     implementation fragmentDep
-    implementation constraintDep
 
+    implementation coilDep
+
+    // region firebase
     implementation platform(firebaseBomDep)
     implementation firebaseFirestoreDep
     implementation firebaseAuthDep
-
-    // coroutines region
-    implementation coroutinesCoreDep
-    implementation coroutinesAndroidDep
-    implementation coroutinesPlayServiceDep
     // endregion
 
-    // region jetpack navigation
-    implementation navFragmentDep
-    implementation navUiDep
-    // endregion
-
-    // region Network
+    // region retrofit
     implementation retrofitDep
     implementation converterGsonDep
-
-    implementation okhttpDep
-    implementation loggingInterceptor
-
-    retrofitSerializationDep
-    kotlinSerializationDep
     // endregion
 
     // region dagger2
@@ -78,19 +60,21 @@ dependencies {
     kapt daggerKaptDep
     // endregion
 
-    // region Utils
-    implementation timberDep
-    implementation coilDep
+    // region coroutines
+    implementation coroutinesCoreDep
+    implementation coroutinesAndroidDep
+    implementation coroutinesPlayServiceDep
+    // endregion
+
+    // region mvvm
+    implementation lifecycleViewmodelDep
+    implementation lifecycleLivedataDep
+    implementation lifecycleRuntimeDep
     // endregion
 
     testImplementation junitDep
     androidTestImplementation extJunitDep
     androidTestImplementation espressoDep
 
-    implementation project(':features:sign')
-    implementation project(':features:profile')
-    implementation project(':features:categories')
-    implementation project(':features:foundations')
-    implementation project(':features:foundation-info')
-    implementation project(':core:common')
+    implementation project(":core:common")
 }

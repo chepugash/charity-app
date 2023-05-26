@@ -1,5 +1,6 @@
 package com.example.foundations.presentation
 
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -45,6 +46,13 @@ class FoundationsViewModel(
                 _loading.value = false
             }
         }
+    }
+
+    fun launchFoundation(id: Int) {
+        val bundle = Bundle().apply {
+            putInt("foundationId", id)
+        }
+        router.launchFoundationInfo(bundle)
     }
 
     fun goBack() {

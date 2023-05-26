@@ -17,7 +17,7 @@ class FoundationItem(
                 crossfade(true)
             }
             root.setOnClickListener {
-
+                action(foundation.id)
             }
         }
     }

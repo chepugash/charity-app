@@ -19,6 +19,7 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
 
     private val adapter: FoundationAdapter by lazy(LazyThreadSafetyMode.NONE) {
         FoundationAdapter {
+            viewModel.launchFoundation(it)
         }
     }
 

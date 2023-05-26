@@ -50,12 +50,16 @@ class FoundationsViewModel(
 
     fun launchFoundation(id: Int) {
         val bundle = Bundle().apply {
-            putInt("foundationId", id)
+            putInt(ARG_NAME, id)
         }
         router.launchFoundationInfo(bundle)
     }
 
     fun goBack() {
         router.launchBack()
+    }
+
+    companion object {
+        private const val ARG_NAME = "foundationId"
     }
 }

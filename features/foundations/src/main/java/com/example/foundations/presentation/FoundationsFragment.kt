@@ -39,7 +39,7 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvFoundations.addItemDecoration(itemDecoration)
         subscribe(viewModel)
-        arguments?.getInt("categoryId")?.let { viewModel.getFoundations(it) }
+        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundations(it) }
 
         binding.toolbar.setNavigationOnClickListener {
             viewModel.goBack()
@@ -75,5 +75,9 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
     private fun showError(error: Throwable) {
         activity?.findViewById<View>(android.R.id.content)
             ?.showSnackbar(error.message ?: "Error")
+    }
+
+    companion object {
+        private const val ARG_NAME = "categoryId"
     }
 }

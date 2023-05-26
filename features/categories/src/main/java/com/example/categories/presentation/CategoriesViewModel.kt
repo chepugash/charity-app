@@ -42,8 +42,12 @@ class CategoriesViewModel(
 
     fun launchFoundations(id: Int) {
         val bundle = Bundle().apply {
-            putInt("categoryId", id)
+            putInt(ARG_NAME, id)
         }
         router.launchFoundations(bundle)
+    }
+
+    companion object {
+        private const val ARG_NAME = "categoryId"
     }
 }

@@ -25,10 +25,18 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
-        arguments?.getInt("foundationId")?.let { viewModel.getFoundation(it) }
+        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
 
-        binding.toolbar.tb.setNavigationOnClickListener {
-            viewModel.goBack()
+        binding.run {
+            toolbar.tb.setNavigationOnClickListener {
+                viewModel.goBack()
+            }
+            tvPhone.setOnClickListener {
+                makeCall(tvPhone.text.toString())
+            }
+            tvWebsite.setOnClickListener {
+                makeSearch(tvWebsite.text.toString())
+            }
         }
     }
 
@@ -70,5 +78,17 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 }
             }
         }
+    }
+
+    private fun makeCall(phone: String) {
+        startActivity(viewModel.makeCallIntent(phone))
+    }
+
+    private fun makeSearch(url: String) {
+        startActivity(viewModel.makeSearchIntent(url))
+    }
+
+    companion object {
+        private const val ARG_NAME = "foundationId"
     }
 }

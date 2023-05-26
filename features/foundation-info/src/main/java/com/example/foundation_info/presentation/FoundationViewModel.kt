@@ -1,5 +1,8 @@
 package com.example.foundation_info.presentation
 
+import android.app.SearchManager
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -41,5 +44,16 @@ class FoundationViewModel(
 
     fun goBack() {
         router.launchBack()
+    }
+
+    fun makeCallIntent(
+        phone: String
+    ): Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone"))
+
+    fun makeSearchIntent(
+        url: String
+    ): Intent = Intent().apply {
+        action = Intent.ACTION_WEB_SEARCH
+        putExtra(SearchManager.QUERY, url)
     }
 }

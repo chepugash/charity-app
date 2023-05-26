@@ -48,6 +48,6 @@ class FoundationsViewModel(
     }
 
     fun goBack() {
-        router.launchCategoriesBack()
+        router.launchBack()
     }
 }

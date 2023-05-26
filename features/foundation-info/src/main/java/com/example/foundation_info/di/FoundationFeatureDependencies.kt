@@ -1,0 +1,11 @@
+package com.example.foundation_info.di
+
+import com.example.common.data.network.NetworkApiCreator
+import com.google.firebase.auth.FirebaseAuth
+
+interface FoundationFeatureDependencies {
+
+    fun networkApiCreator(): NetworkApiCreator
+
+    fun firebaseAuth(): FirebaseAuth
+}

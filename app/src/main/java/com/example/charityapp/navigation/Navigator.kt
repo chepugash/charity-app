@@ -6,11 +6,12 @@ import androidx.navigation.NavController
 import com.example.categories.CategoriesRouter
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
+import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
 
-class Navigator : SignRouter, ProfileRouter, CategoriesRouter, FoundationsRouter {
+class Navigator : SignRouter, ProfileRouter, CategoriesRouter, FoundationsRouter, FoundationRouter {
 
     private var navController: NavController? = null
 

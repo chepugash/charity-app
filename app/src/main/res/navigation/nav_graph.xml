@@ -46,9 +46,18 @@
         android:id="@+id/foundationsFragment"
         android:name="com.example.foundations.presentation.FoundationsFragment"
         android:label="FoundationsFragment"
-        tools:layout="@layout/fragment_foundations" >
+        tools:layout="@layout/fragment_foundations">
         <argument
             android:name="categoryId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/foundationFragment"
+        android:name="com.example.foundation_info.presentation.FoundationFragment"
+        android:label="FoundationFragment"
+        tools:layout="@layout/fragment_foundation">
+        <argument
+            android:name="foundationId"
             app:argType="integer" />
     </fragment>
 </navigation>

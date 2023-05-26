@@ -39,6 +39,10 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
         binding.rvFoundations.addItemDecoration(itemDecoration)
         subscribe(viewModel)
         arguments?.getInt("categoryId")?.let { viewModel.getFoundations(it) }
+
+        binding.toolbar.setNavigationOnClickListener {
+            viewModel.goBack()
+        }
     }
 
     override fun inject() {

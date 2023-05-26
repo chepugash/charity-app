@@ -46,4 +46,8 @@ class FoundationsViewModel(
             }
         }
     }
+
+    fun goBack() {
+        router.launchCategoriesBack()
+    }
 }

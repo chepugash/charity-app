@@ -57,6 +57,10 @@ class Navigator : SignRouter, ProfileRouter, CategoriesRouter, FoundationsRouter
         navController?.navigate(R.id.foundationsFragment, args)
     }
 
+    override fun launchCategoriesBack() {
+        navController?.popBackStack()
+    }
+
     override fun openMain(context: Context) {
         MainActivity.start(context)
     }

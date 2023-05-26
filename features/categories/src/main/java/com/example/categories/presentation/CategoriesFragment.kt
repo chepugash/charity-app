@@ -20,6 +20,7 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
 
     private val adapter: CategoryAdapter by lazy(LazyThreadSafetyMode.NONE) {
         CategoryAdapter {
+            viewModel.launchFoundations(it)
         }
     }
 

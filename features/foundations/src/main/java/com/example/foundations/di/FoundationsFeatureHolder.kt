@@ -11,12 +11,12 @@ class FoundationsFeatureHolder @Inject constructor(
 ) : FeatureApiHolder(featureContainer) {
 
     override fun initializeDependencies(): Any {
-        val categoriesFeatureDependencies =
+        val foundationsFeatureDependencies =
             DaggerFoundationsFeatureComponent_FoundationsFeatureDependenciesComponent.builder()
                 .commonApi(commonApi())
                 .build()
         return DaggerFoundationsFeatureComponent.builder()
-            .withDependencies(categoriesFeatureDependencies)
+            .withDependencies(foundationsFeatureDependencies)
             .router(foundationsRouter)
             .build()
     }

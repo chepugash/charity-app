@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/iv_preview"
         android:layout_width="@dimen/step30"
-        android:layout_height="@dimen/step16"
+        android:layout_height="@dimen/step14"
         android:scaleType="fitCenter"
         tools:src="@drawable/profile" />
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/step2"
+        android:layout_marginStart="@dimen/step3"
         tools:text="Фонд имени Арсланова" />
 
 </LinearLayout>

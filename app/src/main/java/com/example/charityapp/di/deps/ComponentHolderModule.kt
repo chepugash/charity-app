@@ -6,6 +6,8 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
+import com.example.foundations.data.api.FoundationsApi
+import com.example.foundations.di.FoundationsFeatureHolder
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.di.ProfileFeatureHolder
 import com.example.sign.data.api.SignApi
@@ -39,4 +41,10 @@ interface ComponentHolderModule {
     @ClassKey(CategoriesApi::class)
     @IntoMap
     fun provideCategoriesFeatureHolder(categoriesFeatureHolder: CategoriesFeatureHolder): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(FoundationsApi::class)
+    @IntoMap
+    fun provideFoundationsFeatureHolder(foundationsFeatureHolder: FoundationsFeatureHolder): FeatureApiHolder
 }

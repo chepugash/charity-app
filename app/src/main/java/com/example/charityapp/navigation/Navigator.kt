@@ -1,14 +1,16 @@
 package com.example.charityapp.navigation
 
 import android.content.Context
+import android.os.Bundle
 import androidx.navigation.NavController
 import com.example.categories.CategoriesRouter
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
+import com.example.foundations.FoundationsRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
 
-class Navigator : SignRouter, ProfileRouter, CategoriesRouter {
+class Navigator : SignRouter, ProfileRouter, CategoriesRouter, FoundationsRouter {
 
     private var navController: NavController? = null
 
@@ -51,8 +53,8 @@ class Navigator : SignRouter, ProfileRouter, CategoriesRouter {
         navController?.navigate(R.id.passwordDialogFragment)
     }
 
-    override fun launchFoundations(id: Int) {
-        navController?.navigate(R.id.foundationsFragment, )
+    override fun launchFoundations(args: Bundle) {
+        navController?.navigate(R.id.foundationsFragment, args)
     }
 
     override fun openMain(context: Context) {

@@ -8,10 +8,16 @@ import com.example.charityapp.MainActivity
 import com.example.charityapp.R
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
+import com.example.payment.PaymentRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
 
-class Navigator : SignRouter, ProfileRouter, CategoriesRouter, FoundationsRouter, FoundationRouter {
+class Navigator : SignRouter,
+    ProfileRouter,
+    CategoriesRouter,
+    FoundationsRouter,
+    FoundationRouter,
+    PaymentRouter {
 
     private var navController: NavController? = null
 

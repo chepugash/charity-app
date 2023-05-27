@@ -5,6 +5,7 @@ import com.example.charityapp.navigation.Navigator
 import com.example.common.di.scope.ApplicationScope
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
+import com.example.payment.PaymentRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
 import dagger.Module
@@ -36,4 +37,8 @@ class NavigationModule {
     @ApplicationScope
     @Provides
     fun provideFoundationRouter(navigator: Navigator): FoundationRouter = navigator
+
+    @ApplicationScope
+    @Provides
+    fun providePaymentRouter(navigator: Navigator): PaymentRouter = navigator
 }

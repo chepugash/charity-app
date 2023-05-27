@@ -8,6 +8,7 @@ import com.example.sign.SignRouter
 import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.usecase.SignUpUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(

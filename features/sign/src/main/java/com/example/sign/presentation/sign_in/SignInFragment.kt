@@ -50,7 +50,7 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
     override fun subscribe(viewModel: SignInViewModel) {
         with(viewModel) {
             loading.observe(viewLifecycleOwner) {
-                binding.pbLoading.isVisible = it
+                showLoading(it)
             }
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
@@ -65,6 +65,28 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showError(it)
+            }
+        }
+    }
+
+    private fun showLoading(flag: Boolean) {
+        with(binding) {
+            if (flag) {
+                ivEntrance.visibility = View.GONE
+                tvCreate.visibility = View.GONE
+                tfEmail.visibility = View.GONE
+                tfPassword.visibility = View.GONE
+                tvSignIn.visibility = View.GONE
+                btnSubmit.visibility = View.GONE
+                loading.visibility = View.VISIBLE
+            } else {
+                ivEntrance.visibility = View.VISIBLE
+                tvCreate.visibility = View.VISIBLE
+                tfEmail.visibility = View.VISIBLE
+                tfPassword.visibility = View.VISIBLE
+                tvSignIn.visibility = View.VISIBLE
+                btnSubmit.visibility = View.VISIBLE
+                loading.visibility = View.GONE
             }
         }
     }

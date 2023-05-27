@@ -17,7 +17,7 @@
             android:layout_width="@dimen/step30"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
-            tools:src="@drawable/profile" />
+            android:src="@color/white" />
 
         <TextView
             android:id="@+id/tv_name"

@@ -8,6 +8,7 @@ import com.example.categories.CategoriesRouter
 import com.example.categories.domain.entity.CategoryEntity
 import com.example.categories.domain.usecase.GetCategoriesUseCase
 import com.example.common.base.BaseViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CategoriesViewModel(

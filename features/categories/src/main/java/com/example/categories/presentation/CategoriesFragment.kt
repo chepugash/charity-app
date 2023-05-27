@@ -63,6 +63,21 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
                 if (it == null) return@observe
                 showError(it)
             }
+            loading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+        }
+    }
+
+    private fun showLoading(flag: Boolean) {
+        with(binding) {
+            if (flag) {
+                loading.visibility = View.VISIBLE
+                rvCategories.visibility = View.GONE
+            } else {
+                loading.visibility = View.GONE
+                rvCategories.visibility = View.VISIBLE
+            }
         }
     }
 

@@ -11,7 +11,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             <TextView
                 style="@style/CommonTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/step2"
                 android:text="@string/feature_foundation_phone" />
 
@@ -51,7 +52,7 @@
             <TextView
                 style="@style/CommonTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/step2"
                 android:text="@string/feature_foundation_website" />
 
@@ -66,7 +67,7 @@
             <TextView
                 style="@style/CommonTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/step2"
                 android:text="@string/feature_foundation_address" />
 
@@ -81,7 +82,7 @@
             <TextView
                 style="@style/CommonTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/step2"
                 android:text="@string/feature_foundation_account" />
 
@@ -93,10 +94,7 @@
                 android:layout_marginTop="@dimen/step1"
                 tools:text="7819030709 784101001" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            <include layout="@layout/space" />
 
             <include
                 android:id="@+id/btn_donate"

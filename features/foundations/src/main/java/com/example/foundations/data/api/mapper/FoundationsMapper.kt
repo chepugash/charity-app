@@ -11,7 +11,7 @@ private fun Foundation.toFoundationEntity(): FoundationEntity = FoundationEntity
     image = image.src.substring(0, image.src.length - 4)
 )
 
-fun List<Foundation>.toFoundationEntityList(): List<FoundationEntity> = map {
+private fun List<Foundation>.toFoundationEntityList(): List<FoundationEntity> = map {
     it.toFoundationEntity()
 }
 

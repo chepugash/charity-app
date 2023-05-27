@@ -7,7 +7,7 @@ import com.example.foundations.domain.entity.FoundationEntity
 
 class FoundationItem(
     private val binding: ItemFoundationBinding,
-    private val action: (Int) -> Unit
+    private val onFoundationClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(foundation: FoundationEntity) {
@@ -17,7 +17,7 @@ class FoundationItem(
                 crossfade(true)
             }
             root.setOnClickListener {
-                action(foundation.id)
+                onFoundationClick(foundation.id)
             }
         }
     }

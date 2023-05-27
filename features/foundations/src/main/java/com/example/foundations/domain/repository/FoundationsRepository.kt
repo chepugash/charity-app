@@ -4,5 +4,5 @@ import com.example.foundations.domain.entity.CategoryEntity
 
 interface FoundationsRepository {
 
-    suspend fun getFoundations(query: Int): CategoryEntity
+    suspend fun getFoundations(id: Int): CategoryEntity
 }

@@ -37,8 +37,7 @@ class FoundationsViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                delay(2000)
-                getFoundationsUseCase.invoke(query).run {
+                getFoundationsUseCase(query).run {
                     _foundationList.value = this.foundations
                     _category.value = this.name
                 }

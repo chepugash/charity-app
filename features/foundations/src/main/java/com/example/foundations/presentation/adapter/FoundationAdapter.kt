@@ -9,7 +9,7 @@ import com.example.foundations.databinding.ItemFoundationBinding
 import com.example.foundations.domain.entity.FoundationEntity
 
 class FoundationAdapter(
-    private val action: (Int) -> Unit
+    private val onFoundationClick: (Int) -> Unit
 ) : ListAdapter<FoundationEntity, RecyclerView.ViewHolder>(
     object: DiffUtil.ItemCallback<FoundationEntity>() {
         override fun areItemsTheSame(
@@ -32,7 +32,7 @@ class FoundationAdapter(
             parent,
             false
         ),
-        action = action
+        onFoundationClick = onFoundationClick
     )
 
     override fun onBindViewHolder(

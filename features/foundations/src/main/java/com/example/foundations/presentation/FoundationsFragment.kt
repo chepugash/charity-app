@@ -88,8 +88,7 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     companion object {

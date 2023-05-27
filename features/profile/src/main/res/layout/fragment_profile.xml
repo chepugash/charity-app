@@ -166,12 +166,6 @@
 
             </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/pb_loading"
-                style="@style/CommonProgressBar"
-                android:visibility="gone"
-                tools:visibility="visible" />
-
         </LinearLayout>
 
     </ScrollView>

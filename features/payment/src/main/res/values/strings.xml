@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_payment_success">Пожертвование отправлено</string>
+    <string name="feature_payment_continue">Продолжить</string>
+</resources>

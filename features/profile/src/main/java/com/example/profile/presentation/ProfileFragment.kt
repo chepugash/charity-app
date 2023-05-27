@@ -1,5 +1,6 @@
 package com.example.profile.presentation
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,6 +70,9 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
                 if (it == null) return@observe
                 showError(it)
             }
+            loading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
         }
     }
 
@@ -87,5 +91,17 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     private fun showError(message: String) {
         activity?.findViewById<View>(android.R.id.content)
             ?.showSnackbar(message)
+    }
+
+    private fun showLoading(flag: Boolean) {
+        with(binding) {
+            if (flag) {
+                loading.visibility = View.VISIBLE
+                content.visibility = View.GONE
+            } else {
+                loading.visibility = View.GONE
+                content.visibility = View.VISIBLE
+            }
+        }
     }
 }

@@ -26,7 +26,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
         arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
-
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
                 viewModel.goBack()
@@ -55,6 +54,21 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showError(it)
+            }
+            loading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+        }
+    }
+
+    private fun showLoading(flag: Boolean) {
+        with(binding) {
+            if (flag) {
+                loading.visibility = View.VISIBLE
+                content.visibility = View.GONE
+            } else {
+                loading.visibility = View.GONE
+                content.visibility = View.VISIBLE
             }
         }
     }

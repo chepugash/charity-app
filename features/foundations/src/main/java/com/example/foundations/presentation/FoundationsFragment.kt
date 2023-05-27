@@ -69,6 +69,21 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
                 if (it == null) return@observe
                 showError(it)
             }
+            loading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+        }
+    }
+
+    private fun showLoading(flag: Boolean) {
+        with(binding) {
+            if (flag) {
+                loading.visibility = View.VISIBLE
+                rvFoundations.visibility = View.GONE
+            } else {
+                loading.visibility = View.GONE
+                rvFoundations.visibility = View.VISIBLE
+            }
         }
     }
 

@@ -10,6 +10,7 @@ import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FoundationViewModel(

@@ -12,10 +12,10 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResource())
-        inject()
-        initViews()
-        subscribe(viewModel)
+//        setContentView(layoutResource())
+//        inject()
+//        initViews()
+//        subscribe(viewModel)
     }
 
     abstract fun inject()

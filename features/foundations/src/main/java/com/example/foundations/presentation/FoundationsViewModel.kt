@@ -9,6 +9,7 @@ import com.example.foundations.FoundationsRouter
 import com.example.foundations.domain.entity.CategoryEntity
 import com.example.foundations.domain.entity.FoundationEntity
 import com.example.foundations.domain.usecase.GetFoundationsUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FoundationsViewModel(
@@ -36,6 +37,7 @@ class FoundationsViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
+                delay(2000)
                 getFoundationsUseCase.invoke(query).run {
                     _foundationList.value = this.foundations
                     _category.value = this.name

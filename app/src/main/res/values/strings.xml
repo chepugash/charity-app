@@ -3,4 +3,7 @@
     <string name="profile">Профиль</string>
     <string name="foundations">Фонды</string>
     <string name="favourite">Избранное</string>
+    <string name="app_search">Найти</string>
+    <string name="app_favourite">Избранное</string>
+    <string name="app_profile">Профиль</string>
 </resources>

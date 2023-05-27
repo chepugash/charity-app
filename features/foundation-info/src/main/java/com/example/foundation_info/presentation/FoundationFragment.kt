@@ -26,7 +26,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
         arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
-
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
                 viewModel.goBack()

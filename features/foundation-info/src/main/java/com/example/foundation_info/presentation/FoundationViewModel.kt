@@ -57,4 +57,8 @@ class FoundationViewModel(
         action = Intent.ACTION_WEB_SEARCH
         putExtra(SearchManager.QUERY, url)
     }
+
+    fun onDonateClick(paymentInfo: String) {
+        router.launchPayment(paymentInfo)
+    }
 }

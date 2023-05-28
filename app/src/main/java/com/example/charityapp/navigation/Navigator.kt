@@ -3,6 +3,7 @@ package com.example.charityapp.navigation
 import android.content.Context
 import android.os.Bundle
 import androidx.navigation.NavController
+import androidx.navigation.NavOptionsBuilder
 import com.example.categories.CategoriesRouter
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
@@ -66,6 +67,22 @@ class Navigator : SignRouter,
 
     override fun launchFoundationInfo(args: Bundle) {
         navController?.navigate(R.id.foundationFragment, args)
+    }
+
+    override fun launchSuccessful() {
+        navController?.navigate(R.id.successfulFragment)
+    }
+
+    override fun launchPayment(paymentInfo: String) {
+        val bundle = Bundle().apply {
+            putString("paymentInfo", paymentInfo)
+        }
+        navController?.navigate(R.id.paymentFragment, bundle)
+    }
+
+    override fun launchCategories() {
+        navController?.navigate(
+            R.id.categoriesFragment)
     }
 
     override fun launchBack() {

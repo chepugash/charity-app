@@ -1,8 +1,8 @@
-package com.example.payment.presentation.di
+package com.example.payment.presentation.payment.di
 
 import androidx.fragment.app.Fragment
 import com.example.common.di.scope.ScreenScope
-import com.example.payment.presentation.PaymentFragment
+import com.example.payment.presentation.payment.PaymentFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 

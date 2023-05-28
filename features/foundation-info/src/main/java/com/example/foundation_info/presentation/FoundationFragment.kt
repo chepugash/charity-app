@@ -26,16 +26,21 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
-        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
+
+        getFoundation()
+
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
-                viewModel.goBack()
+                goBack()
             }
             tvPhone.setOnClickListener {
                 makeCall(tvPhone.text.toString())
             }
             tvWebsite.setOnClickListener {
                 makeSearch(tvWebsite.text.toString())
+            }
+            btnDonate.btnSubmit.setOnClickListener {
+                onDonateClick(tvAccount.text.toString())
             }
         }
     }
@@ -60,6 +65,18 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 showLoading(it)
             }
         }
+    }
+
+    private fun goBack() {
+        viewModel.goBack()
+    }
+
+    private fun onDonateClick(paymentInfo: String) {
+        viewModel.onDonateClick(paymentInfo)
+    }
+
+    private fun getFoundation() {
+        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
     }
 
     private fun showLoading(flag: Boolean) {

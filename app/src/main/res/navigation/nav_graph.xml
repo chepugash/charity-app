@@ -19,7 +19,8 @@
         android:id="@+id/profileFragment"
         android:name="com.example.profile.presentation.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+    </fragment>
     <dialog
         android:id="@+id/nameDialogFragment"
         android:name="com.example.profile.presentation.dialog.NameDialogFragment"
@@ -36,7 +37,8 @@
     <dialog
         android:id="@+id/passwordDialogFragment"
         android:name="com.example.profile.presentation.dialog.PasswordDialogFragment"
-        android:label="PasswordDialogFragment" />
+        android:label="PasswordDialogFragment"
+        tools:layout="@layout/fragment_dialog_password" />
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.categories.presentation.CategoriesFragment"
@@ -59,5 +61,20 @@
         <argument
             android:name="foundationId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.payment.presentation.payment.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="paymentInfo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulFragment"
+        android:name="com.example.payment.presentation.successful.SuccessfulFragment"
+        android:label="SuccessfulFragment"
+        tools:layout="@layout/fragment_successful">
     </fragment>
 </navigation>

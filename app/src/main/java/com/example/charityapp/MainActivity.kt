@@ -76,7 +76,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         val noBottomBarFragments = listOf<Int>(
             R.id.signInFragment,
             R.id.signUpFragment,
-            R.id.foundationFragment
+            R.id.foundationFragment,
+            R.id.paymentFragment,
+            R.id.successfulFragment
         )
     }
 }

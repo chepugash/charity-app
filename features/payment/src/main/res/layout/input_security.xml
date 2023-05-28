@@ -19,7 +19,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/it_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:maxLength="5" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,7 +39,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/it_cvv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:maxLength="3" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

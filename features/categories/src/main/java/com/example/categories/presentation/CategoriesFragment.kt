@@ -76,7 +76,7 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
                 rvCategories.isVisible = false
             } else {
                 loading.isVisible = false
-                rvCategories.isVisible = false
+                rvCategories.isVisible = true
             }
         }
     }

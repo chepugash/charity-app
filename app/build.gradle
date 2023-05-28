@@ -90,5 +90,6 @@ dependencies {
     implementation project(':features:foundations')
     implementation project(':features:foundation-info')
     implementation project(':features:payment')
+    implementation project(':features:favourite')
     implementation project(':core:common')
 }

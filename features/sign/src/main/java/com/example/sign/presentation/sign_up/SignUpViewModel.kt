@@ -32,7 +32,7 @@ class SignUpViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signUpUseCase.signUp(user).addOnCompleteListener {
+                signUpUseCase.invoke(user).addOnCompleteListener {
                     if (it.isSuccessful) {
                         _apiResult.value = ApiResult.Success
                     } else {

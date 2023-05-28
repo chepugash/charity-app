@@ -30,8 +30,8 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
         binding.run {
             btnSubmit.setOnClickListener {
                 viewModel.onSubmitClick(SignUserEntity(
-                    itEmail.text.toString(),
-                    itPassword.text.toString()
+                    email.itEmail.text.toString(),
+                    password.itPassword.text.toString()
                 ))
             }
             tvSignIn.setOnClickListener {
@@ -72,32 +72,30 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                ivEntrance.visibility = View.GONE
-                tvCreate.visibility = View.GONE
-                tfEmail.visibility = View.GONE
-                tfPassword.visibility = View.GONE
-                tvSignIn.visibility = View.GONE
-                btnSubmit.visibility = View.GONE
-                loading.visibility = View.VISIBLE
+                ivEntrance.isVisible = false
+                tvCreate.isVisible = false
+                email.tfEmail.isVisible = false
+                password.tfPassword.isVisible = false
+                tvSignIn.isVisible = false
+                btnSubmit.isVisible = false
+                loading.isVisible = true
             } else {
-                ivEntrance.visibility = View.VISIBLE
-                tvCreate.visibility = View.VISIBLE
-                tfEmail.visibility = View.VISIBLE
-                tfPassword.visibility = View.VISIBLE
-                tvSignIn.visibility = View.VISIBLE
-                btnSubmit.visibility = View.VISIBLE
-                loading.visibility = View.GONE
+                ivEntrance.isVisible = true
+                tvCreate.isVisible = true
+                email.tfEmail.isVisible = true
+                password.tfPassword.isVisible = true
+                tvSignIn.isVisible = true
+                btnSubmit.isVisible = true
+                loading.isVisible = false
             }
         }
     }
 
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(message)
+        binding.root.showSnackbar(message)
     }
 }

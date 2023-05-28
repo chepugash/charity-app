@@ -5,7 +5,7 @@ import coil.load
 import com.example.foundations.databinding.ItemFoundationBinding
 import com.example.foundations.domain.entity.FoundationEntity
 
-class FoundationItem(
+class FoundationItemViewHolder(
     private val binding: ItemFoundationBinding,
     private val onFoundationClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {

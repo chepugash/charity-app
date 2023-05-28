@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
@@ -78,11 +79,11 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                loading.visibility = View.VISIBLE
-                rvFoundations.visibility = View.GONE
+                loading.isVisible = true
+                rvFoundations.isVisible = false
             } else {
-                loading.visibility = View.GONE
-                rvFoundations.visibility = View.VISIBLE
+                loading.isVisible = false
+                rvFoundations.isVisible = true
             }
         }
     }

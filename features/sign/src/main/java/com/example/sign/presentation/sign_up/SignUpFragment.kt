@@ -30,9 +30,9 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
         binding.run {
             btnSubmit.setOnClickListener {
                 viewModel.onSubmitClick(SignUserEntity(
-                        itEmail.text.toString(),
-                        itPassword.text.toString(),
-                        itRepeatPassword.text.toString()
+                        email.itEmail.text.toString(),
+                        password.itPassword.text.toString(),
+                        repeatPassword.itRepeatPassword.text.toString()
                 ))
             }
             tvSignIn.setOnClickListener {
@@ -73,36 +73,34 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                ivCreating.visibility = View.GONE
-                tvCreate.visibility = View.GONE
-                tfEmail.visibility = View.GONE
-                tfPassword.visibility = View.GONE
-                tvSignIn.visibility = View.GONE
-                btnSubmit.visibility = View.GONE
-                tvIsExist.visibility = View.GONE
-                tfRepeatPassword.visibility = View.GONE
-                loading.visibility = View.VISIBLE
+                ivCreating.isVisible = false
+                tvCreate.isVisible = false
+                email.tfEmail.isVisible = false
+                password.tfPassword.isVisible = false
+                tvSignIn.isVisible = false
+                btnSubmit.isVisible = false
+                tvIsExist.isVisible = false
+                repeatPassword.tfRepeatPassword.isVisible = false
+                loading.isVisible = true
             } else {
-                ivCreating.visibility = View.VISIBLE
-                tvCreate.visibility = View.VISIBLE
-                tfEmail.visibility = View.VISIBLE
-                tfPassword.visibility = View.VISIBLE
-                tvSignIn.visibility = View.VISIBLE
-                btnSubmit.visibility = View.VISIBLE
-                tvIsExist.visibility = View.VISIBLE
-                tfRepeatPassword.visibility = View.VISIBLE
-                loading.visibility = View.GONE
+                ivCreating.isVisible = true
+                tvCreate.isVisible = true
+                email.tfEmail.isVisible = true
+                password.tfPassword.isVisible = true
+                tvSignIn.isVisible = true
+                btnSubmit.isVisible = true
+                tvIsExist.isVisible = true
+                repeatPassword.tfRepeatPassword.isVisible = true
+                loading.isVisible = false
             }
         }
     }
 
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(message)
+        binding.root.showSnackbar(message)
     }
 }

@@ -11,6 +11,6 @@ data class FoundationResponse(
     val website: String
 )
 
-data class Image(
+class Image(
     val src: String
 )

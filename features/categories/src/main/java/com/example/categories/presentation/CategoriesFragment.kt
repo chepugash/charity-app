@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.categories.data.api.CategoriesApi
 import com.example.categories.databinding.FragmentCategoriesBinding
 import com.example.categories.di.CategoriesFeatureComponent
-import com.example.categories.domain.entity.CategoryEntity
 import com.example.categories.presentation.adapter.CategoryAdapter
 import com.example.categories.presentation.adapter.SpaceItemDecorator
 import com.example.common.base.BaseFragment
@@ -72,17 +72,16 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                loading.visibility = View.VISIBLE
-                rvCategories.visibility = View.GONE
+                loading.isVisible = true
+                rvCategories.isVisible = false
             } else {
-                loading.visibility = View.GONE
-                rvCategories.visibility = View.VISIBLE
+                loading.isVisible = false
+                rvCategories.isVisible = false
             }
         }
     }
 
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 }

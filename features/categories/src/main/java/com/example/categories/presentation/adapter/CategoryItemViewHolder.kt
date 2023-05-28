@@ -5,9 +5,9 @@ import coil.load
 import com.example.categories.databinding.ItemCategoryBinding
 import com.example.categories.domain.entity.CategoryEntity
 
-class CategoryItem(
+class CategoryItemViewHolder(
     private val binding: ItemCategoryBinding,
-    private val action: (Int) -> Unit
+    private val onCategoryClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(category: CategoryEntity) {
@@ -17,7 +17,7 @@ class CategoryItem(
                 crossfade(true)
             }
             root.setOnClickListener {
-                action(category.id)
+                onCategoryClick(category.id)
             }
         }
     }

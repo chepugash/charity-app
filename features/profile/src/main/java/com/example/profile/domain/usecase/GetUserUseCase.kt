@@ -8,5 +8,5 @@ class GetUserUseCase @Inject constructor(
     private val profileRepository: ProfileRepository
 ) {
 
-    suspend fun getUser(): ProfileUserEntity? = profileRepository.getUser()
+    suspend fun invoke(): ProfileUserEntity? = profileRepository.getUser()
 }

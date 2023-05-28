@@ -26,7 +26,7 @@ class FoundationAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FoundationItem = FoundationItem(
+    ): FoundationItemViewHolder = FoundationItemViewHolder(
         binding = ItemFoundationBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -39,7 +39,7 @@ class FoundationAdapter(
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
-        (holder as FoundationItem).onBind(currentList[position])
+        (holder as FoundationItemViewHolder).onBind(currentList[position])
     }
 
     override fun getItemCount(): Int = currentList.size

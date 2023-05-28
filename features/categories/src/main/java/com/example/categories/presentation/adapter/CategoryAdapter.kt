@@ -9,7 +9,7 @@ import com.example.categories.databinding.ItemCategoryBinding
 import com.example.categories.domain.entity.CategoryEntity
 
 class CategoryAdapter(
-    private val action: (Int) -> Unit
+    private val onCategoryClick: (Int) -> Unit
 ) : ListAdapter<CategoryEntity, RecyclerView.ViewHolder>(
     object: DiffUtil.ItemCallback<CategoryEntity>() {
         override fun areItemsTheSame(
@@ -26,20 +26,20 @@ class CategoryAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CategoryItem = CategoryItem(
+    ): CategoryItemViewHolder = CategoryItemViewHolder(
         binding = ItemCategoryBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         ),
-        action = action
+        onCategoryClick = onCategoryClick
     )
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
-        (holder as CategoryItem).onBind(currentList[position])
+        (holder as CategoryItemViewHolder).onBind(currentList[position])
     }
 
     override fun getItemCount(): Int = currentList.size

@@ -8,5 +8,5 @@ class DeleteProfileUseCase @Inject constructor(
     private val profileRepository: ProfileRepository
 ) {
 
-    suspend fun deleteProfile(): Task<Void>? = profileRepository.deleteProfile()
+    suspend fun invoke(): Task<Void>? = profileRepository.deleteProfile()
 }

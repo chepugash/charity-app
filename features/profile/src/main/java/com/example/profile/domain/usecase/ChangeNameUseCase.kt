@@ -9,5 +9,5 @@ class ChangeNameUseCase @Inject constructor(
     private val profileRepository: ProfileRepository
 ) {
 
-    suspend fun changeName(name: String): Task<Void>? = profileRepository.changeName(name)
+    suspend fun invoke(name: String): Task<Void>? = profileRepository.changeName(name)
 }

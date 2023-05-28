@@ -1,10 +1,10 @@
 package com.example.profile.presentation
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
@@ -84,23 +84,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(message)
+        binding.root.showSnackbar(message)
     }
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                loading.visibility = View.VISIBLE
-                content.visibility = View.GONE
+                loading.isVisible = true
+                content.isVisible = false
             } else {
-                loading.visibility = View.GONE
-                content.visibility = View.VISIBLE
+                loading.isVisible = false
+                content.isVisible = true
             }
         }
     }

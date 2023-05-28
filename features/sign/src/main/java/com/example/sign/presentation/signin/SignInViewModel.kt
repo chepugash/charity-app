@@ -1,4 +1,4 @@
-package com.example.sign.presentation.sign_up
+package com.example.sign.presentation.signin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,18 +7,17 @@ import com.example.common.base.BaseViewModel
 import com.example.sign.SignRouter
 import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
-import com.example.sign.domain.usecase.SignUpUseCase
-import kotlinx.coroutines.delay
+import com.example.sign.domain.usecase.SignInUseCase
 import kotlinx.coroutines.launch
 
-class SignUpViewModel(
-    private val signUpUseCase: SignUpUseCase,
+class SignInViewModel(
+    private val signInUseCase: SignInUseCase,
     private val router: SignRouter
 ): BaseViewModel() {
 
     private val _apiResult = MutableLiveData<ApiResult>()
     val apiResult: LiveData<ApiResult>
-            get() = _apiResult
+        get() = _apiResult
 
     private val _error = MutableLiveData<Throwable?>(null)
     val error: LiveData<Throwable?>
@@ -28,12 +27,12 @@ class SignUpViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun onSubmitClick(email: String, password: String, repeatPassword: String) {
+    fun onSubmitClick(email: String, password: String) {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signUpUseCase.invoke(
-                    SignUserEntity(email, password, repeatPassword)
+                signInUseCase.invoke(
+                    SignUserEntity(email, password)
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         _apiResult.value = ApiResult.Success
@@ -49,11 +48,11 @@ class SignUpViewModel(
         }
     }
 
-    fun onSignInClick() {
-        launchSignIn()
+    fun onSignUpClick() {
+        router.launchSignUp()
     }
 
-    fun launchSignIn() {
-        router.launchSignIn()
+    fun launchProfile() {
+        router.launchProfile()
     }
 }

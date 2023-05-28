@@ -1,26 +1,26 @@
-package com.example.sign.presentation.sign_in.di
+package com.example.sign.presentation.nouser.di
 
 import androidx.fragment.app.Fragment
 import com.example.common.di.scope.ScreenScope
-import com.example.sign.presentation.sign_in.SignInFragment
+import com.example.sign.presentation.nouser.NoUserFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 
 @Subcomponent(
     modules = [
-        SignInModule::class
+        NoUserModule::class
     ]
 )
 @ScreenScope
-interface SignInComponent {
+interface NoUserComponent {
 
     @Subcomponent.Factory
     interface Factory {
 
         fun create(
             @BindsInstance fragment: Fragment
-        ): SignInComponent
+        ): NoUserComponent
     }
 
-    fun inject(fragment: SignInFragment)
+    fun inject(fragment: NoUserFragment)
 }

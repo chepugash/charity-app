@@ -1,4 +1,4 @@
-package com.example.sign.presentation.sign_up
+package com.example.sign.presentation.signin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,15 +11,14 @@ import com.example.common.utils.showSnackbar
 import com.example.sign.data.api.SignApi
 import com.example.sign.di.SignFeatureComponent
 import com.example.sign.domain.entity.ApiResult
-import com.example.sign.domain.entity.SignUserEntity
-import com.example.sign_up.databinding.FragmentSignUpBinding
+import com.example.sign_up.databinding.FragmentSignInBinding
 
-class SignUpFragment : BaseFragment<SignUpViewModel>() {
+class SignInFragment : BaseFragment<SignInViewModel>() {
 
-    private lateinit var binding: FragmentSignUpBinding
+    private lateinit var binding: FragmentSignInBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,24 +30,23 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
             btnSubmit.setOnClickListener {
                 onSubmitClick(
                     email.itEmail.text.toString(),
-                    password.itPassword.text.toString(),
-                    repeatPassword.itRepeatPassword.text.toString()
+                    password.itPassword.text.toString()
                 )
             }
             tvSignIn.setOnClickListener {
-                onSignInClick()
+                onSignUpClick()
             }
         }
     }
 
     override fun inject() {
         FeatureUtils.getFeature<SignFeatureComponent>(this, SignApi::class.java)
-            .signUpComponentFactory()
+            .signInComponentFactory()
             .create(this)
             .inject(this)
     }
 
-    override fun subscribe(viewModel: SignUpViewModel) {
+    override fun subscribe(viewModel: SignInViewModel) {
         with(viewModel) {
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
@@ -56,7 +54,7 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
                     is ApiResult.Success -> {
-                        viewModel.launchSignIn()
+                        viewModel.launchProfile()
                     }
                     is ApiResult.Error -> {
                         showError(it.message)
@@ -70,38 +68,34 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
         }
     }
 
-    private fun onSubmitClick(email: String, password: String, repeatPassword: String) {
-        viewModel.onSubmitClick(email, password, repeatPassword)
-    }
-
-    private fun onSignInClick() {
-        viewModel.onSignInClick()
-    }
-
     private fun showLoading(flag: Boolean) {
         with(binding) {
             if (flag) {
-                ivCreating.isVisible = false
+                ivEntrance.isVisible = false
                 tvCreate.isVisible = false
                 email.tfEmail.isVisible = false
                 password.tfPassword.isVisible = false
                 tvSignIn.isVisible = false
                 btnSubmit.isVisible = false
-                tvIsExist.isVisible = false
-                repeatPassword.tfRepeatPassword.isVisible = false
                 loading.isVisible = true
             } else {
-                ivCreating.isVisible = true
+                ivEntrance.isVisible = true
                 tvCreate.isVisible = true
                 email.tfEmail.isVisible = true
                 password.tfPassword.isVisible = true
                 tvSignIn.isVisible = true
                 btnSubmit.isVisible = true
-                tvIsExist.isVisible = true
-                repeatPassword.tfRepeatPassword.isVisible = true
                 loading.isVisible = false
             }
         }
+    }
+
+    private fun onSubmitClick(email: String, password: String) {
+        viewModel.onSubmitClick(email, password)
+    }
+
+    private fun onSignUpClick() {
+        viewModel.onSignUpClick()
     }
 
     private fun showError(error: Throwable) {

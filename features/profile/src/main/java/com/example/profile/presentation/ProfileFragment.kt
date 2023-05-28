@@ -28,6 +28,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
 
+        getUser()
+
         binding.run {
             lName.setOnClickListener {
                 onChangeName()
@@ -68,8 +70,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     override fun subscribe(viewModel: ProfileViewModel) {
         with(viewModel) {
             user.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showUserInfo(it.email, it.name)
+                if (it == null) {
+                    viewModel.launchNoUser()
+                } else {
+                    showUserInfo(it.email, it.name)
+                }
             }
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
@@ -112,6 +117,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     private fun onSignOut() {
         viewModel.onSignOut()
+    }
+
+    private fun getUser() {
+        viewModel.getUser()
     }
 
     private fun showError(error: Throwable) {

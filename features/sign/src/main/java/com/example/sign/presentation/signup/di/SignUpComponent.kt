@@ -1,8 +1,8 @@
-package com.example.sign.presentation.sign_up.di
+package com.example.sign.presentation.signup.di
 
 import androidx.fragment.app.Fragment
 import com.example.common.di.scope.ScreenScope
-import com.example.sign.presentation.sign_up.SignUpFragment
+import com.example.sign.presentation.signup.SignUpFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 

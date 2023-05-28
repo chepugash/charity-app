@@ -101,7 +101,7 @@ class ProfileViewModel(
                 deleteProfileUseCase.invoke()
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
-                            launchSignIn()
+                            launchNoUser()
                         } else {
                             _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
                         }
@@ -119,13 +119,17 @@ class ProfileViewModel(
             try {
                 _loading.value = true
                 signOutUseCase.invoke()
-                launchSignIn()
+                launchNoUser()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false
             }
         }
+    }
+
+    fun launchNoUser() {
+        router.launchNoUser()
     }
 
     fun onChangeName() {

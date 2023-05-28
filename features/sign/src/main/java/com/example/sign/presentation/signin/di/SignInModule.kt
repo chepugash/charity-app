@@ -1,4 +1,4 @@
-package com.example.sign.presentation.sign_in.di
+package com.example.sign.presentation.signin.di
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.sign.SignRouter
 import com.example.sign.domain.usecase.SignInUseCase
-import com.example.sign.presentation.sign_in.SignInViewModel
+import com.example.sign.presentation.signin.SignInViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap

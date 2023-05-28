@@ -55,11 +55,15 @@ class Navigator : SignRouter,
     }
 
     override fun launchDeleteDialog() {
-        navController?.navigate((R.id.deleteDialogFragment))
+        navController?.navigate(R.id.deleteDialogFragment)
     }
 
     override fun launchPasswordDialog() {
         navController?.navigate(R.id.passwordDialogFragment)
+    }
+
+    override fun launchNoUser() {
+        navController?.navigate(R.id.noUserFragment)
     }
 
     override fun launchFoundations(categoryId: Int) {
@@ -88,8 +92,7 @@ class Navigator : SignRouter,
     }
 
     override fun launchCategories() {
-        navController?.navigate(
-            R.id.categoriesFragment)
+        navController?.navigate(R.id.categoriesFragment)
     }
 
     override fun launchBack() {

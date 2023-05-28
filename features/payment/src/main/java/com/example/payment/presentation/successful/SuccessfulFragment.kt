@@ -1,9 +1,12 @@
 package com.example.payment.presentation.successful
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.payment.data.PaymentApi
@@ -29,6 +32,20 @@ class SuccessfulFragment : BaseFragment<SuccessfulViewModel>() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    goBack()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
     override fun inject() {
         FeatureUtils.getFeature<PaymentFeatureComponent>(this, PaymentApi::class.java)
             .successfulComponentFactory()
@@ -36,14 +53,14 @@ class SuccessfulFragment : BaseFragment<SuccessfulViewModel>() {
             .inject(this)
     }
 
-    private fun goBack() {
-        viewModel.launchCategories()
-    }
-
     override fun subscribe(viewModel: SuccessfulViewModel) {
         with(viewModel) {
 
         }
+    }
+
+    private fun goBack() {
+        viewModel.launchCategories()
     }
 
 }

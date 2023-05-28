@@ -52,6 +52,7 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
             }
         }
     }
+    
 
     private fun goBack() {
         viewModel.goBack()

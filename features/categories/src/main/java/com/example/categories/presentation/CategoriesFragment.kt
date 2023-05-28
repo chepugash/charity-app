@@ -1,9 +1,11 @@
 package com.example.categories.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.categories.data.api.CategoriesApi
 import com.example.categories.databinding.FragmentCategoriesBinding
@@ -41,6 +43,20 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
         addDecorator()
         subscribe(viewModel)
         getCategories()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 
     override fun inject() {

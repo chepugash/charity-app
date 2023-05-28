@@ -1,9 +1,11 @@
 package com.example.profile.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
@@ -42,6 +44,20 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
     override fun inject() {
         FeatureUtils.getFeature<ProfileFeatureComponent>(this, ProfileApi::class.java)
             .profileComponentFactory()
@@ -59,7 +75,6 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
                 when (it) {
                     is ApiResult.Success -> {
                         viewModel.getUser()
-                        showError("Data changed")
                     }
                     is ApiResult.Error -> {
                         showError(it.message)

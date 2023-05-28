@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder
 import com.example.categories.CategoriesRouter
+import com.example.categories.presentation.CategoriesViewModel
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
 import com.example.foundation_info.FoundationRouter
@@ -61,12 +62,18 @@ class Navigator : SignRouter,
         navController?.navigate(R.id.passwordDialogFragment)
     }
 
-    override fun launchFoundations(args: Bundle) {
-        navController?.navigate(R.id.foundationsFragment, args)
+    override fun launchFoundations(categoryId: Int) {
+        val bundle = Bundle().apply {
+            putInt(CATEGORY_ID, categoryId)
+        }
+        navController?.navigate(R.id.foundationsFragment, bundle)
     }
 
-    override fun launchFoundationInfo(args: Bundle) {
-        navController?.navigate(R.id.foundationFragment, args)
+    override fun launchFoundationInfo(foundationId: Int) {
+        val bundle = Bundle().apply {
+            putInt(FOUNDATION_ID, foundationId)
+        }
+        navController?.navigate(R.id.foundationFragment, bundle)
     }
 
     override fun launchSuccessful() {
@@ -75,7 +82,7 @@ class Navigator : SignRouter,
 
     override fun launchPayment(paymentInfo: String) {
         val bundle = Bundle().apply {
-            putString("paymentInfo", paymentInfo)
+            putString(PAYMENT_INFO, paymentInfo)
         }
         navController?.navigate(R.id.paymentFragment, bundle)
     }
@@ -91,5 +98,11 @@ class Navigator : SignRouter,
 
     override fun openMain(context: Context) {
         MainActivity.start(context)
+    }
+
+    companion object {
+        const val FOUNDATION_ID = "foundationId"
+        const val CATEGORY_ID = "categoryId"
+        const val PAYMENT_INFO = "paymentInfo"
     }
 }

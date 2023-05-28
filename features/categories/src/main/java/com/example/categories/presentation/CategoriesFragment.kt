@@ -38,9 +38,9 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvCategories.addItemDecoration(itemDecoration)
+        addDecorator()
         subscribe(viewModel)
-        viewModel.getCategories()
+        getCategories()
     }
 
     override fun inject() {
@@ -79,6 +79,14 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
                 rvCategories.isVisible = true
             }
         }
+    }
+
+    private fun getCategories() {
+        viewModel.getCategories()
+    }
+
+    private fun addDecorator() {
+        binding.rvCategories.addItemDecoration(itemDecoration)
     }
 
     private fun showError(error: Throwable) {

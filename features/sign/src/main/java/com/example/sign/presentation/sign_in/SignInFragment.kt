@@ -29,13 +29,13 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                viewModel.onSubmitClick(SignUserEntity(
+                onSubmitClick(
                     email.itEmail.text.toString(),
                     password.itPassword.text.toString()
-                ))
+                )
             }
             tvSignIn.setOnClickListener {
-                viewModel.onSignUpClick()
+                onSignUpClick()
             }
         }
     }
@@ -89,6 +89,14 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
                 loading.isVisible = false
             }
         }
+    }
+
+    private fun onSubmitClick(email: String, password: String) {
+        viewModel.onSubmitClick(email, password)
+    }
+
+    private fun onSignUpClick() {
+        viewModel.onSignUpClick()
     }
 
     private fun showError(error: Throwable) {

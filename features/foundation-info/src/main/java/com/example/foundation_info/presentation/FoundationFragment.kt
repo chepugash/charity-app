@@ -1,5 +1,8 @@
 package com.example.foundation_info.presentation
 
+import android.app.SearchManager
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,9 +28,12 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         subscribe(viewModel)
 
-        getFoundation()
+        arguments?.getInt(ARG_NAME)?.let {
+            getFoundation(it)
+        }
 
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
@@ -75,8 +81,8 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.onDonateClick(paymentInfo)
     }
 
-    private fun getFoundation() {
-        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundation(it) }
+    private fun getFoundation(foundationId: Int) {
+        viewModel.getFoundation(foundationId)
     }
 
     private fun showLoading(flag: Boolean) {
@@ -112,11 +118,15 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     }
 
     private fun makeCall(phone: String) {
-        startActivity(viewModel.makeCallIntent(phone))
+        startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone")))
     }
 
     private fun makeSearch(url: String) {
-        startActivity(viewModel.makeSearchIntent(url))
+        val intent = Intent().apply {
+            action = Intent.ACTION_WEB_SEARCH
+            putExtra(SearchManager.QUERY, url)
+        }
+        startActivity(intent)
     }
 
     companion object {

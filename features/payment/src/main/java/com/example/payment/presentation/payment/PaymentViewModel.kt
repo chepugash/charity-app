@@ -24,10 +24,7 @@ class PaymentViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                // FOR SCREENCAST ONLY
                 launchSuccessful()
-                delay(1000)
-                // end FOR SCREENCAST ONLY
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

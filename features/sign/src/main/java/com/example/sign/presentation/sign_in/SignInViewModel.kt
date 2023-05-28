@@ -28,11 +28,13 @@ class SignInViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun onSubmitClick(user: SignUserEntity) {
+    fun onSubmitClick(email: String, password: String) {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signInUseCase.invoke(user).addOnCompleteListener {
+                signInUseCase.invoke(
+                    SignUserEntity(email, password)
+                ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         _apiResult.value = ApiResult.Success
                     } else {
@@ -48,18 +50,10 @@ class SignInViewModel(
     }
 
     fun onSignUpClick() {
-        try {
-            router.launchSignUp()
-        } catch (error: Throwable) {
-            _error.value = error
-        }
+        router.launchSignUp()
     }
 
     fun launchProfile() {
-        try {
-            router.launchProfile()
-        } catch (error: Throwable) {
-            _error.value = error
-        }
+        router.launchProfile()
     }
 }

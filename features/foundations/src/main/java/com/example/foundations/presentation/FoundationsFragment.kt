@@ -38,12 +38,16 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvFoundations.addItemDecoration(itemDecoration)
+
+        addDecorator()
         subscribe(viewModel)
-        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundations(it) }
+
+        arguments?.getInt(ARG_NAME)?.let {
+            getFoundations(it)
+        }
 
         binding.toolbar.setNavigationOnClickListener {
-            viewModel.goBack()
+            goBack()
         }
     }
 
@@ -86,6 +90,18 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
                 rvFoundations.isVisible = true
             }
         }
+    }
+
+    private fun goBack() {
+        viewModel.goBack()
+    }
+
+    private fun getFoundations(categoryId: Int) {
+        viewModel.getFoundations(categoryId)
+    }
+
+    private fun addDecorator() {
+        binding.rvFoundations.addItemDecoration(itemDecoration)
     }
 
     private fun showError(error: Throwable) {

@@ -29,14 +29,14 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                viewModel.onSubmitClick(SignUserEntity(
-                        email.itEmail.text.toString(),
-                        password.itPassword.text.toString(),
-                        repeatPassword.itRepeatPassword.text.toString()
-                ))
+                onSubmitClick(
+                    email.itEmail.text.toString(),
+                    password.itPassword.text.toString(),
+                    repeatPassword.itRepeatPassword.text.toString()
+                )
             }
             tvSignIn.setOnClickListener {
-                viewModel.onSignInClick()
+                onSignInClick()
             }
         }
     }
@@ -68,6 +68,14 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
                 showError(it)
             }
         }
+    }
+
+    private fun onSubmitClick(email: String, password: String, repeatPassword: String) {
+        viewModel.onSubmitClick(email, password, repeatPassword)
+    }
+
+    private fun onSignInClick() {
+        viewModel.onSignInClick()
     }
 
     private fun showLoading(flag: Boolean) {

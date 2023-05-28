@@ -28,16 +28,16 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
         binding.run {
             lName.setOnClickListener {
-                viewModel.onChangeName()
+                onChangeName()
             }
             lChangePassword.setOnClickListener {
-                viewModel.onChangePassword()
+                onChangePassword()
             }
             lDeleteProfile.setOnClickListener {
-                viewModel.onDelete()
+                onDelete()
             }
             ivSignOut.setOnClickListener {
-                viewModel.onSignOut()
+                onSignOut()
             }
         }
     }
@@ -81,6 +81,22 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             tvProfileEmail.text = email
             tvProfileName.text = name
         }
+    }
+
+    private fun onChangeName() {
+        viewModel.onChangeName()
+    }
+
+    private fun onChangePassword() {
+        viewModel.onChangePassword()
+    }
+
+    private fun onDelete() {
+        viewModel.onDelete()
+    }
+
+    private fun onSignOut() {
+        viewModel.onSignOut()
     }
 
     private fun showError(error: Throwable) {

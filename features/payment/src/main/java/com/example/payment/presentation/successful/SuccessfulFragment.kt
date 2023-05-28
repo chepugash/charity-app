@@ -24,7 +24,7 @@ class SuccessfulFragment : BaseFragment<SuccessfulViewModel>() {
 
         binding.run {
             btnSuccess.btnSubmit.setOnClickListener {
-                launchBack()
+                goBack()
             }
         }
     }
@@ -36,7 +36,7 @@ class SuccessfulFragment : BaseFragment<SuccessfulViewModel>() {
             .inject(this)
     }
 
-    private fun launchBack() {
+    private fun goBack() {
         viewModel.launchCategories()
     }
 

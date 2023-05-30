@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.sign.SignRouter
+import com.example.sign.domain.usecase.CreateUserDocumentUseCase
 import com.example.sign.domain.usecase.SignUpUseCase
 import com.example.sign.presentation.signup.SignUpViewModel
 import dagger.Module
@@ -31,9 +32,13 @@ class SignUpModule {
     @IntoMap
     @ViewModelKey(SignUpViewModel::class)
     fun provideSignUpViewModel(
-        useCase: SignUpUseCase,
+        signUpUseCase: SignUpUseCase,
+        createUserDocumentUseCase: CreateUserDocumentUseCase,
         router: SignRouter
     ): ViewModel {
-        return SignUpViewModel(useCase, router)
+        return SignUpViewModel(
+            signUpUseCase,
+            createUserDocumentUseCase,
+            router)
     }
 }

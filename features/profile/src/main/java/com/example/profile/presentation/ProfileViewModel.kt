@@ -45,7 +45,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _user.value = getUserUseCase.invoke()
+                _user.value = getUserUseCase()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {
@@ -58,7 +58,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                changeNameUseCase.invoke(name)
+                changeNameUseCase(name)
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             _apiResult.value = ApiResult.Success
@@ -78,7 +78,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                changePasswordUseCase.invoke(password)
+                changePasswordUseCase(password)
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             _apiResult.value = ApiResult.Success
@@ -98,7 +98,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                deleteProfileUseCase.invoke()
+                deleteProfileUseCase()
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             launchNoUser()
@@ -118,7 +118,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signOutUseCase.invoke()
+                signOutUseCase()
                 launchNoUser()
             } catch (error: Throwable) {
                 _error.value = error

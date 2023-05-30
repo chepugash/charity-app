@@ -6,7 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.foundation_info.FoundationRouter
+import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
+import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
+import com.example.foundation_info.domain.usecase.GetUserUseCase
+import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
 import com.example.foundation_info.presentation.FoundationViewModel
 import dagger.Module
 import dagger.Provides
@@ -30,11 +34,19 @@ class FoundationModule {
     @Provides
     @IntoMap
     @ViewModelKey(FoundationViewModel::class)
-    fun provideCategoriesViewModel(
+    fun provideFoundationViewModel(
         getFoundationUseCase: GetFoundationUseCase,
+        addToFavouriteUseCase: AddToFavouriteUseCase,
+        getUserUseCase: GetUserUseCase,
+        removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
+        getFavouriteUseCase: GetFavouriteUseCase,
         router: FoundationRouter
     ): ViewModel = FoundationViewModel(
         getFoundationUseCase,
+        addToFavouriteUseCase,
+        getUserUseCase,
+        removeFromFavouriteUseCase,
+        getFavouriteUseCase,
         router
     )
 }

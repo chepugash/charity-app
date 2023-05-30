@@ -12,7 +12,8 @@ import coil.load
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
-import com.example.foundation_info.data.api.FoundationApi
+import com.example.foundation_info.R
+import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.databinding.FragmentFoundationBinding
 import com.example.foundation_info.di.FoundationFeatureComponent
 import com.example.foundation_info.domain.entity.FoundationEntity
@@ -20,6 +21,8 @@ import com.example.foundation_info.domain.entity.FoundationEntity
 class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private lateinit var binding: FragmentFoundationBinding
+
+    private lateinit var foundationEntity: FoundationEntity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFoundationBinding.inflate(inflater, container, false)
@@ -30,6 +33,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         subscribe(viewModel)
+        getUser()
 
         arguments?.getInt(ARG_NAME)?.let {
             getFoundation(it)
@@ -38,6 +42,9 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
+            }
+            toolbar.ivFavourite.setOnClickListener {
+
             }
             tvPhone.setOnClickListener {
                 makeCall(tvPhone.text.toString())
@@ -61,7 +68,15 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     override fun subscribe(viewModel: FoundationViewModel) {
         with(viewModel) {
             foundation.observe(viewLifecycleOwner) {
-                showViews(it)
+                foundationEntity = it
+                isFavouriteChanged(foundationEntity)
+                showViews(foundationEntity)
+            }
+            isFavourite.observe(viewLifecycleOwner) {
+                changeFavouriteMode(it, foundationEntity)
+            }
+            user.observe(viewLifecycleOwner) {
+                showFavourite(it != null)
             }
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
@@ -71,6 +86,10 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 showLoading(it)
             }
         }
+    }
+
+    private fun getUser() {
+        viewModel.getUser()
     }
 
     private fun goBack() {
@@ -83,6 +102,30 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private fun getFoundation(foundationId: Int) {
         viewModel.getFoundation(foundationId)
+    }
+
+    private fun isFavouriteChanged(foundationEntity: FoundationEntity) {
+        viewModel.isInFavourite(foundationEntity)
+    }
+
+    private fun showFavourite(flag: Boolean) {
+        binding.toolbar.ivFavourite.isVisible = flag
+    }
+
+    private fun changeFavouriteMode(isFavourite: Boolean, foundationEntity: FoundationEntity) {
+        with(binding.toolbar.ivFavourite) {
+            if (isFavourite) {
+                setImageResource(R.drawable.ic_favourite_fill1)
+                setOnClickListener {
+                    viewModel.removeFromFavourite(foundationEntity)
+                }
+            } else {
+                setImageResource(R.drawable.ic_favourite_fill0)
+                setOnClickListener {
+                    viewModel.addToFavourite(foundationEntity)
+                }
+            }
+        }
     }
 
     private fun showLoading(flag: Boolean) {

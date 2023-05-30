@@ -1,6 +1,6 @@
-package com.example.foundation_info.data.api.mapper
+package com.example.foundation_info.data.api.foundation.mapper
 
-import com.example.foundation_info.data.api.response.FoundationResponse
+import com.example.foundation_info.data.api.foundation.response.FoundationResponse
 import com.example.foundation_info.domain.entity.FoundationEntity
 
 fun FoundationResponse.toFoundationEntity(): FoundationEntity = FoundationEntity(

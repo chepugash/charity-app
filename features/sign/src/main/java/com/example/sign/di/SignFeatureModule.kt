@@ -6,6 +6,7 @@ import com.example.sign.data.api.SignApiImpl
 import com.example.sign.domain.repository.SignRepository
 import com.example.sign.data.SignRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 
@@ -20,5 +21,8 @@ class SignFeatureModule {
 
     @Provides
     @FeatureScope
-    fun provideSignApi(api: FirebaseAuth): SignApi = SignApiImpl(api)
+    fun provideSignApi(
+        auth: FirebaseAuth,
+        firestore: FirebaseFirestore
+    ): SignApi = SignApiImpl(auth, firestore)
 }

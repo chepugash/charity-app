@@ -80,6 +80,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
                 when (it) {
                     is ApiResult.Success -> {
                         viewModel.getUser()
+                        showError("done")
                     }
                     is ApiResult.Error -> {
                         showError(it.message)

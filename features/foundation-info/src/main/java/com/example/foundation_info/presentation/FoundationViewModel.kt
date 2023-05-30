@@ -1,18 +1,36 @@
 package com.example.foundation_info.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
+import com.example.foundation_info.domain.entity.FoundationUserEntity
+import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
+import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
+import com.example.foundation_info.domain.usecase.GetUserUseCase
+import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
 import kotlinx.coroutines.launch
 
 class FoundationViewModel(
     private val getFoundationUseCase: GetFoundationUseCase,
+    private val addToFavouriteUseCase: AddToFavouriteUseCase,
+    private val getUserUseCase: GetUserUseCase,
+    private val removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
+    private val getFavouriteUseCase: GetFavouriteUseCase,
     private val router: FoundationRouter
 ) : BaseViewModel() {
+
+    private val _isFavourite = MutableLiveData<Boolean>()
+    val isFavourite: LiveData<Boolean>
+        get() = _isFavourite
+
+    private val _user = MutableLiveData<FoundationUserEntity?>(null)
+    val user: LiveData<FoundationUserEntity?>
+        get() = _user
 
     private val _foundation = MutableLiveData<FoundationEntity>()
     val foundation: LiveData<FoundationEntity>
@@ -39,6 +57,79 @@ class FoundationViewModel(
         }
     }
 
+    fun getUser() {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                _user.value = getUserUseCase()
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun isInFavourite(foundationEntity: FoundationEntity) {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                getFavouriteUseCase().addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val favourite = it.result as ArrayList<Long>
+                        _isFavourite.value = favourite.contains(foundationEntity.id.toLong())
+                    } else {
+                        _error.value = it.exception
+                    }
+                }
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun addToFavourite(foundationEntity: FoundationEntity) {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                addToFavouriteUseCase(foundationEntity)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            _isFavourite.value = true
+                        } else {
+                            _error.value = it.exception
+                        }
+                    }
+            } catch(error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun removeFromFavourite(foundationEntity: FoundationEntity) {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                removeFromFavouriteUseCase(foundationEntity)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            _isFavourite.value = false
+                        } else {
+                            _error.value = it.exception
+                        }
+                    }
+            } catch(error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
     fun goBack() {
         router.launchBack()
     }
@@ -46,4 +137,5 @@ class FoundationViewModel(
     fun onDonateClick(paymentInfo: String) {
         router.launchPayment(paymentInfo)
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.foundation_info.data.api.response
+package com.example.foundation_info.data.api.foundation.response
 
 data class FoundationResponse(
     val account: String,

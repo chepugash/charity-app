@@ -9,6 +9,7 @@ import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.usecase.CreateUserDocumentUseCase
 import com.example.sign.domain.usecase.SignUpUseCase
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.protobuf.Api
 import kotlinx.coroutines.launch
 
@@ -38,7 +39,8 @@ class SignUpViewModel(
                     SignUserEntity(email, password, repeatPassword)
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        createUserDocument()
+//                        createUserDocument()
+                        _apiResult.value = ApiResult.Success
                     } else {
                         _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
                     }

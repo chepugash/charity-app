@@ -25,5 +25,7 @@ class FirebaseRepositoryImpl @Inject constructor(
         foundationEntity: FoundationEntity
     ): Task<Void> = firebaseApi.removeFromFavourite(foundationEntity)
 
+    override suspend fun createUserDocument(): Task<Void> = firebaseApi.createUserDocument()
+
     override suspend fun getFavourite(): Task<ArrayList<Long>> = firebaseApi.getFavourite()
 }

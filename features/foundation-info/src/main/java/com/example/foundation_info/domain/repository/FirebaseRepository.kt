@@ -13,5 +13,7 @@ interface FirebaseRepository {
 
     suspend fun removeFromFavourite(foundationEntity: FoundationEntity): Task<Void>
 
+    suspend fun createUserDocument(): Task<Void>
+
     suspend fun getFavourite(): Task<ArrayList<Long>>
 }

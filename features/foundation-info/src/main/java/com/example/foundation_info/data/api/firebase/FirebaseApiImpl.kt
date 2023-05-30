@@ -29,6 +29,11 @@ class FirebaseApiImpl @Inject constructor(
         .document(getUser()?.uid.toString())
         .update(FIELD, FieldValue.arrayRemove(foundationEntity))
 
+    override suspend fun createUserDocument(): Task<Void> = firestore
+        .collection(COLLECTION)
+        .document(auth.currentUser?.uid.toString())
+        .set(hashMapOf(FIELD to arrayListOf<FoundationEntity>()))
+
     override suspend fun getFavourite(): Task<ArrayList<Long>> = firestore.collection(COLLECTION)
             .document(getUser()?.uid.toString())
             .get().continueWith { task ->

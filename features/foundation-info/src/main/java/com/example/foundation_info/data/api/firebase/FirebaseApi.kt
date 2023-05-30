@@ -14,4 +14,6 @@ interface FirebaseApi {
 
     suspend fun getFavourite(): Task<ArrayList<Long>>
 
+    suspend fun createUserDocument(): Task<Void>
+
 }

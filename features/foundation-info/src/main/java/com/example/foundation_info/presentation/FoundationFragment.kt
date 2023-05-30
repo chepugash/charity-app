@@ -33,7 +33,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         subscribe(viewModel)
         getUser()
 
-        arguments?.getInt(ARG_NAME)?.let {
+        arguments?.getLong(ARG_NAME)?.let {
             getFoundation(it)
         }
 
@@ -98,7 +98,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.onDonateClick(paymentInfo)
     }
 
-    private fun getFoundation(foundationId: Int) {
+    private fun getFoundation(foundationId: Long) {
         viewModel.getFoundation(foundationId)
     }
 

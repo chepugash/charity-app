@@ -46,7 +46,7 @@ class FoundationViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun getFoundation(query: Int) {
+    fun getFoundation(query: Long) {
         viewModelScope.launch {
             try {
                 _loading.value = true

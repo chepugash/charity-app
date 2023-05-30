@@ -60,7 +60,7 @@
         tools:layout="@layout/fragment_foundation">
         <argument
             android:name="foundationId"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"

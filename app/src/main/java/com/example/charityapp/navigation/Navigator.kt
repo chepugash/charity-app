@@ -75,9 +75,9 @@ class Navigator : SignRouter,
         navController?.navigate(R.id.foundationsFragment, bundle)
     }
 
-    override fun launchFoundationInfo(foundationId: Int) {
+    override fun launchFoundationInfo(foundationId: Long) {
         val bundle = Bundle().apply {
-            putInt(FOUNDATION_ID, foundationId)
+            putLong(FOUNDATION_ID, foundationId)
         }
         navController?.navigate(R.id.foundationFragment, bundle)
     }

@@ -7,7 +7,7 @@ import com.example.favourite.domain.entity.FoundationEntity
 
 class FoundationItemViewHolder(
     private val binding: ItemFoundationBinding,
-    private val onFoundationClick: (Int) -> Unit
+    private val onFoundationClick: (Long) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(foundation: FoundationEntity) {

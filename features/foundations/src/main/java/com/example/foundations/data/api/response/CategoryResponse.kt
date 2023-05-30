@@ -7,7 +7,7 @@ class CategoryResponse(
 )
 
 class Foundation(
-    val id: Int,
+    val id: Long,
     val image: Image,
     val name: String,
 )

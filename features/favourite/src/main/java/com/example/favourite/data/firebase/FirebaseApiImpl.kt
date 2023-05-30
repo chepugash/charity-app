@@ -30,7 +30,7 @@ class FirebaseApiImpl  @Inject constructor(
                     if (result != null) {
                         for (item in result) {
                             favourite.add(FoundationEntity(
-                                id = item["id"] as Int,
+                                id = item["id"] as Long,
                                 image = item["image"].toString(),
                                 name = item["name"].toString()
                             ))

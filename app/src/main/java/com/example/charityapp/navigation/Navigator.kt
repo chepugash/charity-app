@@ -8,6 +8,7 @@ import com.example.categories.CategoriesRouter
 import com.example.categories.presentation.CategoriesViewModel
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
+import com.example.favourite.FavouriteRouter
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
 import com.example.payment.PaymentRouter
@@ -19,7 +20,8 @@ class Navigator : SignRouter,
     CategoriesRouter,
     FoundationsRouter,
     FoundationRouter,
-    PaymentRouter {
+    PaymentRouter,
+    FavouriteRouter {
 
     private var navController: NavController? = null
 

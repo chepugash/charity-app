@@ -6,6 +6,8 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
+import com.example.favourite.data.firebase.FirebaseApi
+import com.example.favourite.di.FavouriteFeatureHolder
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder
 import com.example.foundations.data.api.FoundationsApi
@@ -74,5 +76,13 @@ interface ComponentHolderModule {
     @IntoMap
     fun providePaymentFeatureHolder(
         paymentFeatureHolder: PaymentFeatureHolder
+    ): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(FirebaseApi::class)
+    @IntoMap
+    fun provideFavouriteFeatureHolder(
+        favouriteFeatureHolder: FavouriteFeatureHolder
     ): FeatureApiHolder
 }

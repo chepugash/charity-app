@@ -82,4 +82,9 @@
         android:name="com.example.sign.presentation.nouser.NoUserFragment"
         android:label="NoUserFragment"
         tools:layout="@layout/fragment_no_user"/>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.example.favourite.presentation.FavouriteFragment"
+        android:label="FavouriteFragment"
+        tools:layout="@layout/fragment_favourite"/>
 </navigation>

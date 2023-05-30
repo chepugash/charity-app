@@ -6,21 +6,21 @@ import com.example.favourite.presentation.FavouriteFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 
-//@Subcomponent(
-//    modules = [
-//        FavouriteModule::class
-//    ]
-//)
-//@ScreenScope
-//interface FavouriteComponent {
-//
-//    @Subcomponent.Factory
-//    interface Factory {
-//
-//        fun create(
-//            @BindsInstance fragment: Fragment
-//        ): FavouriteComponent
-//    }
-//
-//    fun inject(fragment: FavouriteFragment)
-//}
+@Subcomponent(
+    modules = [
+        FavouriteModule::class
+    ]
+)
+@ScreenScope
+interface FavouriteComponent {
+
+    @Subcomponent.Factory
+    interface Factory {
+
+        fun create(
+            @BindsInstance fragment: Fragment
+        ): FavouriteComponent
+    }
+
+    fun inject(fragment: FavouriteFragment)
+}

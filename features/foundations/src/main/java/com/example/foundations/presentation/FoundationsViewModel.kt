@@ -1,15 +1,12 @@
 package com.example.foundations.presentation
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.foundations.FoundationsRouter
-import com.example.foundations.domain.entity.CategoryEntity
 import com.example.foundations.domain.entity.FoundationEntity
 import com.example.foundations.domain.usecase.GetFoundationsUseCase
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FoundationsViewModel(
@@ -37,8 +34,7 @@ class FoundationsViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                delay(2000)
-                getFoundationsUseCase.invoke(query).run {
+                getFoundationsUseCase(query).run {
                     _foundationList.value = this.foundations
                     _category.value = this.name
                 }
@@ -51,10 +47,7 @@ class FoundationsViewModel(
     }
 
     fun launchFoundation(id: Int) {
-        val bundle = Bundle().apply {
-            putInt(ARG_NAME, id)
-        }
-        router.launchFoundationInfo(bundle)
+        router.launchFoundationInfo(id)
     }
 
     fun goBack() {

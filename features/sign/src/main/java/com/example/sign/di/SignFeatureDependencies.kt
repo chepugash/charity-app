@@ -9,4 +9,6 @@ interface SignFeatureDependencies {
     fun networkApiCreator(): NetworkApiCreator
 
     fun firebaseAuth(): FirebaseAuth
+
+    fun firestore(): FirebaseFirestore
 }

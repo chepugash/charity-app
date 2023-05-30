@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,20 +18,6 @@ import com.example.common.base.BaseActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel>() {
-
-    companion object {
-
-        fun start(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
-        }
-
-        val noBottomBarFragments = listOf<Int>(
-            R.id.signInFragment,
-            R.id.signUpFragment,
-            R.id.foundationFragment
-        )
-    }
 
     @Inject lateinit var navigator: Navigator
 
@@ -65,22 +52,33 @@ class MainActivity : BaseActivity<MainViewModel>() {
             bnvMain.setupWithNavController(navController!!)
 
             navController?.addOnDestinationChangedListener { _, destination, _ ->
-                if (noBottomBarFragments.contains(destination.id)) {
-                    bnvMain.visibility = View.GONE
-                } else {
-                    bnvMain.visibility = View.VISIBLE
-                }
+                bnvMain.isVisible = !noBottomBarFragments.contains(destination.id)
             }
         }
     }
 
-    override fun subscribe(viewModel: MainViewModel) {
-    }
+    override fun subscribe(viewModel: MainViewModel) {}
 
     override fun onDestroy() {
         super.onDestroy()
         navController?.let {
             navigator.detachNavController(it)
         }
+    }
+
+    companion object {
+
+        fun start(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        val noBottomBarFragments = listOf<Int>(
+            R.id.signInFragment,
+            R.id.signUpFragment,
+            R.id.foundationFragment,
+            R.id.paymentFragment,
+            R.id.successfulFragment
+        )
     }
 }

@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 
 class SpaceItemDecorator(
-    private val context: Fragment,
-    private val spacingDp: Float
+    context: Fragment,
+    spacingDp: Float
 ) : RecyclerView.ItemDecoration() {
 
     private val spacingPx: Int = TypedValue.applyDimension(
@@ -51,6 +51,6 @@ class SpaceItemDecorator(
     }
 
     companion object {
-        const val SPACING_RATIO = 0.5
+        private const val SPACING_RATIO = 0.5
     }
 }

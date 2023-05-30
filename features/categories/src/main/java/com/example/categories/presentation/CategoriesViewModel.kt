@@ -1,6 +1,5 @@
 package com.example.categories.presentation
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,7 +7,6 @@ import com.example.categories.CategoriesRouter
 import com.example.categories.domain.entity.CategoryEntity
 import com.example.categories.domain.usecase.GetCategoriesUseCase
 import com.example.common.base.BaseViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CategoriesViewModel(
@@ -42,13 +40,6 @@ class CategoriesViewModel(
     }
 
     fun launchFoundations(id: Int) {
-        val bundle = Bundle().apply {
-            putInt(ARG_NAME, id)
-        }
-        router.launchFoundations(bundle)
-    }
-
-    companion object {
-        private const val ARG_NAME = "categoryId"
+        router.launchFoundations(id)
     }
 }

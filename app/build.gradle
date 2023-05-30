@@ -83,9 +83,6 @@ dependencies {
     implementation coilDep
     // endregion
 
-    testImplementation junitDep
-    androidTestImplementation extJunitDep
-    androidTestImplementation espressoDep
 
     implementation project(':features:sign')
     implementation project(':features:profile')
@@ -93,5 +90,6 @@ dependencies {
     implementation project(':features:foundations')
     implementation project(':features:foundation-info')
     implementation project(':features:payment')
+    implementation project(':features:favourite')
     implementation project(':core:common')
 }

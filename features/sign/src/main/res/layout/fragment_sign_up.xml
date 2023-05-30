@@ -12,11 +12,17 @@
         android:orientation="vertical"
         android:padding="@dimen/step4">
 
+        <include
+            android:id="@+id/loading"
+            layout="@layout/fragment_loading" />
+
         <TextView
             android:id="@+id/tv_create"
             style="@style/HeaderTextStyle"
             android:layout_margin="@dimen/step4"
             android:text="@string/features_sign_create_account" />
+
+        <include layout="@layout/space" />
 
         <ImageView
             android:id="@+id/iv_creating"
@@ -25,62 +31,26 @@
             android:layout_marginBottom="@dimen/step4"
             android:src="@drawable/registration" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_email"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/step4"
-            android:hint="@string/features_sign_email"
-            app:errorEnabled="true">
+        <include layout="@layout/space" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/it_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+        <include
+            android:id="@+id/email"
+            layout="@layout/input_email" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <include
+            android:id="@+id/password"
+            layout="@layout/input_password" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_password"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/features_sign_password"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true">
+        <include
+            android:id="@+id/repeat_password"
+            layout="@layout/input_repeat_password" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/it_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_repeat_password"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/features_sign_repeat_password"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/it_repeat_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <include layout="@layout/space" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/step8"
             android:orientation="horizontal">
 
             <TextView
@@ -113,10 +83,6 @@
                 android:text="@string/features_sign_create" />
 
         </FrameLayout>
-
-        <include
-            android:id="@+id/loading"
-            layout="@layout/fragment_loading" />
 
     </LinearLayout>
 

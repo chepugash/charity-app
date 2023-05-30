@@ -17,6 +17,8 @@
             android:layout_margin="@dimen/step4"
             android:text="@string/features_sign_sign_in" />
 
+        <include layout="@layout/space" />
+
         <ImageView
             android:id="@+id/iv_entrance"
             android:layout_width="match_parent"
@@ -24,45 +26,22 @@
             android:layout_marginBottom="@dimen/step4"
             android:src="@drawable/auth" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_email"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/step4"
-            android:hint="@string/features_sign_email"
-            app:errorEnabled="true">
+        <include layout="@layout/space" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/it_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+        <include
+            android:id="@+id/email"
+            layout="@layout/input_email" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <include
+            android:id="@+id/password"
+            layout="@layout/input_password" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_password"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/features_sign_password"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/it_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <include layout="@layout/space" />
 
         <TextView
             android:id="@+id/tv_sign_in"
             style="@style/HyperlinkTextStyle"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/step8"
             android:text="@string/features_sign_create_account_link"
             android:textColor="@color/blue_hyperlink" />
 

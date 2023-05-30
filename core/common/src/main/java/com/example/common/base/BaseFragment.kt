@@ -2,6 +2,7 @@ package com.example.common.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.common.utils.showSnackbar
 import javax.inject.Inject
 
 abstract class BaseFragment<T : BaseViewModel> : Fragment() {
@@ -17,5 +18,4 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     abstract fun inject()
 
     abstract fun subscribe(viewModel: T)
-
 }

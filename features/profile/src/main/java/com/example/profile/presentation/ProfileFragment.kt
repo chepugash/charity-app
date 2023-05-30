@@ -1,10 +1,12 @@
 package com.example.profile.presentation
 
-import android.opengl.Visibility
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
@@ -26,20 +28,36 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         subscribe(viewModel)
 
+        getUser()
+
         binding.run {
             lName.setOnClickListener {
-                viewModel.onChangeName()
+                onChangeName()
             }
             lChangePassword.setOnClickListener {
-                viewModel.onChangePassword()
+                onChangePassword()
             }
             lDeleteProfile.setOnClickListener {
-                viewModel.onDelete()
+                onDelete()
             }
             ivSignOut.setOnClickListener {
-                viewModel.onSignOut()
+                onSignOut()
             }
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 
     override fun inject() {
@@ -52,14 +70,17 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     override fun subscribe(viewModel: ProfileViewModel) {
         with(viewModel) {
             user.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showUserInfo(it.email, it.name)
+                if (it == null) {
+                    viewModel.launchNoUser()
+                } else {
+                    showUserInfo(it.email, it.name)
+                }
             }
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
                     is ApiResult.Success -> {
                         viewModel.getUser()
-                        showError("Data changed")
+                        showError("done")
                     }
                     is ApiResult.Error -> {
                         showError(it.message)
@@ -83,25 +104,38 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         }
     }
 
+    private fun onChangeName() {
+        viewModel.onChangeName()
+    }
+
+    private fun onChangePassword() {
+        viewModel.onChangePassword()
+    }
+
+    private fun onDelete() {
+        viewModel.onDelete()
+    }
+
+    private fun onSignOut() {
+        viewModel.onSignOut()
+    }
+
+    private fun getUser() {
+        viewModel.getUser()
+    }
+
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(message)
+        binding.root.showSnackbar(message)
     }
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                loading.visibility = View.VISIBLE
-                content.visibility = View.GONE
-            } else {
-                loading.visibility = View.GONE
-                content.visibility = View.VISIBLE
-            }
+            loading.isVisible = flag
+            content.isVisible = !flag
         }
     }
 }

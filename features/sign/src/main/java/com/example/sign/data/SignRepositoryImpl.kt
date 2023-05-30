@@ -26,4 +26,6 @@ class SignRepositoryImpl @Inject constructor(
     override suspend fun signIn(
         signUserEntity: SignUserEntity
     ): Task<AuthResult> = signApi.signIn(signUserEntity)
+
+    override suspend fun createUserDocument(): Task<Void> = signApi.createUserDocument()
 }

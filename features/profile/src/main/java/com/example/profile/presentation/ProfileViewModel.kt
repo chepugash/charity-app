@@ -45,7 +45,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _user.value = getUserUseCase.getUser()
+                _user.value = getUserUseCase()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {
@@ -58,7 +58,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                changeNameUseCase.changeName(name)
+                changeNameUseCase(name)
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             _apiResult.value = ApiResult.Success
@@ -78,7 +78,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                changePasswordUseCase.changePassword(password)
+                changePasswordUseCase(password)
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             _apiResult.value = ApiResult.Success
@@ -98,10 +98,10 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                deleteProfileUseCase.deleteProfile()
+                deleteProfileUseCase()
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
-                            launchSignIn()
+                            launchNoUser()
                         } else {
                             _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
                         }
@@ -118,14 +118,18 @@ class ProfileViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signOutUseCase.signOut()
-                launchSignIn()
+                signOutUseCase()
+                launchNoUser()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false
             }
         }
+    }
+
+    fun launchNoUser() {
+        router.launchNoUser()
     }
 
     fun onChangeName() {

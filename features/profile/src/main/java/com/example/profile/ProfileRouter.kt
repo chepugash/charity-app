@@ -11,4 +11,6 @@ interface ProfileRouter {
     fun launchDeleteDialog()
 
     fun launchPasswordDialog()
+
+    fun launchNoUser()
 }

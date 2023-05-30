@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
@@ -37,12 +38,16 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvFoundations.addItemDecoration(itemDecoration)
+
+        addDecorator()
         subscribe(viewModel)
-        arguments?.getInt(ARG_NAME)?.let { viewModel.getFoundations(it) }
+
+        arguments?.getInt(ARG_NAME)?.let {
+            getFoundations(it)
+        }
 
         binding.toolbar.setNavigationOnClickListener {
-            viewModel.goBack()
+            goBack()
         }
     }
 
@@ -77,19 +82,25 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                loading.visibility = View.VISIBLE
-                rvFoundations.visibility = View.GONE
-            } else {
-                loading.visibility = View.GONE
-                rvFoundations.visibility = View.VISIBLE
-            }
+            loading.isVisible = flag
+            rvFoundations.isVisible = !flag
         }
     }
 
+    private fun goBack() {
+        viewModel.goBack()
+    }
+
+    private fun getFoundations(categoryId: Int) {
+        viewModel.getFoundations(categoryId)
+    }
+
+    private fun addDecorator() {
+        binding.rvFoundations.addItemDecoration(itemDecoration)
+    }
+
     private fun showError(error: Throwable) {
-        activity?.findViewById<View>(android.R.id.content)
-            ?.showSnackbar(error.message ?: "Error")
+        binding.root.showSnackbar(error.message ?: "Error")
     }
 
     companion object {

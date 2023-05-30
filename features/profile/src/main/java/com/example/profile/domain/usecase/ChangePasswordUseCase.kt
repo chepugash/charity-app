@@ -8,7 +8,7 @@ class ChangePasswordUseCase @Inject constructor(
     private val profileRepository: ProfileRepository
 ) {
 
-    suspend fun changePassword(
+    suspend operator fun invoke(
         password: String
     ): Task<Void>? = profileRepository.changePassword(password)
 }

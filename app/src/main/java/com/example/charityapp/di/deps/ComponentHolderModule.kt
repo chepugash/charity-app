@@ -6,10 +6,12 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
-import com.example.foundation_info.data.api.FoundationApi
+import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder
 import com.example.foundations.data.api.FoundationsApi
 import com.example.foundations.di.FoundationsFeatureHolder
+import com.example.payment.data.PaymentApi
+import com.example.payment.di.PaymentFeatureHolder
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.di.ProfileFeatureHolder
 import com.example.sign.data.api.SignApi
@@ -30,29 +32,47 @@ interface ComponentHolderModule {
     @Binds
     @ClassKey(SignApi::class)
     @IntoMap
-    fun provideSignFeatureHolder(signFeatureHolder: SignFeatureHolder): FeatureApiHolder
+    fun provideSignFeatureHolder(
+        signFeatureHolder: SignFeatureHolder
+    ): FeatureApiHolder
 
     @ApplicationScope
     @Binds
     @ClassKey(ProfileApi::class)
     @IntoMap
-    fun provideProfileFeatureHolder(profileFeatureHolder: ProfileFeatureHolder): FeatureApiHolder
+    fun provideProfileFeatureHolder(
+        profileFeatureHolder: ProfileFeatureHolder
+    ): FeatureApiHolder
 
     @ApplicationScope
     @Binds
     @ClassKey(CategoriesApi::class)
     @IntoMap
-    fun provideCategoriesFeatureHolder(categoriesFeatureHolder: CategoriesFeatureHolder): FeatureApiHolder
+    fun provideCategoriesFeatureHolder(
+        categoriesFeatureHolder: CategoriesFeatureHolder
+    ): FeatureApiHolder
 
     @ApplicationScope
     @Binds
     @ClassKey(FoundationsApi::class)
     @IntoMap
-    fun provideFoundationsFeatureHolder(foundationsFeatureHolder: FoundationsFeatureHolder): FeatureApiHolder
+    fun provideFoundationsFeatureHolder(
+        foundationsFeatureHolder: FoundationsFeatureHolder
+    ): FeatureApiHolder
 
     @ApplicationScope
     @Binds
     @ClassKey(FoundationApi::class)
     @IntoMap
-    fun provideFoundationFeatureHolder(foundationFeatureHolder: FoundationFeatureHolder): FeatureApiHolder
+    fun provideFoundationFeatureHolder(
+        foundationFeatureHolder: FoundationFeatureHolder
+    ): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(PaymentApi::class)
+    @IntoMap
+    fun providePaymentFeatureHolder(
+        paymentFeatureHolder: PaymentFeatureHolder
+    ): FeatureApiHolder
 }

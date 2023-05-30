@@ -9,4 +9,5 @@
     <string name="features_sign_repeat_password">Повторите пароль</string>
     <string name="features_sign_sign_in">Войдите в аккаунт</string>
     <string name="features_sign_create_account_link">Создать аккаунт</string>
+    <string name="feature_sign_description">Чтобы добавлять фонды в Избранное и просматривать статистику, нужно войти в аккаунт</string>
 </resources>

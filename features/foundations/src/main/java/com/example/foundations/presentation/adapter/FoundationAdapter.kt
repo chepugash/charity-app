@@ -9,7 +9,7 @@ import com.example.foundations.databinding.ItemFoundationBinding
 import com.example.foundations.domain.entity.FoundationEntity
 
 class FoundationAdapter(
-    private val action: (Int) -> Unit
+    private val onFoundationClick: (Int) -> Unit
 ) : ListAdapter<FoundationEntity, RecyclerView.ViewHolder>(
     object: DiffUtil.ItemCallback<FoundationEntity>() {
         override fun areItemsTheSame(
@@ -26,20 +26,20 @@ class FoundationAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FoundationItem = FoundationItem(
+    ): FoundationItemViewHolder = FoundationItemViewHolder(
         binding = ItemFoundationBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         ),
-        action = action
+        onFoundationClick = onFoundationClick
     )
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
-        (holder as FoundationItem).onBind(currentList[position])
+        (holder as FoundationItemViewHolder).onBind(currentList[position])
     }
 
     override fun getItemCount(): Int = currentList.size

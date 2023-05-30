@@ -70,23 +70,13 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                ivEntrance.isVisible = false
-                tvCreate.isVisible = false
-                email.tfEmail.isVisible = false
-                password.tfPassword.isVisible = false
-                tvSignIn.isVisible = false
-                btnSubmit.isVisible = false
-                loading.isVisible = true
-            } else {
-                ivEntrance.isVisible = true
-                tvCreate.isVisible = true
-                email.tfEmail.isVisible = true
-                password.tfPassword.isVisible = true
-                tvSignIn.isVisible = true
-                btnSubmit.isVisible = true
-                loading.isVisible = false
-            }
+            ivEntrance.isVisible = !flag
+            tvCreate.isVisible = !flag
+            email.tfEmail.isVisible = !flag
+            password.tfPassword.isVisible = !flag
+            tvSignIn.isVisible = !flag
+            btnSubmit.isVisible = !flag
+            loading.isVisible = flag
         }
     }
 

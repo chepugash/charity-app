@@ -54,7 +54,6 @@ class SignUpViewModel(
     private fun createUserDocument() {
         viewModelScope.launch {
             try {
-                _loading.value = true
                 createUserDocumentUseCase.invoke()
                     .addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -65,8 +64,6 @@ class SignUpViewModel(
                 }
             } catch (error: Throwable) {
                 _error.value = error
-            } finally {
-                _loading.value = false
             }
         }
     }

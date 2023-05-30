@@ -87,13 +87,8 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                loading.isVisible = true
-                rvCategories.isVisible = false
-            } else {
-                loading.isVisible = false
-                rvCategories.isVisible = true
-            }
+            loading.isVisible = flag
+            rvCategories.isVisible = !flag
         }
     }
 

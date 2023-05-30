@@ -33,5 +33,5 @@ class SignApiImpl @Inject constructor(
     override suspend fun createUserDocument(): Task<Void> = firestore
         .collection("users")
         .document(auth.currentUser?.uid.toString())
-        .set(hashMapOf("favorite" to arrayListOf<Int>()))
+        .set(hashMapOf("favorite" to arrayListOf<FoundationEntity>()))
 }

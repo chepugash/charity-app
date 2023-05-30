@@ -17,7 +17,11 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
     private lateinit var binding: FragmentSignUpBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,6 +61,7 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
                     is ApiResult.Success -> {
                         viewModel.launchSignIn()
                     }
+
                     is ApiResult.Error -> {
                         showError(it.message)
                     }
@@ -79,27 +84,15 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                ivCreating.isVisible = false
-                tvCreate.isVisible = false
-                email.tfEmail.isVisible = false
-                password.tfPassword.isVisible = false
-                tvSignIn.isVisible = false
-                btnSubmit.isVisible = false
-                tvIsExist.isVisible = false
-                repeatPassword.tfRepeatPassword.isVisible = false
-                loading.isVisible = true
-            } else {
-                ivCreating.isVisible = true
-                tvCreate.isVisible = true
-                email.tfEmail.isVisible = true
-                password.tfPassword.isVisible = true
-                tvSignIn.isVisible = true
-                btnSubmit.isVisible = true
-                tvIsExist.isVisible = true
-                repeatPassword.tfRepeatPassword.isVisible = true
-                loading.isVisible = false
-            }
+            ivCreating.isVisible = !flag
+            tvCreate.isVisible = !flag
+            email.tfEmail.isVisible = !flag
+            password.tfPassword.isVisible = !flag
+            tvSignIn.isVisible = !flag
+            btnSubmit.isVisible = !flag
+            tvIsExist.isVisible = !flag
+            repeatPassword.tfRepeatPassword.isVisible = !flag
+            loading.isVisible = flag
         }
     }
 

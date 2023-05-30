@@ -12,6 +12,10 @@
         android:orientation="vertical"
         android:padding="@dimen/step4">
 
+        <include
+            android:id="@+id/loading"
+            layout="@layout/fragment_loading" />
+
         <TextView
             android:id="@+id/tv_create"
             style="@style/HeaderTextStyle"
@@ -79,10 +83,6 @@
                 android:text="@string/features_sign_create" />
 
         </FrameLayout>
-
-        <include
-            android:id="@+id/loading"
-            layout="@layout/fragment_loading" />
 
     </LinearLayout>
 

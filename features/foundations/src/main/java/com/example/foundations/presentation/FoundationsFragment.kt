@@ -82,13 +82,8 @@ class FoundationsFragment : BaseFragment<FoundationsViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-            if (flag) {
-                loading.isVisible = true
-                rvFoundations.isVisible = false
-            } else {
-                loading.isVisible = false
-                rvFoundations.isVisible = true
-            }
+            loading.isVisible = flag
+            rvFoundations.isVisible = !flag
         }
     }
 

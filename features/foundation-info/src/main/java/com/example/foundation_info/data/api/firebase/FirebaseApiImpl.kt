@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import javax.inject.Inject
 
 class FirebaseApiImpl @Inject constructor(
@@ -19,30 +20,31 @@ class FirebaseApiImpl @Inject constructor(
     override suspend fun addToFavourite(
         foundationEntity: FoundationEntity
     ): Task<Void> = firestore.collection(COLLECTION)
-        .document(getUser()?.uid.toString())
-        .update(FIELD, FieldValue.arrayUnion(foundationEntity.id))
-
+            .document(getUser()?.uid.toString())
+            .update(FIELD, FieldValue.arrayUnion(foundationEntity))
 
     override suspend fun removeFromFavourite(
         foundationEntity: FoundationEntity
     ): Task<Void> = firestore.collection(COLLECTION)
         .document(getUser()?.uid.toString())
-        .update(FIELD, FieldValue.arrayRemove(foundationEntity.id))
+        .update(FIELD, FieldValue.arrayRemove(foundationEntity))
 
     override suspend fun getFavourite(): Task<ArrayList<Long>> = firestore.collection(COLLECTION)
             .document(getUser()?.uid.toString())
             .get().continueWith { task ->
-            val favourite = ArrayList<Long>()
-                if (task.isSuccessful) {
-                    val document = task.result
-                    if (document.exists()) {
-                        val result = document.get(FIELD) as? ArrayList<Long>
-                        result?.let {
-                            favourite.addAll(it)
+                val favourite = ArrayList<Long>()
+                    if (task.isSuccessful) {
+                        val document = task.result
+                        if (document.exists()) {
+                            val result = document.get(FIELD) as? ArrayList<HashMap<String, Any>>
+                            if (result != null) {
+                                for (item in result) {
+                                    favourite.add(item["id"] as Long)
+                                }
+                            }
                         }
                     }
-                }
-                favourite
+                    favourite
             }
 
     companion object {

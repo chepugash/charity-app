@@ -53,7 +53,7 @@ class FirebaseApiImpl @Inject constructor(
             }
 
     companion object {
-        const val COLLECTION = "users"
-        const val FIELD = "favorite"
+        private const val COLLECTION = "users"
+        private const val FIELD = "favorite"
     }
 }

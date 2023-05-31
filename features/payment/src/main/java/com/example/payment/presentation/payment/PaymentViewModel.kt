@@ -5,10 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.payment.PaymentRouter
+import com.example.payment.domain.usecase.AddToHistoryUseCase
+import com.example.payment.domain.usecase.CreateHistoryDocumentUseCase
+import com.example.payment.domain.usecase.GetUserUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class PaymentViewModel(
+    private val getUserUseCase: GetUserUseCase,
+    private val createHistoryDocumentUseCase: CreateHistoryDocumentUseCase,
+    private val addToHistoryUseCase: AddToHistoryUseCase,
     private val router: PaymentRouter
 ) : BaseViewModel() {
 

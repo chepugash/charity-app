@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
-import com.example.payment.data.PaymentApi
+import com.example.payment.data.payment.PaymentApi
 import com.example.payment.databinding.FragmentPaymentBinding
 import com.example.payment.di.PaymentFeatureComponent
 

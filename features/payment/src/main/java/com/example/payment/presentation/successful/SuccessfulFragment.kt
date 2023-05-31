@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.payment.data.PaymentApi
+import com.example.payment.data.payment.PaymentApi
 import com.example.payment.databinding.FragmentSuccessfulBinding
 import com.example.payment.di.PaymentFeatureComponent
 

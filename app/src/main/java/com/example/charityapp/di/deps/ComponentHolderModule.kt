@@ -12,7 +12,7 @@ import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder
 import com.example.foundations.data.api.FoundationsApi
 import com.example.foundations.di.FoundationsFeatureHolder
-import com.example.payment.data.PaymentApi
+import com.example.payment.data.payment.PaymentApi
 import com.example.payment.di.PaymentFeatureHolder
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.di.ProfileFeatureHolder

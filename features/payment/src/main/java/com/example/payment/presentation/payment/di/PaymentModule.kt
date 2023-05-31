@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.payment.PaymentRouter
+import com.example.payment.domain.usecase.AddToHistoryUseCase
+import com.example.payment.domain.usecase.CreateHistoryDocumentUseCase
+import com.example.payment.domain.usecase.GetUserUseCase
 import com.example.payment.presentation.payment.PaymentViewModel
 import dagger.Module
 import dagger.Provides
@@ -29,9 +32,15 @@ class PaymentModule {
     @Provides
     @IntoMap
     @ViewModelKey(PaymentViewModel::class)
-    fun provideFoundationsViewModel(
+    fun providePaymentViewModel(
+        getUserUseCase: GetUserUseCase,
+        createHistoryDocumentUseCase: CreateHistoryDocumentUseCase,
+        addToHistoryUseCase: AddToHistoryUseCase,
         router: PaymentRouter
     ): ViewModel = PaymentViewModel(
+        getUserUseCase,
+        createHistoryDocumentUseCase,
+        addToHistoryUseCase,
         router
     )
 }

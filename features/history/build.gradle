@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.foundation_info'
+    namespace 'com.example.history'
     compileSdk 33
 
     defaultConfig {
@@ -48,11 +48,6 @@ dependencies {
     implementation platform(firebaseBomDep)
     implementation firebaseFirestoreDep
     implementation firebaseAuthDep
-    // endregion
-
-    // region retrofit
-    implementation retrofitDep
-    implementation converterGsonDep
     // endregion
 
     // region dagger2

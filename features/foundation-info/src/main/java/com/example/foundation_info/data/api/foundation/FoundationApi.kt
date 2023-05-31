@@ -8,6 +8,6 @@ interface FoundationApi {
 
     @GET("foundation")
     suspend fun getFoundation(
-        @Query("id") id: Int
+        @Query("id") id: Long
     ): FoundationResponse
 }

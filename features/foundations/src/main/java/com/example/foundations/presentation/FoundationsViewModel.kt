@@ -46,15 +46,11 @@ class FoundationsViewModel(
         }
     }
 
-    fun launchFoundation(id: Int) {
+    fun launchFoundation(id: Long) {
         router.launchFoundationInfo(id)
     }
 
     fun goBack() {
         router.launchBack()
-    }
-
-    companion object {
-        private const val ARG_NAME = "foundationId"
     }
 }

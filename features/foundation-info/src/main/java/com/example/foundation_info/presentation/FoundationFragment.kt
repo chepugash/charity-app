@@ -22,8 +22,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private lateinit var binding: FragmentFoundationBinding
 
-    private lateinit var foundationEntity: FoundationEntity
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFoundationBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,7 +33,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         subscribe(viewModel)
         getUser()
 
-        arguments?.getInt(ARG_NAME)?.let {
+        arguments?.getLong(ARG_NAME)?.let {
             getFoundation(it)
         }
 
@@ -68,11 +66,11 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     override fun subscribe(viewModel: FoundationViewModel) {
         with(viewModel) {
             foundation.observe(viewLifecycleOwner) {
-                foundationEntity = it
-                isFavouriteChanged(foundationEntity)
-                showViews(foundationEntity)
+                isFavouriteChanged(it)
+                showViews(it)
             }
             isFavourite.observe(viewLifecycleOwner) {
+                val foundationEntity = foundation.value ?: return@observe
                 changeFavouriteMode(it, foundationEntity)
             }
             user.observe(viewLifecycleOwner) {
@@ -100,7 +98,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.onDonateClick(paymentInfo)
     }
 
-    private fun getFoundation(foundationId: Int) {
+    private fun getFoundation(foundationId: Long) {
         viewModel.getFoundation(foundationId)
     }
 

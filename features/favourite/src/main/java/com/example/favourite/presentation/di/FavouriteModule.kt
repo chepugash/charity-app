@@ -6,32 +6,41 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.favourite.FavouriteRouter
+import com.example.favourite.domain.usecase.CreateUserDocumentUseCase
+import com.example.favourite.domain.usecase.GetFavouriteUseCase
+import com.example.favourite.domain.usecase.GetUserUseCase
 import com.example.favourite.presentation.FavouriteViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 
-//@Module(
-//    includes = [
-//        ViewModelModule::class
-//    ]
-//)
-//class FavouriteModule {
-//
-//    @Provides
-//    fun provideMainViewModel(
-//        fragment: Fragment,
-//        factory: ViewModelProvider.Factory
-//    ): FavouriteViewModel {
-//        return ViewModelProvider(fragment, factory)[FavouriteViewModel::class.java]
-//    }
-//
-//    @Provides
-//    @IntoMap
-//    @ViewModelKey(FavouriteViewModel::class)
-//    fun provideFavouriteViewModel(
-//        router: FavouriteRouter
-//    ): ViewModel = FavouriteViewModel(
-//        router
-//    )
-//}
+@Module(
+    includes = [
+        ViewModelModule::class
+    ]
+)
+class FavouriteModule {
+
+    @Provides
+    fun provideMainViewModel(
+        fragment: Fragment,
+        factory: ViewModelProvider.Factory
+    ): FavouriteViewModel {
+        return ViewModelProvider(fragment, factory)[FavouriteViewModel::class.java]
+    }
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(FavouriteViewModel::class)
+    fun provideFavouriteViewModel(
+        getUserUseCase: GetUserUseCase,
+        createUserDocumentUseCase: CreateUserDocumentUseCase,
+        getFavouriteUseCase: GetFavouriteUseCase,
+        router: FavouriteRouter
+    ): ViewModel = FavouriteViewModel(
+        getUserUseCase,
+        createUserDocumentUseCase,
+        getFavouriteUseCase,
+        router
+    )
+}

@@ -54,6 +54,27 @@ class MainActivity : BaseActivity<MainViewModel>() {
             navController?.addOnDestinationChangedListener { _, destination, _ ->
                 bnvMain.isVisible = !noBottomBarFragments.contains(destination.id)
             }
+
+            bnvMain.setOnItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.categoriesFragment -> {
+                        navController?.popBackStack(R.id.categoriesFragment, false)
+                        navController?.navigate(R.id.categoriesFragment)
+                        true
+                    }
+                    R.id.favouriteFragment -> {
+                        navController?.popBackStack(R.id.favouriteFragment, false)
+                        navController?.navigate(R.id.favouriteFragment)
+                        true
+                    }
+                    R.id.profileFragment -> {
+                        navController?.popBackStack(R.id.profileFragment, false)
+                        navController?.navigate(R.id.profileFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
     }
 

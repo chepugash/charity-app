@@ -61,7 +61,6 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
                     is ApiResult.Success -> {
                         viewModel.launchSignIn()
                     }
-
                     is ApiResult.Error -> {
                         showError(it.message)
                     }

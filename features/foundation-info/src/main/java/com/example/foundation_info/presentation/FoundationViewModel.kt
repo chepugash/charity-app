@@ -1,13 +1,12 @@
 package com.example.foundation_info.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
-import com.example.foundation_info.domain.entity.FoundationUserEntity
+import com.example.foundation_info.domain.entity.UserEntity
 import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
 import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
@@ -31,8 +30,8 @@ class FoundationViewModel(
     val isFavourite: LiveData<Boolean>
         get() = _isFavourite
 
-    private val _user = MutableLiveData<FoundationUserEntity?>(null)
-    val user: LiveData<FoundationUserEntity?>
+    private val _user = MutableLiveData<UserEntity?>(null)
+    val user: LiveData<UserEntity?>
         get() = _user
 
     private val _foundation = MutableLiveData<FoundationEntity>()
@@ -47,7 +46,7 @@ class FoundationViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun getFoundation(query: Int) {
+    fun getFoundation(query: Long) {
         viewModelScope.launch {
             try {
                 _loading.value = true

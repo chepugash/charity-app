@@ -1,7 +1,7 @@
-package com.example.foundation_info.domain.usecase
+package com.example.favourite.domain.usecase
 
-import com.example.foundation_info.domain.entity.UserEntity
-import com.example.foundation_info.domain.repository.FirebaseRepository
+import com.example.favourite.domain.entity.UserEntity
+import com.example.favourite.domain.repository.FirebaseRepository
 import javax.inject.Inject
 
 class GetUserUseCase @Inject constructor(

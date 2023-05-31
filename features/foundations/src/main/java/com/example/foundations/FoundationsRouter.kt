@@ -4,5 +4,5 @@ interface FoundationsRouter {
 
     fun launchBack()
 
-    fun launchFoundationInfo(foundationId: Int)
+    fun launchFoundationInfo(foundationId: Long)
 }

@@ -11,6 +11,6 @@ class FoundationRepositoryImpl @Inject constructor(
 ) : FoundationRepository {
 
     override suspend fun getFoundation(
-        query: Int
+        query: Long
     ): FoundationEntity = api.getFoundation(query).toFoundationEntity()
 }

@@ -11,7 +11,7 @@ class SignUpUseCase @Inject constructor(
     private val signRepository: SignRepository
 ) {
 
-    suspend fun invoke(
+    suspend operator fun invoke(
         signUserEntity: SignUserEntity
     ): Task<AuthResult> = signRepository.signUp(signUserEntity)
 }

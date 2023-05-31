@@ -1,5 +1,5 @@
 package com.example.foundation_info.domain.entity
 
-class FoundationUserEntity(
+class UserEntity(
     val id: String
 )

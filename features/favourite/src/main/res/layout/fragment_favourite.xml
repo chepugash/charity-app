@@ -10,8 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/ic_back"
-        tools:title="@string/feature_favourite_title" />
+        app:title="@string/feature_favourite_title" />
 
     <View
         android:layout_width="match_parent"
@@ -24,6 +23,10 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_foundation" />
+
+    <include
+        android:id="@+id/l_empty"
+        layout="@layout/layout_empty" />
 
     <include
         android:id="@+id/loading"

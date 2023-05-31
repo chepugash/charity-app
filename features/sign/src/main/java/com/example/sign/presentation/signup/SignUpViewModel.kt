@@ -35,11 +35,10 @@ class SignUpViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signUpUseCase.invoke(
+                signUpUseCase(
                     SignUserEntity(email, password, repeatPassword)
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-//                        createUserDocument()
                         _apiResult.value = ApiResult.Success
                     } else {
                         _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
@@ -49,23 +48,6 @@ class SignUpViewModel(
                 _error.value = error
             } finally {
                 _loading.value = false
-            }
-        }
-    }
-
-    private fun createUserDocument() {
-        viewModelScope.launch {
-            try {
-                createUserDocumentUseCase.invoke()
-                    .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        _apiResult.value = ApiResult.Success
-                    } else {
-                        _apiResult.value = ApiResult.Error(it.exception?.message ?: "Error")
-                    }
-                }
-            } catch (error: Throwable) {
-                _error.value = error
             }
         }
     }

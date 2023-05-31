@@ -9,6 +9,6 @@ class GetFoundationUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(
-        query: Int
+        query: Long
     ): FoundationEntity = foundationRepository.getFoundation(query)
 }

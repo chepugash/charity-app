@@ -1,7 +1,7 @@
 package com.example.favourite.domain.entity
 
 data class FoundationEntity(
-    val id: Int,
+    val id: Long,
     val name: String,
     val image: String
 )

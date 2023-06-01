@@ -86,9 +86,12 @@ class Navigator : SignRouter,
         navController?.navigate(R.id.successfulFragment)
     }
 
-    override fun launchPayment(paymentInfo: String) {
+    override fun launchPayment(
+        foundationId: Long,
+        foundationName: String) {
         val bundle = Bundle().apply {
-            putString(PAYMENT_INFO, paymentInfo)
+            putString(FOUNDATION_NAME, foundationName)
+            putLong(FOUNDATION_ID, foundationId)
         }
         navController?.navigate(R.id.paymentFragment, bundle)
     }
@@ -106,8 +109,8 @@ class Navigator : SignRouter,
     }
 
     companion object {
-        const val FOUNDATION_ID = "foundationId"
-        const val CATEGORY_ID = "categoryId"
-        const val PAYMENT_INFO = "paymentInfo"
+        private const val FOUNDATION_ID = "foundationId"
+        private const val CATEGORY_ID = "categoryId"
+        private const val FOUNDATION_NAME = "foundationName"
     }
 }

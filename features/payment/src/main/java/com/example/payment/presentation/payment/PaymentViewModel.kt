@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.payment.PaymentRouter
+import com.example.payment.domain.entity.TransactionEntity
+import com.example.payment.domain.entity.UserEntity
 import com.example.payment.domain.usecase.AddToHistoryUseCase
 import com.example.payment.domain.usecase.CreateHistoryDocumentUseCase
 import com.example.payment.domain.usecase.GetUserUseCase
@@ -17,6 +19,10 @@ class PaymentViewModel(
     private val addToHistoryUseCase: AddToHistoryUseCase,
     private val router: PaymentRouter
 ) : BaseViewModel() {
+
+    private val _user = MutableLiveData<UserEntity?>(null)
+    val user: LiveData<UserEntity?>
+        get() = _user
 
     private val _error = MutableLiveData<Throwable?>(null)
     val error: LiveData<Throwable?>
@@ -31,6 +37,19 @@ class PaymentViewModel(
             try {
                 _loading.value = true
                 launchSuccessful()
+            } catch (error: Throwable) {
+                _error.value = error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun getUser() {
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                _user.value = getUserUseCase()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

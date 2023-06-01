@@ -159,8 +159,8 @@ class FoundationViewModel(
         router.launchBack()
     }
 
-    fun onDonateClick(paymentInfo: String) {
-        router.launchPayment(paymentInfo)
+    fun onDonateClick(foundationId: Long, foundationName: String) {
+        router.launchPayment(foundationId, foundationName)
     }
 
 }

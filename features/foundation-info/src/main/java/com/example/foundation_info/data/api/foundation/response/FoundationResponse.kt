@@ -4,7 +4,7 @@ data class FoundationResponse(
     val account: String,
     val address: String,
     val description: String,
-    val id: Int,
+    val id: Long,
     val image: Image,
     val name: String,
     val phone: String,

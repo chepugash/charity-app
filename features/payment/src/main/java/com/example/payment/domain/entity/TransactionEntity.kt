@@ -4,5 +4,7 @@ import java.util.Date
 
 data class TransactionEntity(
     val date: Date,
-    val name: String,
-    val sum: Int)
+    val foundationId: Long,
+    val foundationName: String,
+    val sum: Int,
+)

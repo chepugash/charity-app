@@ -1,7 +1,7 @@
 package com.example.foundation_info.domain.entity
 
 data class FoundationEntity(
-    val id: Int,
+    val id: Long,
     val account: String,
     val address: String,
     val description: String,

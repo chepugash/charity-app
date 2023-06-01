@@ -5,10 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.payment.PaymentRouter
-import kotlinx.coroutines.delay
+import com.example.payment.domain.entity.TransactionEntity
+import com.example.payment.domain.usecase.AddToHistoryUseCase
+import com.example.payment.domain.usecase.CreateHistoryDocumentUseCase
+import com.example.payment.domain.usecase.GetUserUseCase
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class PaymentViewModel(
+    private val getUserUseCase: GetUserUseCase,
+    private val createHistoryDocumentUseCase: CreateHistoryDocumentUseCase,
+    private val addToHistoryUseCase: AddToHistoryUseCase,
     private val router: PaymentRouter
 ) : BaseViewModel() {
 
@@ -20,11 +29,40 @@ class PaymentViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun makeTransaction() {
+    private fun createHistoryDocument(foundationId: Long, foundationName: String, sum: Long) {
+        viewModelScope.launch {
+            try {
+                createHistoryDocumentUseCase().addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        addToHistory(foundationId, foundationName, sum)
+                    } else {
+                        _error.value = it.exception
+                    }
+                }
+            } catch (error: Throwable) {
+                _error.value = error
+            }
+        }
+    }
+
+    fun addToHistory(foundationId: Long, foundationName: String, sum: Long) {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                launchSuccessful()
+                val transactionEntity = TransactionEntity(Date(), foundationId, foundationName, sum)
+                addToHistoryUseCase(transactionEntity).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        launchSuccessful()
+                    } else {
+                        val e = it.exception
+                        if (e is FirebaseFirestoreException
+                            && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+                            createHistoryDocument(foundationId, foundationName, sum)
+                        } else {
+                            _error.value = it.exception
+                        }
+                    }
+                }
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

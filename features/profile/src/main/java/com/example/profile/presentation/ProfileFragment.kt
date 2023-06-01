@@ -34,6 +34,9 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             lName.setOnClickListener {
                 onChangeName()
             }
+            tvHistory.setOnClickListener {
+                onHistoryClick()
+            }
             lChangePassword.setOnClickListener {
                 onChangePassword()
             }
@@ -118,6 +121,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     private fun onSignOut() {
         viewModel.onSignOut()
+    }
+
+    private fun onHistoryClick() {
+        viewModel.launchHistory()
     }
 
     private fun getUser() {

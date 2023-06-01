@@ -9,7 +9,7 @@ import com.example.foundations.databinding.ItemFoundationBinding
 import com.example.foundations.domain.entity.FoundationEntity
 
 class FoundationAdapter(
-    private val onFoundationClick: (Long) -> Unit
+    private val onFoundationClick: (Long) -> Unit,
 ) : ListAdapter<FoundationEntity, RecyclerView.ViewHolder>(
     object: DiffUtil.ItemCallback<FoundationEntity>() {
         override fun areItemsTheSame(

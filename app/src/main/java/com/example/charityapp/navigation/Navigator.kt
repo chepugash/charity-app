@@ -11,6 +11,7 @@ import com.example.charityapp.R
 import com.example.favourite.FavouriteRouter
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
+import com.example.history.HistoryRouter
 import com.example.payment.PaymentRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
@@ -21,7 +22,8 @@ class Navigator : SignRouter,
     FoundationsRouter,
     FoundationRouter,
     PaymentRouter,
-    FavouriteRouter {
+    FavouriteRouter,
+    HistoryRouter {
 
     private var navController: NavController? = null
 
@@ -50,6 +52,10 @@ class Navigator : SignRouter,
 
     override fun launchNameDialog() {
         navController?.navigate(R.id.nameDialogFragment)
+    }
+
+    override fun launchHistory() {
+        navController?.navigate(R.id.historyFragment)
     }
 
     override fun launchSignOutDialog() {
@@ -86,9 +92,12 @@ class Navigator : SignRouter,
         navController?.navigate(R.id.successfulFragment)
     }
 
-    override fun launchPayment(paymentInfo: String) {
+    override fun launchPayment(
+        foundationId: Long,
+        foundationName: String) {
         val bundle = Bundle().apply {
-            putString(PAYMENT_INFO, paymentInfo)
+            putString(FOUNDATION_NAME, foundationName)
+            putLong(FOUNDATION_ID, foundationId)
         }
         navController?.navigate(R.id.paymentFragment, bundle)
     }
@@ -106,8 +115,8 @@ class Navigator : SignRouter,
     }
 
     companion object {
-        const val FOUNDATION_ID = "foundationId"
-        const val CATEGORY_ID = "categoryId"
-        const val PAYMENT_INFO = "paymentInfo"
+        private const val FOUNDATION_ID = "foundationId"
+        private const val CATEGORY_ID = "categoryId"
+        private const val FOUNDATION_NAME = "foundationName"
     }
 }

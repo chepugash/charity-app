@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
+import com.example.favourite.data.favourite.FavouriteApi
 import com.example.favourite.data.firebase.FirebaseApi
 import com.example.favourite.databinding.FragmentFavouriteBinding
 import com.example.favourite.di.FavouriteFeatureComponent
@@ -46,7 +47,7 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<FavouriteFeatureComponent>(this, FirebaseApi::class.java)
+        FeatureUtils.getFeature<FavouriteFeatureComponent>(this, FavouriteApi::class.java)
             .favouriteComponentFactory()
             .create(this)
             .inject(this)

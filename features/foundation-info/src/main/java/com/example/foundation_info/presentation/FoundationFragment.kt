@@ -51,7 +51,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 makeSearch(tvWebsite.text.toString())
             }
             btnDonate.btnSubmit.setOnClickListener {
-                onDonateClick(tvAccount.text.toString())
+
             }
         }
     }
@@ -65,9 +65,12 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     override fun subscribe(viewModel: FoundationViewModel) {
         with(viewModel) {
-            foundation.observe(viewLifecycleOwner) {
-                isFavouriteChanged(it)
-                showViews(it)
+            foundation.observe(viewLifecycleOwner) { foundation ->
+                isFavouriteChanged(foundation)
+                showViews(foundation)
+                binding.btnDonate.btnSubmit.setOnClickListener {
+                    onDonateClick(foundation.id, foundation.name)
+                }
             }
             isFavourite.observe(viewLifecycleOwner) {
                 val foundationEntity = foundation.value ?: return@observe
@@ -94,8 +97,8 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.goBack()
     }
 
-    private fun onDonateClick(paymentInfo: String) {
-        viewModel.onDonateClick(paymentInfo)
+    private fun onDonateClick(foundationId: Long, foundationName: String) {
+        viewModel.onDonateClick(foundationId, foundationName)
     }
 
     private fun getFoundation(foundationId: Long) {

@@ -6,13 +6,15 @@ import com.example.charityapp.App
 import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
-import com.example.favourite.data.firebase.FirebaseApi
+import com.example.favourite.data.favourite.FavouriteApi
+import com.example.history.data.firebase.FirebaseApi
 import com.example.favourite.di.FavouriteFeatureHolder
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder
 import com.example.foundations.data.api.FoundationsApi
 import com.example.foundations.di.FoundationsFeatureHolder
-import com.example.payment.data.PaymentApi
+import com.example.history.di.HistoryFeatureHolder
+import com.example.payment.data.payment.PaymentApi
 import com.example.payment.di.PaymentFeatureHolder
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.di.ProfileFeatureHolder
@@ -80,9 +82,17 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
-    @ClassKey(FirebaseApi::class)
+    @ClassKey(FavouriteApi::class)
     @IntoMap
     fun provideFavouriteFeatureHolder(
         favouriteFeatureHolder: FavouriteFeatureHolder
+    ): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(FirebaseApi::class)
+    @IntoMap
+    fun provideHistoryFeatureHolder(
+        historyFeatureHolder: HistoryFeatureHolder
     ): FeatureApiHolder
 }

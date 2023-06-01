@@ -148,7 +148,7 @@ class ProfileViewModel(
         router.launchPasswordDialog()
     }
 
-    fun launchSignIn() {
-        router.launchSignIn()
+    fun launchHistory() {
+        router.launchHistory()
     }
 }

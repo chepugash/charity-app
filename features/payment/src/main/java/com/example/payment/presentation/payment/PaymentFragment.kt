@@ -8,9 +8,10 @@ import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
-import com.example.payment.data.PaymentApi
+import com.example.payment.data.payment.PaymentApi
 import com.example.payment.databinding.FragmentPaymentBinding
 import com.example.payment.di.PaymentFeatureComponent
+import com.example.payment.domain.entity.TransactionEntity
 
 class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
@@ -26,7 +27,12 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                makeTransaction()
+                val sum = sum.itSum.text.toString()
+                if (sum.isNotEmpty()) {
+                    makeTransaction(sum.toLong())
+                } else {
+                    showError(Error("Amount should be more than 0"))
+                }
             }
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
@@ -52,14 +58,15 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
             }
         }
     }
-    
 
     private fun goBack() {
         viewModel.goBack()
     }
 
-    private fun makeTransaction() {
-        viewModel.makeTransaction()
+    private fun makeTransaction(sum: Long) {
+        val id = arguments?.getLong(FOUNDATION_ID)
+        val name = arguments?.getString(FOUNDATION_NAME)
+        if (id != null && name != null) viewModel.addToHistory(id, name, sum)
     }
 
     private fun showLoading(flag: Boolean) {
@@ -71,5 +78,10 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     private fun showError(error: Throwable) {
         binding.root.showSnackbar(error.message ?: "Error")
+    }
+
+    companion object {
+        private const val FOUNDATION_ID = "foundationId"
+        private const val FOUNDATION_NAME = "foundationName"
     }
 }

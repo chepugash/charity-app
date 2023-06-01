@@ -2,20 +2,18 @@ package com.example.history.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.history.databinding.ItemTransactionBinding
 import com.example.history.domain.entity.TransactionEntity
 
-class TransactionAdapter(
-    private val onTransactionClick: (Long) -> Unit
-) : androidx.recyclerview.widget.ListAdapter<TransactionEntity, RecyclerView.ViewHolder>(
-    object: DiffUtil.ItemCallback<TransactionEntity>() {
+class TransactionAdapter : ListAdapter<TransactionEntity, RecyclerView.ViewHolder>(
+    object : DiffUtil.ItemCallback<TransactionEntity>() {
         override fun areItemsTheSame(
             oldItem: TransactionEntity,
             newItem: TransactionEntity
-        ): Boolean = oldItem.id == newItem.id
+        ): Boolean = oldItem.date == newItem.date
 
         override fun areContentsTheSame(
             oldItem: TransactionEntity,
@@ -31,8 +29,7 @@ class TransactionAdapter(
             LayoutInflater.from(parent.context),
             parent,
             false
-        ),
-        onTransactionClick = onTransactionClick
+        )
     )
 
     override fun onBindViewHolder(

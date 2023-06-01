@@ -12,11 +12,11 @@ class FirebaseApiImpl @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : FirebaseApi {
 
-    override suspend fun getHistory(): Task<ArrayList<FirebaseTransactionEntity>> =
+    override suspend fun getHistory(): Task<ArrayList<TransactionEntity>> =
         firestore.collection(COLLECTION)
             .document(auth.currentUser?.uid.toString())
             .get().continueWith { task ->
-                val history = ArrayList<FirebaseTransactionEntity>()
+                val history = ArrayList<TransactionEntity>()
                 if (task.isSuccessful) {
                     val document = task.result
                     if (document.exists()) {
@@ -28,7 +28,7 @@ class FirebaseApiImpl @Inject constructor(
                                     foundationId = item["foundationId"] as Long,
                                     foundationName = item["foundationName"].toString(),
                                     sum = item["sum"] as Long
-                                ))
+                                ).toTransactionEntity())
                             }
                         }
                     }

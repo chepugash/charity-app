@@ -11,6 +11,7 @@ import com.example.charityapp.R
 import com.example.favourite.FavouriteRouter
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
+import com.example.history.HistoryRouter
 import com.example.payment.PaymentRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
@@ -21,7 +22,8 @@ class Navigator : SignRouter,
     FoundationsRouter,
     FoundationRouter,
     PaymentRouter,
-    FavouriteRouter {
+    FavouriteRouter,
+    HistoryRouter {
 
     private var navController: NavController? = null
 

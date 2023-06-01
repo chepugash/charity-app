@@ -6,6 +6,7 @@ import com.example.common.di.scope.ApplicationScope
 import com.example.favourite.FavouriteRouter
 import com.example.foundation_info.FoundationRouter
 import com.example.foundations.FoundationsRouter
+import com.example.history.HistoryRouter
 import com.example.payment.PaymentRouter
 import com.example.profile.ProfileRouter
 import com.example.sign.SignRouter
@@ -46,4 +47,9 @@ class NavigationModule {
     @ApplicationScope
     @Provides
     fun provideFavouriteRouter(navigator: Navigator): FavouriteRouter = navigator
+
+    @ApplicationScope
+    @Provides
+    fun provideHistoryRouter(navigator: Navigator): HistoryRouter = navigator
+
 }

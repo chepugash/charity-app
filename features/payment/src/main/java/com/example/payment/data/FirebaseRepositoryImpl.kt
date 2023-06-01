@@ -1,6 +1,7 @@
 package com.example.payment.data
 
 import com.example.payment.data.firebase.FirebaseApi
+import com.example.payment.data.firebase.toFirebaseTransactionEntity
 import com.example.payment.data.firebase.toUserEntity
 import com.example.payment.domain.entity.TransactionEntity
 import com.example.payment.domain.entity.UserEntity
@@ -19,5 +20,5 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override suspend fun addToHistory(
         transactionEntity: TransactionEntity
-    ): Task<Void> = firebaseApi.addToHistory(transactionEntity)
+    ): Task<Void> = firebaseApi.addToHistory(transactionEntity.toFirebaseTransactionEntity())
 }

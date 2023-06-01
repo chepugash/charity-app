@@ -10,5 +10,5 @@ interface FirebaseApi {
 
     suspend fun createHistoryDocument(): Task<Void>
 
-    suspend fun addToHistory(transactionEntity: TransactionEntity): Task<Void>
+    suspend fun addToHistory(firebaseTransactionEntity: FirebaseTransactionEntity): Task<Void>
 }

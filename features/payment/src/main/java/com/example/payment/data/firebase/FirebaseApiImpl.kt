@@ -18,13 +18,13 @@ class FirebaseApiImpl @Inject constructor(
     override suspend fun createHistoryDocument(): Task<Void> = firestore
     .collection(COLLECTION)
     .document(auth.currentUser?.uid.toString())
-    .set(hashMapOf(FIELD to arrayListOf<TransactionEntity>()))
+    .set(hashMapOf(FIELD to arrayListOf<FirebaseTransactionEntity>()))
 
     override suspend fun addToHistory(
-        transactionEntity: TransactionEntity
+        firebaseTransactionEntity: FirebaseTransactionEntity
     ): Task<Void> = firestore.collection(COLLECTION)
         .document(getUser()?.uid.toString())
-        .update(FIELD, FieldValue.arrayUnion(transactionEntity))
+        .update(FIELD, FieldValue.arrayUnion(firebaseTransactionEntity))
 
     companion object {
         private const val COLLECTION = "users"

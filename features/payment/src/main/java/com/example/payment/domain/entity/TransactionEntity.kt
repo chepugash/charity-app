@@ -6,5 +6,5 @@ data class TransactionEntity(
     val date: Date,
     val foundationId: Long,
     val foundationName: String,
-    val sum: Int,
+    val sum: Long,
 )

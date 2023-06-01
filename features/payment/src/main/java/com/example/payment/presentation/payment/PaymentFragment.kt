@@ -11,6 +11,7 @@ import com.example.common.utils.showSnackbar
 import com.example.payment.data.payment.PaymentApi
 import com.example.payment.databinding.FragmentPaymentBinding
 import com.example.payment.di.PaymentFeatureComponent
+import com.example.payment.domain.entity.TransactionEntity
 
 class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
@@ -26,7 +27,7 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                makeTransaction()
+                makeTransaction(sum.itSum.text.toString().toLong())
             }
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
@@ -43,6 +44,7 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     override fun subscribe(viewModel: PaymentViewModel) {
         with(viewModel) {
+
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showError(it)
@@ -52,14 +54,15 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
             }
         }
     }
-    
 
     private fun goBack() {
         viewModel.goBack()
     }
 
-    private fun makeTransaction() {
-        viewModel.makeTransaction()
+    private fun makeTransaction(sum: Long) {
+        val id = arguments?.getLong(FOUNDATION_ID)
+        val name = arguments?.getString(FOUNDATION_NAME)
+        if (id != null && name != null) viewModel.addToHistory(id, name, sum)
     }
 
     private fun showLoading(flag: Boolean) {
@@ -71,5 +74,10 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     private fun showError(error: Throwable) {
         binding.root.showSnackbar(error.message ?: "Error")
+    }
+
+    companion object {
+        private const val FOUNDATION_ID = "foundationId"
+        private const val FOUNDATION_NAME = "foundationName"
     }
 }

@@ -13,14 +13,13 @@
         android:layout_gravity="center_vertical"
         tools:text="01.01.2020" />
 
-    <include layout="@layout/space" />
-
     <TextView
         android:id="@+id/tv_name"
         style="@style/CommonTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/step4"
         tools:text="Фонд имени Арсланова" />
 
     <include layout="@layout/space" />

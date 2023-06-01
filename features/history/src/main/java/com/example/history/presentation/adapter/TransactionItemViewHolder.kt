@@ -28,6 +28,6 @@ class TransactionItemViewHolder(
     }
 
     companion object {
-        private const val DATE_FORMAT = "dd-MM-yyyy"
+        private const val DATE_FORMAT = "dd-MM-yy"
     }
 }

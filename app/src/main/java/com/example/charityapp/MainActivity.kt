@@ -99,7 +99,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
             R.id.signUpFragment,
             R.id.foundationFragment,
             R.id.paymentFragment,
-            R.id.successfulFragment
+            R.id.successfulFragment,
+            R.id.noUserFragment
         )
     }
 }

@@ -1,6 +1,8 @@
 package com.example.sign.data
 
 import com.example.sign.data.api.SignApi
+import com.example.sign.data.api.toSessionUserEntity
+import com.example.sign.domain.entity.SessionUserEntity
 import com.example.sign.domain.entity.SignUserEntity
 import com.example.sign.domain.repository.SignRepository
 import com.google.android.gms.tasks.Task
@@ -25,5 +27,7 @@ class SignRepositoryImpl @Inject constructor(
         signUserEntity: SignUserEntity
     ): Task<AuthResult> = signApi.signIn(signUserEntity)
 
-    override suspend fun createUserDocument(): Task<Void> = signApi.createUserDocument()
+    override suspend fun getUser(): SessionUserEntity? = signApi.getUser()?.toSessionUserEntity()
+
+
 }

@@ -10,5 +10,7 @@ interface SignRouter {
 
     fun launchProfile()
 
+    fun launchCategories()
+
     fun openMain(context: Context)
 }

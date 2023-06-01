@@ -31,7 +31,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         subscribe(viewModel)
-        getUser()
 
         arguments?.getLong(ARG_NAME)?.let {
             getFoundation(it)
@@ -76,9 +75,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 val foundationEntity = foundation.value ?: return@observe
                 changeFavouriteMode(it, foundationEntity)
             }
-            user.observe(viewLifecycleOwner) {
-                showFavourite(it != null)
-            }
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showError(it)
@@ -89,16 +85,8 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         }
     }
 
-    private fun getUser() {
-        viewModel.getUser()
-    }
-
     private fun goBack() {
         viewModel.goBack()
-    }
-
-    private fun onDonateClick(foundationId: Long, foundationName: String) {
-        viewModel.onDonateClick(foundationId, foundationName)
     }
 
     private fun getFoundation(foundationId: Long) {
@@ -107,10 +95,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private fun isFavouriteChanged(foundationEntity: FoundationEntity) {
         viewModel.isInFavourite(foundationEntity)
-    }
-
-    private fun showFavourite(flag: Boolean) {
-        binding.toolbar.ivFavourite.isVisible = flag
     }
 
     private fun changeFavouriteMode(isFavourite: Boolean, foundationEntity: FoundationEntity) {

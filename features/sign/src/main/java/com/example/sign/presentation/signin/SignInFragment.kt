@@ -54,7 +54,7 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
                     is ApiResult.Success -> {
-                        viewModel.launchProfile()
+                        viewModel.launchCategories()
                     }
                     is ApiResult.Error -> {
                         showError(it.message)

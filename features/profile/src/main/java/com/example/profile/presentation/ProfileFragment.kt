@@ -81,13 +81,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             }
             apiResult.observe(viewLifecycleOwner) {
                 when (it) {
-                    is ApiResult.Success -> {
-                        viewModel.getUser()
-                        showError("done")
-                    }
-                    is ApiResult.Error -> {
-                        showError(it.message)
-                    }
+                    is ApiResult.Success -> viewModel.getUser()
+                    is ApiResult.Error -> showError(it.message)
                 }
             }
             error.observe(viewLifecycleOwner) {

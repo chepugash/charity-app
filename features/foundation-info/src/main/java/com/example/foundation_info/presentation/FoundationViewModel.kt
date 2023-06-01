@@ -30,10 +30,6 @@ class FoundationViewModel(
     val isFavourite: LiveData<Boolean>
         get() = _isFavourite
 
-    private val _user = MutableLiveData<UserEntity?>(null)
-    val user: LiveData<UserEntity?>
-        get() = _user
-
     private val _foundation = MutableLiveData<FoundationEntity>()
     val foundation: LiveData<FoundationEntity>
         get() = _foundation
@@ -51,19 +47,6 @@ class FoundationViewModel(
             try {
                 _loading.value = true
                 _foundation.value = getFoundationUseCase.invoke(query)
-            } catch (error: Throwable) {
-                _error.value = error
-            } finally {
-                _loading.value = false
-            }
-        }
-    }
-
-    fun getUser() {
-        viewModelScope.launch {
-            try {
-                _loading.value = true
-                _user.value = getUserUseCase()
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

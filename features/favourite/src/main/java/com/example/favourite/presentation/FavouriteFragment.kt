@@ -1,9 +1,11 @@
 package com.example.favourite.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
@@ -42,8 +44,21 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
         addDecorator()
         subscribe(viewModel)
 
-        getUser()
         getFavourite()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 
     override fun inject() {
@@ -65,9 +80,6 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
                         adapter = this@FavouriteFragment.adapter
                     }
                 }
-            }
-            user.observe(viewLifecycleOwner) {
-                if (it == null) launchNoUserInSession()
             }
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
@@ -95,20 +107,12 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
         }
     }
 
-    private fun getUser() {
-        viewModel.getUser()
-    }
-
     private fun getFavourite() {
         viewModel.getFavourite()
     }
 
     private fun addDecorator() {
         binding.rvFoundations.addItemDecoration(itemDecoration)
-    }
-
-    private fun launchNoUserInSession() {
-        viewModel.launchNoUser()
     }
 
     private fun showError(error: Throwable) {

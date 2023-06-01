@@ -1,6 +1,5 @@
 package com.example.history.di
 
-import com.example.common.data.network.NetworkApiCreator
 import com.example.common.di.scope.FeatureScope
 import com.example.history.data.FirebaseRepositoryImpl
 import com.example.history.data.firebase.FirebaseApi

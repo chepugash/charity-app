@@ -54,6 +54,10 @@ class Navigator : SignRouter,
         navController?.navigate(R.id.nameDialogFragment)
     }
 
+    override fun launchHistory() {
+        navController?.navigate(R.id.historyFragment)
+    }
+
     override fun launchSignOutDialog() {
         navController?.navigate(R.id.signOutDialogFragment)
     }

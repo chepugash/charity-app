@@ -7,7 +7,7 @@ import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
 import com.example.favourite.data.favourite.FavouriteApi
-import com.example.favourite.data.firebase.FirebaseApi
+import com.example.history.data.firebase.FirebaseApi
 import com.example.favourite.di.FavouriteFeatureHolder
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder

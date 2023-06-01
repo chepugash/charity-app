@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.history.HistoryRouter
+import com.example.history.domain.usecase.GetHistoryUseCase
 import com.example.history.presentation.HistoryViewModel
 import dagger.Module
 import dagger.Provides
@@ -30,8 +31,10 @@ class HistoryModule {
     @IntoMap
     @ViewModelKey(HistoryViewModel::class)
     fun provideHistoryViewModel(
+        getHistoryUseCase: GetHistoryUseCase,
         router: HistoryRouter
     ): ViewModel = HistoryViewModel(
+        getHistoryUseCase,
         router
     )
 }

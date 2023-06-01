@@ -27,7 +27,12 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
         binding.run {
             btnSubmit.setOnClickListener {
-                makeTransaction(sum.itSum.text.toString().toLong())
+                val sum = sum.itSum.text.toString()
+                if (sum.isNotEmpty()) {
+                    makeTransaction(sum.toLong())
+                } else {
+                    showError(Error("Amount should be more than 0"))
+                }
             }
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
@@ -44,7 +49,6 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     override fun subscribe(viewModel: PaymentViewModel) {
         with(viewModel) {
-
             error.observe(viewLifecycleOwner) {
                 if (it == null) return@observe
                 showError(it)

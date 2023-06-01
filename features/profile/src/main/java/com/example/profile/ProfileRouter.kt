@@ -6,6 +6,8 @@ interface ProfileRouter {
 
     fun launchNameDialog()
 
+    fun launchHistory()
+
     fun launchSignOutDialog()
 
     fun launchDeleteDialog()

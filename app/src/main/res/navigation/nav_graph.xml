@@ -87,4 +87,9 @@
         android:name="com.example.favourite.presentation.FavouriteFragment"
         android:label="FavouriteFragment"
         tools:layout="@layout/fragment_favourite"/>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.history.presentation.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history"/>
 </navigation>

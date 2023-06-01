@@ -11,7 +11,7 @@
         layout="@layout/toolbar_history" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_transactions"
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/step4"
@@ -23,7 +23,7 @@
         layout="@layout/fragment_loading" />
 
     <include
-        android:id="@+id/empty"
+        android:id="@+id/l_empty"
         layout="@layout/layout_empty" />
 
 </LinearLayout>

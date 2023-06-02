@@ -52,7 +52,7 @@ class SignInViewModel(
         router.launchSignUp()
     }
 
-    fun launchProfile() {
-        router.launchProfile()
+    fun launchCategories() {
+        router.launchCategories()
     }
 }

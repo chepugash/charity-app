@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.sign.SignRouter
+import com.example.sign.domain.usecase.GetUserUseCase
 import com.example.sign.presentation.nouser.NoUserViewModel
 import dagger.Module
 import dagger.Provides
@@ -30,8 +31,9 @@ class NoUserModule {
     @IntoMap
     @ViewModelKey(NoUserViewModel::class)
     fun provideNoUserViewModel(
+        getUserUseCase: GetUserUseCase,
         router: SignRouter
     ): ViewModel {
-        return NoUserViewModel(router)
+        return NoUserViewModel(getUserUseCase, router)
     }
 }

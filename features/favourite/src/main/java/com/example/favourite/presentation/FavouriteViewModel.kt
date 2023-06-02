@@ -20,10 +20,6 @@ class FavouriteViewModel(
     private val router: FavouriteRouter
 ) : BaseViewModel() {
 
-    private val _user = MutableLiveData<UserEntity?>(null)
-    val user: LiveData<UserEntity?>
-        get() = _user
-
     private val _foundationList = MutableLiveData<List<FoundationEntity>>()
     val foundationList: LiveData<List<FoundationEntity>>
         get() = _foundationList
@@ -35,19 +31,6 @@ class FavouriteViewModel(
     private val _loading = MutableLiveData<Boolean>(false)
     val loading: LiveData<Boolean>
         get() = _loading
-
-    fun getUser() {
-        viewModelScope.launch {
-            try {
-                _loading.value = true
-                _user.value = getUserUseCase()
-            } catch (error: Throwable) {
-                _error.value = error
-            } finally {
-                _loading.value = false
-            }
-        }
-    }
 
     private fun createUserDocument() {
         viewModelScope.launch {
@@ -92,10 +75,6 @@ class FavouriteViewModel(
 
     fun launchFoundationInfo(foundationId: Long) {
         router.launchFoundationInfo(foundationId)
-    }
-
-    fun launchNoUser() {
-        router.launchNoUser()
     }
 
 }

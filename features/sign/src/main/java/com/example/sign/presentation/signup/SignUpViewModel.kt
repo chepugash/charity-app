@@ -7,15 +7,11 @@ import com.example.common.base.BaseViewModel
 import com.example.sign.SignRouter
 import com.example.sign.domain.entity.ApiResult
 import com.example.sign.domain.entity.SignUserEntity
-import com.example.sign.domain.usecase.CreateUserDocumentUseCase
 import com.example.sign.domain.usecase.SignUpUseCase
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.protobuf.Api
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
     private val signUpUseCase: SignUpUseCase,
-    private val createUserDocumentUseCase: CreateUserDocumentUseCase,
     private val router: SignRouter
 ): BaseViewModel() {
 

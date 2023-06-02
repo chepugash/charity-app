@@ -111,15 +111,6 @@
 
             <include layout="@layout/horizontal_line" />
 
-            <TextView
-                android:id="@+id/tv_statistic"
-                style="@style/CommonTextStyle"
-                android:layout_height="@dimen/step14"
-                android:gravity="center"
-                android:text="@string/features_profile_statistics" />
-
-            <include layout="@layout/horizontal_line" />
-
             <LinearLayout
                 android:id="@+id/l_change_password"
                 android:layout_width="match_parent"

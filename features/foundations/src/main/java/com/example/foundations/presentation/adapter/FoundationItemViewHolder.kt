@@ -13,7 +13,7 @@ class FoundationItemViewHolder(
     fun onBind(foundation: FoundationEntity) {
         with(binding) {
             tvName.text = foundation.name
-            ivPreview.load("http://192.168.21.30:9999/image?name=${foundation.image}") {
+            ivPreview.load("http://192.168.144.30:9999/image?name=${foundation.image}") {
                 crossfade(true)
             }
             root.setOnClickListener {

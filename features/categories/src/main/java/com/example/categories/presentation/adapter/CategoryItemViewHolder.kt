@@ -13,7 +13,7 @@ class CategoryItemViewHolder(
     fun onBind(category: CategoryEntity) {
         with(binding) {
             tvName.text = category.name
-            ivPreview.load("http://192.168.21.30:9999/image?name=${category.image}") {
+            ivPreview.load("http://192.168.144.30:9999/image?name=${category.image}") {
                 crossfade(true)
             }
             root.setOnClickListener {

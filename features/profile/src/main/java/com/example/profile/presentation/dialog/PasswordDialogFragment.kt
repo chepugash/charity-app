@@ -19,7 +19,7 @@ class PasswordDialogFragment : BaseDialogFragment<ProfileViewModel>() {
         return AlertDialog.Builder(requireContext())
             .setCancelable(true)
             .setView(binding.root)
-            .setTitle(R.string.feature_profile_change_name)
+            .setTitle(R.string.features_profile_change_password)
             .setPositiveButton(R.string.feature_profile_change) { _, _ ->
                 viewModel.changePassword(binding.etPassword.text.toString())
             }

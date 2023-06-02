@@ -133,7 +133,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 tvInfo.text = description
                 tvPhone.text = phone
                 tvWebsite.text = website
-                ivPreview.load("http://192.168.21.30:9999/image?name=${image}") {
+                ivPreview.load("http://192.168.144.30:9999/image?name=${image}") {
                     crossfade(true)
                 }
             }

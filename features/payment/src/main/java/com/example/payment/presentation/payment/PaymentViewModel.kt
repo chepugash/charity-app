@@ -8,14 +8,11 @@ import com.example.payment.PaymentRouter
 import com.example.payment.domain.entity.TransactionEntity
 import com.example.payment.domain.usecase.AddToHistoryUseCase
 import com.example.payment.domain.usecase.CreateHistoryDocumentUseCase
-import com.example.payment.domain.usecase.GetUserUseCase
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
 import java.util.Date
 
 class PaymentViewModel(
-    private val getUserUseCase: GetUserUseCase,
     private val createHistoryDocumentUseCase: CreateHistoryDocumentUseCase,
     private val addToHistoryUseCase: AddToHistoryUseCase,
     private val router: PaymentRouter

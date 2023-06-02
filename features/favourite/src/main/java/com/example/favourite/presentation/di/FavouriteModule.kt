@@ -8,7 +8,6 @@ import com.example.common.di.viewmodel.ViewModelModule
 import com.example.favourite.FavouriteRouter
 import com.example.favourite.domain.usecase.CreateUserDocumentUseCase
 import com.example.favourite.domain.usecase.GetFavouriteUseCase
-import com.example.favourite.domain.usecase.GetUserUseCase
 import com.example.favourite.presentation.FavouriteViewModel
 import dagger.Module
 import dagger.Provides
@@ -33,12 +32,10 @@ class FavouriteModule {
     @IntoMap
     @ViewModelKey(FavouriteViewModel::class)
     fun provideFavouriteViewModel(
-        getUserUseCase: GetUserUseCase,
         createUserDocumentUseCase: CreateUserDocumentUseCase,
         getFavouriteUseCase: GetFavouriteUseCase,
         router: FavouriteRouter
     ): ViewModel = FavouriteViewModel(
-        getUserUseCase,
         createUserDocumentUseCase,
         getFavouriteUseCase,
         router

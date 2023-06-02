@@ -1,6 +1,5 @@
 package com.example.profile.presentation
 
-import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,7 +12,6 @@ import com.example.profile.domain.usecase.ChangePasswordUseCase
 import com.example.profile.domain.usecase.DeleteProfileUseCase
 import com.example.profile.domain.usecase.GetUserUseCase
 import com.example.profile.domain.usecase.SignOutUseCase
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(

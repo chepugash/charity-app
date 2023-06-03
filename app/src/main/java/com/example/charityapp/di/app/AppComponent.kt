@@ -5,6 +5,7 @@ import com.example.charityapp.di.deps.ComponentDependenciesModule
 import com.example.charityapp.di.deps.ComponentHolderModule
 import com.example.charityapp.di.main.MainDependencies
 import com.example.common.di.CommonApi
+import com.example.common.di.modules.AppDatabaseModule
 import com.example.common.di.modules.CommonModule
 import com.example.common.di.modules.NetworkModule
 import com.example.common.di.scope.ApplicationScope
@@ -18,6 +19,7 @@ import dagger.Component
         AppModule::class,
         CommonModule::class,
         NetworkModule::class,
+        AppDatabaseModule::class,
         NavigationModule::class,
         ComponentHolderModule::class,
         ComponentDependenciesModule::class,

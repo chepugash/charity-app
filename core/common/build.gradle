@@ -42,6 +42,12 @@ dependencies {
     implementation firebaseFirestoreDep
     implementation firebaseAuthDep
 
+    // region room
+    implementation roomRuntime
+    implementation roomKtx
+    kapt roomCompiler
+    // endregion
+
     // region dagger2
     implementation daggerDep
     kapt daggerKaptDep

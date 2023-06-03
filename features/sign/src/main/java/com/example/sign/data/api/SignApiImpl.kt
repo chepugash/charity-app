@@ -16,14 +16,14 @@ class SignApiImpl @Inject constructor(
     ): Task<AuthResult> = auth.createUserWithEmailAndPassword(
         userEntity.email,
         userEntity.password
-        )
+    )
 
     override suspend fun signIn(
         userEntity: SignUserEntity
     ): Task<AuthResult> = auth.signInWithEmailAndPassword(
         userEntity.email,
         userEntity.password
-        )
+    )
 
     override suspend fun getUser(): FirebaseUser? = auth.currentUser
 }

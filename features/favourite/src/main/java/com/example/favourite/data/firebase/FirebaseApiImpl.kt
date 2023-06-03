@@ -1,5 +1,6 @@
 package com.example.favourite.data.firebase
 
+import com.example.favourite.data.mapper.toFoundationEntityList
 import com.example.favourite.domain.entity.FoundationEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +19,12 @@ class FirebaseApiImpl  @Inject constructor(
         .collection(COLLECTION)
         .document(auth.currentUser?.uid.toString())
         .set(hashMapOf(FIELD to arrayListOf<FoundationEntity>()))
+
+//    override suspend fun getFavourite(): ArrayList<HashMap<String, out Any>>? {
+//        return firestore.collection(COLLECTION)
+//            .document(getUser()?.uid.toString()).get().result
+//            .get(FIELD) as? ArrayList<HashMap<String, out Any>>
+//    }
 
     override suspend fun getFavourite(): Task<ArrayList<FoundationEntity>> = firestore.collection(COLLECTION)
         .document(getUser()?.uid.toString())

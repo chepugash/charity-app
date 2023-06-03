@@ -4,10 +4,8 @@ import com.example.foundation_info.domain.entity.FoundationEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
 import javax.inject.Inject
 
 class FirebaseApiImpl @Inject constructor(
@@ -20,8 +18,8 @@ class FirebaseApiImpl @Inject constructor(
     override suspend fun addToFavourite(
         foundationEntity: FoundationEntity
     ): Task<Void> = firestore.collection(COLLECTION)
-            .document(getUser()?.uid.toString())
-            .update(FIELD, FieldValue.arrayUnion(foundationEntity))
+        .document(getUser()?.uid.toString())
+        .update(FIELD, FieldValue.arrayUnion(foundationEntity))
 
     override suspend fun removeFromFavourite(
         foundationEntity: FoundationEntity
@@ -35,22 +33,22 @@ class FirebaseApiImpl @Inject constructor(
         .set(hashMapOf(FIELD to arrayListOf<FoundationEntity>()))
 
     override suspend fun getFavourite(): Task<ArrayList<Long>> = firestore.collection(COLLECTION)
-            .document(getUser()?.uid.toString())
-            .get().continueWith { task ->
-                val favourite = ArrayList<Long>()
-                    if (task.isSuccessful) {
-                        val document = task.result
-                        if (document.exists()) {
-                            val result = document.get(FIELD) as? ArrayList<HashMap<String, Any>>
-                            if (result != null) {
-                                for (item in result) {
-                                    favourite.add(item["id"] as Long)
-                                }
-                            }
+        .document(getUser()?.uid.toString())
+        .get().continueWith { task ->
+            val favourite = ArrayList<Long>()
+            if (task.isSuccessful) {
+                val document = task.result
+                if (document.exists()) {
+                    val result = document.get(FIELD) as? ArrayList<HashMap<String, Any>>
+                    if (result != null) {
+                        for (item in result) {
+                            favourite.add(item["id"] as Long)
                         }
                     }
-                    favourite
+                }
             }
+            favourite
+        }
 
     companion object {
         private const val COLLECTION = "users"

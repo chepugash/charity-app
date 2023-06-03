@@ -7,10 +7,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 
-class FirebaseApiImpl @Inject constructor(
+class HistoryApiImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore
-) : FirebaseApi {
+) : HistoryApi {
 
     override suspend fun getHistory(): Task<ArrayList<TransactionEntity>> =
         firestore.collection(COLLECTION)

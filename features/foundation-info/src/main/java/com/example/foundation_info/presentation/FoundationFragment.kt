@@ -22,7 +22,11 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private lateinit var binding: FragmentFoundationBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentFoundationBinding.inflate(inflater, container, false)
         return binding.root
     }

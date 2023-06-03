@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
 import com.example.common.utils.showSnackbar
-import com.example.history.data.firebase.FirebaseApi
+import com.example.history.data.firebase.HistoryApi
 import com.example.history.databinding.FragmentHistoryBinding
 import com.example.history.di.HistoryFeatureComponent
 import com.example.history.presentation.adapter.SpaceItemDecorator
@@ -47,7 +47,7 @@ class HistoryFragment : BaseFragment<HistoryViewModel>() {
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<HistoryFeatureComponent>(this, FirebaseApi::class.java)
+        FeatureUtils.getFeature<HistoryFeatureComponent>(this, HistoryApi::class.java)
             .historyComponentFactory()
             .create(this)
             .inject(this)

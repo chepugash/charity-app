@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
-import com.example.foundation_info.domain.entity.UserEntity
 import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
 import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
@@ -103,14 +102,15 @@ class FoundationViewModel(
                         } else {
                             val e = it.exception
                             if (e is FirebaseFirestoreException
-                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND
+                            ) {
                                 createUserDocument(foundationEntity)
                             } else {
                                 _error.value = it.exception
                             }
                         }
                     }
-            } catch(error: Throwable) {
+            } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false
@@ -130,7 +130,7 @@ class FoundationViewModel(
                             _error.value = it.exception
                         }
                     }
-            } catch(error: Throwable) {
+            } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false

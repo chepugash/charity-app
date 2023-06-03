@@ -36,5 +36,5 @@ interface FoundationFeatureComponent {
             CommonApi::class
         ]
     )
-    interface FoundationFeatureDependenciesComponent: FoundationFeatureDependencies
+    interface FoundationFeatureDependenciesComponent : FoundationFeatureDependencies
 }

@@ -5,6 +5,7 @@ import com.example.common.data.storage.entity.DbFoundationEntity
 import com.example.favourite.data.favourite.FavouriteApi
 import com.example.favourite.data.firebase.FirebaseApi
 import com.example.favourite.data.mapper.toFoundationEntityList
+import com.example.favourite.data.mapper.toFoundationList
 import com.example.favourite.data.mapper.toUserEntity
 import com.example.favourite.domain.entity.FoundationEntity
 import com.example.favourite.domain.entity.UserEntity
@@ -23,7 +24,8 @@ class FavouriteRepositoryImpl @Inject constructor(
 
     override suspend fun createUserDocument(): Task<Void> = firebaseApi.createUserDocument()
 
-    override suspend fun getFavourite(): Task<ArrayList<FoundationEntity>> = firebaseApi.getFavourite()
+    override suspend fun getFavourite(): Flow<List<FoundationEntity>> =
+        firebaseApi.getFavourite().toFoundationList()
 
     override fun getFavouriteFromDb(): Flow<List<FoundationEntity>> {
         return foundationDao.getAll().toFoundationEntityList()

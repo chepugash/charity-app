@@ -24,6 +24,9 @@ private fun HashMap<String, out Any>.toFoundationEntity(): FoundationEntity = Fo
     image = get("image") as String
 )
 
-fun ArrayList<HashMap<String, out Any>>.toFoundationEntityList(): ArrayList<FoundationEntity> = map {
-    it.toFoundationEntity()
-} as ArrayList<FoundationEntity>
+fun Flow<List<HashMap<String, out Any>>>.toFoundationList(): Flow<List<FoundationEntity>>
+    = map { list ->
+        list.map { entity ->
+            entity.toFoundationEntity()
+        }
+    }

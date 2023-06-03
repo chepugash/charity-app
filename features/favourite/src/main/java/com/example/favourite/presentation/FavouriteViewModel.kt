@@ -5,10 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.favourite.FavouriteRouter
+import com.example.favourite.data.mapper.toFoundationEntityList
 import com.example.favourite.domain.entity.FoundationEntity
 import com.example.favourite.domain.usecase.CreateUserDocumentUseCase
 import com.example.favourite.domain.usecase.GetFavouriteUseCase
 import com.google.firebase.firestore.FirebaseFirestoreException
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class FavouriteViewModel(
@@ -46,22 +50,37 @@ class FavouriteViewModel(
         }
     }
 
+//    fun getFavourite() {
+//        viewModelScope.launch {
+//            try {
+//                _loading.value = true
+//                getFavouriteUseCase().addOnCompleteListener {
+//                    if (it.isSuccessful) {
+//                        it.exception.let {e ->
+//                            if (e is FirebaseFirestoreException
+//                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+//                                createUserDocument()
+//                            }
+//                        }
+//                        _foundationList.value = it.result
+//                    } else {
+//                        _error.value = it.exception
+//                    }
+//                }
+//            } catch (error: Throwable) {
+//                _error.value = error
+//            } finally {
+//                _loading.value = false
+//            }
+//        }
+//    }
+
     fun getFavourite() {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                getFavouriteUseCase().addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        it.exception.let {e ->
-                            if (e is FirebaseFirestoreException
-                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
-                                createUserDocument()
-                            }
-                        }
-                        _foundationList.value = it.result
-                    } else {
-                        _error.value = it.exception
-                    }
+                getFavouriteUseCase().collect { list ->
+                    _foundationList.value = list
                 }
             } catch (error: Throwable) {
                 _error.value = error

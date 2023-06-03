@@ -90,6 +90,7 @@ class NoUserFragment : BaseFragment<NoUserViewModel>() {
         with(binding) {
             loading.isVisible = flag
             ivUser.isVisible = !flag
+            tvHeader.isVisible = !flag
             tvSignUp.isVisible = !flag
             tvSignIn.isVisible = !flag
         }

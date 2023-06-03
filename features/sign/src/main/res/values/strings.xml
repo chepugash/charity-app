@@ -1,5 +1,4 @@
 <resources>
-    <string name="feature_sign_app_name">CharityApp</string>
     <string name="feature_sign_create_account">Создайте аккаунт</string>
     <string name="feature_sign_email">Email</string>
     <string name="feature_sign_password">Пароль</string>

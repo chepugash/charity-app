@@ -69,18 +69,25 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     override fun subscribe(viewModel: CategoriesViewModel) {
         with(viewModel) {
             categoryList.observe(viewLifecycleOwner) { list ->
-                if (list == null) return@observe
+                val flag = (list != null)
+                showContent(flag)
+                showLoading(!flag)
+                showError(!flag)
                 adapter.submitList(list)
                 binding.rvCategories.run {
                     adapter = this@CategoriesFragment.adapter
                 }
             }
             error.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showError(it)
+                val flag = (it != null)
+                showError(flag)
+                showLoading(!flag)
+                showContent(!flag)
             }
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
+                showError(!it)
+                showContent(!it)
             }
         }
     }
@@ -88,8 +95,15 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     private fun showLoading(flag: Boolean) {
         with(binding) {
             loading.isVisible = flag
-            rvCategories.isVisible = !flag
         }
+    }
+
+    private fun showError(flag: Boolean) {
+        binding.lError.isVisible = flag
+    }
+
+    private fun showContent(flag: Boolean) {
+        binding.rvCategories.isVisible = flag
     }
 
     private fun getCategories() {

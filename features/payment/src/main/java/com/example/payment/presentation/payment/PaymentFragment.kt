@@ -72,8 +72,8 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-                loading.isVisible = flag
-                content.isVisible = !flag
+            loading.isVisible = flag
+            lContent.isVisible = !flag
         }
     }
 

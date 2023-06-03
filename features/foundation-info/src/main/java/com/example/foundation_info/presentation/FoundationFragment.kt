@@ -36,9 +36,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
         subscribe(viewModel)
 
-        arguments?.getLong(ARG_NAME)?.let {
-            getFoundation(it)
-        }
+        getFoundation()
 
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
@@ -46,12 +44,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
             }
             toolbar.ivFavourite.setOnClickListener {
 
-            }
-            tvPhone.setOnClickListener {
-                makeCall(tvPhone.text.toString())
-            }
-            tvWebsite.setOnClickListener {
-                makeSearch(tvWebsite.text.toString())
             }
             btnDonate.btnSubmit.setOnClickListener {
 
@@ -92,8 +84,10 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.goBack()
     }
 
-    private fun getFoundation(foundationId: Long) {
-        viewModel.getFoundation(foundationId)
+    private fun getFoundation() {
+        arguments?.getLong(ARG_NAME)?.let {
+            viewModel.getFoundation(it)
+        }
     }
 
     private fun isFavouriteChanged(foundationEntity: FoundationEntity) {
@@ -117,16 +111,9 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     }
 
     private fun showLoading(flag: Boolean) {
-        with(binding) {
-            loading.isVisible = flag
-            content.isVisible = !flag
-
-        }
+        binding.loading.isVisible = flag
+        binding.content.isVisible = !flag
     }
-
-//    private fun showError(error: Throwable) {
-//        binding.root.showSnackbar(error.message ?: "Error")
-//    }
 
     private fun showError(flag: Boolean) {
         binding.lError.isVisible = flag
@@ -149,18 +136,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 }
             }
         }
-    }
-
-    private fun makeCall(phone: String) {
-        startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone")))
-    }
-
-    private fun makeSearch(url: String) {
-        val intent = Intent().apply {
-            action = Intent.ACTION_WEB_SEARCH
-            putExtra(SearchManager.QUERY, url)
-        }
-        startActivity(intent)
     }
 
     companion object {

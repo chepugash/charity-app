@@ -23,6 +23,6 @@
     <include
         android:id="@+id/l_error"
         layout="@layout/layout_error"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </LinearLayout>

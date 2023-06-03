@@ -2,7 +2,9 @@
 <resources>
     <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_header_2">20sp</dimen>
     <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_step">2sp</dimen>
 
     <dimen name="step1">4dp</dimen>
     <dimen name="step2">8dp</dimen>

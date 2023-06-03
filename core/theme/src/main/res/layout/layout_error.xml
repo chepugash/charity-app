@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/l_er"
     android:orientation="vertical">
 
     <include layout="@layout/space" />
@@ -28,5 +29,4 @@
         android:text="@string/try_again" />
 
     <include layout="@layout/space" />
-
 </LinearLayout>

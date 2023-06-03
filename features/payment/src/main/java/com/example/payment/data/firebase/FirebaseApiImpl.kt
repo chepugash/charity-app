@@ -16,9 +16,9 @@ class FirebaseApiImpl @Inject constructor(
     override suspend fun getUser(): FirebaseUser? = auth.currentUser
 
     override suspend fun createHistoryDocument(): Task<Void> = firestore
-    .collection(COLLECTION)
-    .document(auth.currentUser?.uid.toString())
-    .set(hashMapOf(FIELD to arrayListOf<FirebaseTransactionEntity>()))
+        .collection(COLLECTION)
+        .document(auth.currentUser?.uid.toString())
+        .set(hashMapOf(FIELD to arrayListOf<FirebaseTransactionEntity>()))
 
     override suspend fun addToHistory(
         firebaseTransactionEntity: FirebaseTransactionEntity

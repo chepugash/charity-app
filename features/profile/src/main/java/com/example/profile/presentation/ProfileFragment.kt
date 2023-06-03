@@ -43,7 +43,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             lDeleteProfile.setOnClickListener {
                 onDelete()
             }
-            ivSignOut.setOnClickListener {
+            toolbar.ivSignOut.setOnClickListener {
                 onSignOut()
             }
         }

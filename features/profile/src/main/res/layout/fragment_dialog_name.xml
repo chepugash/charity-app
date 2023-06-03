@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="@string/features_profile_name">
+        android:hint="@string/feature_profile_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"

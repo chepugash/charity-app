@@ -7,8 +7,7 @@ import com.example.favourite.domain.entity.FoundationEntity
 import com.example.theme.R
 
 class FoundationItemViewHolder(
-    private val binding: ItemFoundationBinding,
-    private val onFoundationClick: (Long) -> Unit
+    val binding: ItemFoundationBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(foundation: FoundationEntity) {
@@ -18,9 +17,6 @@ class FoundationItemViewHolder(
                 crossfade(true)
                 crossfade(DURATION)
                 placeholder(R.drawable.ic_photo)
-            }
-            root.setOnClickListener {
-                onFoundationClick(foundation.id)
             }
         }
     }

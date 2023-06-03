@@ -52,12 +52,13 @@ class FavouriteViewModel(
                 _loading.value = true
                 getFavouriteUseCase().addOnCompleteListener {
                     if (it.isSuccessful) {
-                        _foundationList.value = it.result
-                        val e = it.exception
-                        if (e is FirebaseFirestoreException
-                            && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
-                            createUserDocument()
+                        it.exception.let {e ->
+                            if (e is FirebaseFirestoreException
+                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+                                createUserDocument()
+                            }
                         }
+                        _foundationList.value = it.result
                     } else {
                         _error.value = it.exception
                     }

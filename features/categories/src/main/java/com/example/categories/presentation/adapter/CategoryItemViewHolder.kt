@@ -7,8 +7,7 @@ import com.example.categories.databinding.ItemCategoryBinding
 import com.example.categories.domain.entity.CategoryEntity
 
 class CategoryItemViewHolder(
-    private val binding: ItemCategoryBinding,
-    private val onCategoryClick: (Int) -> Unit
+    val binding: ItemCategoryBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(category: CategoryEntity) {
@@ -18,9 +17,6 @@ class CategoryItemViewHolder(
                 crossfade(true)
                 crossfade(DURATION)
                 placeholder(R.drawable.ic_photo)
-            }
-            root.setOnClickListener {
-                onCategoryClick(category.id)
             }
         }
     }

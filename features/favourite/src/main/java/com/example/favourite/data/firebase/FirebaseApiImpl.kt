@@ -20,12 +20,6 @@ class FirebaseApiImpl  @Inject constructor(
         .document(auth.currentUser?.uid.toString())
         .set(hashMapOf(FIELD to arrayListOf<FoundationEntity>()))
 
-//    override suspend fun getFavourite(): ArrayList<HashMap<String, out Any>>? {
-//        return firestore.collection(COLLECTION)
-//            .document(getUser()?.uid.toString()).get().result
-//            .get(FIELD) as? ArrayList<HashMap<String, out Any>>
-//    }
-
     override suspend fun getFavourite(): Task<ArrayList<FoundationEntity>> = firestore.collection(COLLECTION)
         .document(getUser()?.uid.toString())
         .get().continueWith { task ->

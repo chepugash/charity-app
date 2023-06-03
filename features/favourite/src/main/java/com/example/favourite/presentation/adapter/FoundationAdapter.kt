@@ -11,7 +11,7 @@ import com.example.favourite.domain.entity.FoundationEntity
 class FoundationAdapter(
     private val onFoundationClick: (Long) -> Unit
 ) : ListAdapter<FoundationEntity, RecyclerView.ViewHolder>(
-    object: DiffUtil.ItemCallback<FoundationEntity>() {
+    object : DiffUtil.ItemCallback<FoundationEntity>() {
         override fun areItemsTheSame(
             oldItem: FoundationEntity,
             newItem: FoundationEntity
@@ -31,9 +31,21 @@ class FoundationAdapter(
             LayoutInflater.from(parent.context),
             parent,
             false
-        ),
-        onFoundationClick = onFoundationClick
-    )
+        )
+    ).apply {
+        setupActions(this, this.binding, onFoundationClick)
+    }
+
+    private fun setupActions(
+        viewHolder: RecyclerView.ViewHolder,
+        binding: ItemFoundationBinding,
+        onFoundationClick: (Long) -> Unit
+    ) {
+        binding.root.setOnClickListener {
+            val foundationItem = getItem(viewHolder.adapterPosition)
+            onFoundationClick(foundationItem.id)
+        }
+    }
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,

@@ -31,9 +31,21 @@ class CategoryAdapter(
             LayoutInflater.from(parent.context),
             parent,
             false
-        ),
-        onCategoryClick = onCategoryClick
-    )
+        )
+    ).apply {
+        setupActions(this, this.binding, onCategoryClick)
+    }
+
+    private fun setupActions(
+        viewHolder: RecyclerView.ViewHolder,
+        binding: ItemCategoryBinding,
+        onCategoryClick: (Int) -> Unit
+    ) {
+        binding.root.setOnClickListener {
+            val categoryItem = getItem(viewHolder.adapterPosition)
+            onCategoryClick(categoryItem.id)
+        }
+    }
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,

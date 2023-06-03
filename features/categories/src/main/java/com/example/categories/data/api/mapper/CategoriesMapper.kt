@@ -7,7 +7,7 @@ import com.example.categories.domain.entity.CategoryEntity
 private fun CategoriesResponseItem.toCategoryEntity(): CategoryEntity = CategoryEntity(
     id = id,
     name = name,
-    image = image.src.substring(0, image.src.length - 4)
+    image = image.src.substringBefore(".")
 )
 
 fun CategoriesResponse.toCategoryEntityList(): List<CategoryEntity> = map {

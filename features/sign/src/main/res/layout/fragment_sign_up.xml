@@ -13,7 +13,7 @@
         <include
             android:id="@+id/loading"
             android:visibility="gone"
-            layout="@layout/fragment_loading" />
+            layout="@layout/layout_loading" />
 
         <TextView
             android:id="@+id/tv_create"

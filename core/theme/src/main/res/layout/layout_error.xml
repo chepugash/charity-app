@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/space" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/step30"
+        android:padding="@dimen/step4"
+        android:src="@drawable/error" />
+
+    <TextView
+        style="@style/LightTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/unexpected_error" />
+
+    <Button
+        android:id="@+id/btn_try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/step4"
+        android:text="@string/try_again" />
+
+    <include layout="@layout/space" />
+
+</LinearLayout>

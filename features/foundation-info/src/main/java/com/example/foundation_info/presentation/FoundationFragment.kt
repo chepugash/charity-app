@@ -80,8 +80,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 changeFavouriteMode(it, foundationEntity)
             }
             error.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showError(it)
+                showError(it != null)
             }
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
@@ -121,11 +120,17 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         with(binding) {
             loading.isVisible = flag
             content.isVisible = !flag
+
         }
     }
 
-    private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+//    private fun showError(error: Throwable) {
+//        binding.root.showSnackbar(error.message ?: "Error")
+//    }
+
+    private fun showError(flag: Boolean) {
+        binding.lError.isVisible = flag
+        binding.content.isVisible = !flag
     }
 
     private fun showViews(entity: FoundationEntity) {

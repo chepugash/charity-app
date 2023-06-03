@@ -37,6 +37,7 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
             }
+
         }
     }
 

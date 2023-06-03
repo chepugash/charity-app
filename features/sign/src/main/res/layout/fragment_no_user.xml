@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/loading"
-            layout="@layout/fragment_loading"
+            layout="@layout/layout_loading"
             tools:visibility="gone" />
 
         <include layout="@layout/space" />

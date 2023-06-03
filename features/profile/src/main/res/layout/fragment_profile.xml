@@ -144,5 +144,5 @@
 
     <include
         android:id="@+id/loading"
-        layout="@layout/fragment_loading" />
+        layout="@layout/layout_loading" />
 </LinearLayout>

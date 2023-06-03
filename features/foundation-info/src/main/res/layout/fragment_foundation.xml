@@ -9,6 +9,11 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_foundation" />
 
+    <include
+        android:id="@+id/l_error"
+        layout="@layout/layout_error"
+        android:visibility="gone" />
+
     <ScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -25,7 +30,7 @@
                 android:id="@+id/iv_preview"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/step30"
-                android:src="@color/white" />
+                android:src="@drawable/ic_photo" />
 
             <TextView
                 android:id="@+id/tv_info"
@@ -107,6 +112,6 @@
 
     <include
         android:id="@+id/loading"
-        layout="@layout/fragment_loading" />
+        layout="@layout/layout_loading" />
 
 </LinearLayout>

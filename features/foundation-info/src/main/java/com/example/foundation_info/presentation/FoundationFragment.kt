@@ -137,8 +137,10 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 tvInfo.text = description
                 tvPhone.text = phone
                 tvWebsite.text = website
-                ivPreview.load("http://192.168.144.30:9999/image?name=${image}") {
+                ivPreview.load(BASE_URL + image) {
                     crossfade(true)
+                    crossfade(DURATION)
+                    placeholder(com.example.theme.R.drawable.ic_photo)
                 }
             }
         }
@@ -158,5 +160,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     companion object {
         private const val ARG_NAME = "foundationId"
+        private const val DURATION = 200
+        private const val BASE_URL = "http://192.168.144.30:9999/image?name="
     }
 }

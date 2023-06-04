@@ -33,7 +33,11 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
         )
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -69,41 +73,29 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     override fun subscribe(viewModel: CategoriesViewModel) {
         with(viewModel) {
             categoryList.observe(viewLifecycleOwner) { list ->
-                val flag = (list != null)
-                showContent(flag)
-                showLoading(!flag)
-                showError(!flag)
+                if (list == null) return@observe
                 adapter.submitList(list)
                 binding.rvCategories.run {
                     adapter = this@CategoriesFragment.adapter
                 }
             }
             error.observe(viewLifecycleOwner) {
-                val flag = (it != null)
-                showError(flag)
-                showLoading(!flag)
-                showContent(!flag)
+                showError(it != null)
             }
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
-                showError(!it)
-                showContent(!it)
             }
         }
     }
 
     private fun showLoading(flag: Boolean) {
-        with(binding) {
-            loading.isVisible = flag
-        }
+        binding.loading.isVisible = flag
+        binding.rvCategories.isVisible = !flag
     }
 
     private fun showError(flag: Boolean) {
         binding.lError.isVisible = flag
-    }
-
-    private fun showContent(flag: Boolean) {
-        binding.rvCategories.isVisible = flag
+        binding.rvCategories.isVisible = !flag
     }
 
     private fun getCategories() {

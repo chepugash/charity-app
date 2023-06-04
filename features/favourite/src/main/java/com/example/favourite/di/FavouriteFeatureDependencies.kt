@@ -12,6 +12,4 @@ interface FavouriteFeatureDependencies {
     fun firebaseAuth(): FirebaseAuth
 
     fun firebaseFirestore(): FirebaseFirestore
-
-    fun foundationDao(): FoundationDao
 }

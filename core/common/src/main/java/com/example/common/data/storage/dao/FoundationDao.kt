@@ -18,4 +18,7 @@ interface FoundationDao {
 
     @Query("SELECT * FROM favorite_foundations")
     fun getAll(): Flow<List<DbFoundationEntity>>
+
+    @Query("SELECT * FROM favorite_foundations WHERE id = :id")
+    fun getFoundation(id: Long): Flow<DbFoundationEntity>
 }

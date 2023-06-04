@@ -1,4 +1,4 @@
-package com.example.foundation_info.data.api.firebase
+package com.example.foundation_info.data.api.firebase.mapper
 
 import com.example.foundation_info.domain.entity.UserEntity
 import com.google.firebase.auth.FirebaseUser

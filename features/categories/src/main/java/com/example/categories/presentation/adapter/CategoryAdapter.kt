@@ -11,7 +11,7 @@ import com.example.categories.domain.entity.CategoryEntity
 class CategoryAdapter(
     private val onCategoryClick: (Int) -> Unit
 ) : ListAdapter<CategoryEntity, RecyclerView.ViewHolder>(
-    object: DiffUtil.ItemCallback<CategoryEntity>() {
+    object : DiffUtil.ItemCallback<CategoryEntity>() {
         override fun areItemsTheSame(
             oldItem: CategoryEntity,
             newItem: CategoryEntity

@@ -11,5 +11,5 @@ interface FirebaseApi {
 
     suspend fun createUserDocument(): Task<Void>
 
-    suspend fun getFavourite(): Flow<List<HashMap<String, Any>>>
+    suspend fun getFavourite(): Task<ArrayList<FoundationEntity>>
 }

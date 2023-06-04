@@ -10,5 +10,5 @@ class GetFavouriteUseCase @Inject constructor(
     private val favouriteRepository: FavouriteRepository
 ) {
 
-    suspend operator fun invoke(): Flow<List<FoundationEntity>> = favouriteRepository.getFavourite()
+    suspend operator fun invoke(): Task<ArrayList<FoundationEntity>> = favouriteRepository.getFavourite()
 }

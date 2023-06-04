@@ -5,15 +5,9 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "favorite_foundations",
-    foreignKeys = [ForeignKey(
-        entity = DbUserEntity::class,
-        parentColumns = ["id"],
-        childColumns = ["user_id"],
-        onDelete = ForeignKey.CASCADE
-    )])
+@Entity(tableName = "favorite_foundations")
 data class DbFoundationEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey(autoGenerate = false) val id: Long,
     val name: String,
     val description: String,
     val phone: String,

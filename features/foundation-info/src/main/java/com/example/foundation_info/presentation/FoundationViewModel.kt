@@ -10,7 +10,6 @@ import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
 import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
-import com.example.foundation_info.domain.usecase.GetUserUseCase
 import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
 import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
@@ -18,7 +17,6 @@ import kotlinx.coroutines.launch
 class FoundationViewModel(
     private val getFoundationUseCase: GetFoundationUseCase,
     private val addToFavouriteUseCase: AddToFavouriteUseCase,
-    private val getUserUseCase: GetUserUseCase,
     private val removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
     private val getFavouriteUseCase: GetFavouriteUseCase,
     private val createUserDocumentUseCase: CreateUserDocumentUseCase,

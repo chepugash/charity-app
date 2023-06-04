@@ -20,12 +20,10 @@ class FavouriteFeatureModule {
     @FeatureScope
     fun provideFavouriteRepository(
         favouriteApi: FavouriteApi,
-        firebaseApi: FirebaseApi,
-        foundationDao: FoundationDao
+        firebaseApi: FirebaseApi
     ): FavouriteRepository = FavouriteRepositoryImpl(
         favouriteApi,
         firebaseApi,
-        foundationDao
     )
 
     @Provides

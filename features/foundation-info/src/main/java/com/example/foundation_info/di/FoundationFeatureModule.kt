@@ -19,8 +19,11 @@ class FoundationFeatureModule {
     @FeatureScope
     fun provideFoundationRepository(
         foundationApi: FoundationApi,
-        firebaseApi: FirebaseApi
-    ): FoundationRepository = FoundationRepositoryImpl(foundationApi, firebaseApi)
+        firebaseApi: FirebaseApi,
+    ): FoundationRepository = FoundationRepositoryImpl(
+        foundationApi,
+        firebaseApi
+    )
 
     @Provides
     @FeatureScope

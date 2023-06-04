@@ -1,8 +1,5 @@
 package com.example.foundation_info.presentation
 
-import android.app.SearchManager
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +8,6 @@ import androidx.core.view.isVisible
 import coil.load
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
 import com.example.foundation_info.R
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.databinding.FragmentFoundationBinding

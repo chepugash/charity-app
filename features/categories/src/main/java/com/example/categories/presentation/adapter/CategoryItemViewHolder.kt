@@ -2,9 +2,9 @@ package com.example.categories.presentation.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.theme.R
 import com.example.categories.databinding.ItemCategoryBinding
 import com.example.categories.domain.entity.CategoryEntity
+import com.example.theme.R
 
 class CategoryItemViewHolder(
     val binding: ItemCategoryBinding,

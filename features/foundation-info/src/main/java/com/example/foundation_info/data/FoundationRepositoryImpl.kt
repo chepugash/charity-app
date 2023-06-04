@@ -1,7 +1,7 @@
 package com.example.foundation_info.data
 
 import com.example.foundation_info.data.api.firebase.FirebaseApi
-import com.example.foundation_info.data.api.firebase.toFoundationUserEntity
+import com.example.foundation_info.data.api.firebase.mapper.toFoundationUserEntity
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.data.api.foundation.mapper.toFoundationEntity
 import com.example.foundation_info.domain.entity.FoundationEntity
@@ -12,12 +12,12 @@ import javax.inject.Inject
 
 class FoundationRepositoryImpl @Inject constructor(
     private val foundationApi: FoundationApi,
-    private val firebaseApi: FirebaseApi
+    private val firebaseApi: FirebaseApi,
 ) : FoundationRepository {
 
     override suspend fun getFoundation(
-        query: Long
-    ): FoundationEntity = foundationApi.getFoundation(query).toFoundationEntity()
+        foundationId: Long
+    ): FoundationEntity = foundationApi.getFoundation(foundationId).toFoundationEntity()
 
     override suspend fun getUser(): UserEntity? = firebaseApi.getUser()
         ?.toFoundationUserEntity()

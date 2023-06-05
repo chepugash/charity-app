@@ -64,9 +64,5 @@ dependencies {
     kotlinSerializationDep
     // endregion
 
-    testImplementation junitDep
-    androidTestImplementation extJunitDep
-    androidTestImplementation espressoDep
-
     api project(":core:theme")
 }

@@ -10,6 +10,6 @@ class CategoriesRepositoryImpl @Inject constructor(
     private val api: CategoriesApi
 ) : CategoriesRepository {
 
-    override suspend fun getCategories(): List<CategoryEntity> = api.getCategories()
-        .toCategoryEntityList()
+    override suspend fun getCategories(): List<CategoryEntity> =
+        api.getCategories().toCategoryEntityList()
 }

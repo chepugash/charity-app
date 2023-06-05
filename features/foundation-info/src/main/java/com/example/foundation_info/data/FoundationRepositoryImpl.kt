@@ -15,22 +15,21 @@ class FoundationRepositoryImpl @Inject constructor(
     private val firebaseApi: FirebaseApi,
 ) : FoundationRepository {
 
-    override suspend fun getFoundation(
-        foundationId: Long
-    ): FoundationEntity = foundationApi.getFoundation(foundationId).toFoundationEntity()
+    override suspend fun getFoundation(foundationId: Long): FoundationEntity =
+        foundationApi.getFoundation(foundationId).toFoundationEntity()
 
-    override suspend fun getUser(): UserEntity? = firebaseApi.getUser()
-        ?.toFoundationUserEntity()
+    override suspend fun getUser(): UserEntity? =
+        firebaseApi.getUser()?.toFoundationUserEntity()
 
-    override suspend fun addToFavourite(
-        foundationEntity: FoundationEntity
-    ): Task<Void> = firebaseApi.addToFavourite(foundationEntity)
+    override suspend fun addToFavourite(foundationEntity: FoundationEntity): Task<Void> =
+        firebaseApi.addToFavourite(foundationEntity)
 
-    override suspend fun removeFromFavourite(
-        foundationEntity: FoundationEntity
-    ): Task<Void> = firebaseApi.removeFromFavourite(foundationEntity)
+    override suspend fun removeFromFavourite(foundationEntity: FoundationEntity): Task<Void> =
+        firebaseApi.removeFromFavourite(foundationEntity)
 
-    override suspend fun createUserDocument(): Task<Void> = firebaseApi.createUserDocument()
+    override suspend fun createUserDocument(): Task<Void> =
+        firebaseApi.createUserDocument()
 
-    override suspend fun getFavourite(): Task<ArrayList<Long>> = firebaseApi.getFavourite()
+    override suspend fun getFavourite(): Task<ArrayList<Long>> =
+        firebaseApi.getFavourite()
 }

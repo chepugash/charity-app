@@ -44,6 +44,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
             btnDonate.btnSubmit.setOnClickListener {
 
             }
+            binding.lError
         }
     }
 

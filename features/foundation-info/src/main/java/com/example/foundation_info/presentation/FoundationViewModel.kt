@@ -55,7 +55,7 @@ class FoundationViewModel(
     private fun createUserDocument(foundationEntity: FoundationEntity) {
         viewModelScope.launch {
             try {
-                createUserDocumentUseCase.invoke()
+                createUserDocumentUseCase()
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             addToFavourite(foundationEntity)
@@ -76,7 +76,7 @@ class FoundationViewModel(
                 getFavouriteUseCase().addOnCompleteListener {
                     if (it.isSuccessful) {
                         val favourite = it.result as ArrayList<Long>
-                        _isFavourite.value = favourite.contains(foundationEntity.id.toLong())
+                        _isFavourite.value = favourite.contains(foundationEntity.id)
                     } else {
                         _error.value = it.exception
                     }

@@ -42,10 +42,6 @@ buildscript {
         firebaseBomVersion = '32.0.0'
         roomVersion = "2.5.1"
 
-        junitVersion = '4.13.2'
-        extJunitVersion = '1.1.5'
-        espressoVersion = '3.5.1'
-
         kotlinDep = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
         timberDep = "com.jakewharton.timber:timber:$timberVersion"
@@ -89,10 +85,6 @@ buildscript {
 
         daggerDep = "com.google.dagger:dagger:$daggerVersion"
         daggerKaptDep = "com.google.dagger:dagger-compiler:$daggerVersion"
-
-        junitDep = "junit:junit:$junitVersion"
-        extJunitDep = "androidx.test.ext:junit:$extJunitVersion"
-        espressoDep = "androidx.test.espresso:espresso-core:$espressoVersion"
     }
 }
 

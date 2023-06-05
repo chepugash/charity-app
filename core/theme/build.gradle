@@ -36,8 +36,4 @@ dependencies {
     implementation androidDep
     implementation materialDep
     implementation fragmentDep
-
-    testImplementation junitDep
-    androidTestImplementation extJunitDep
-    androidTestImplementation espressoDep
 }

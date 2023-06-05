@@ -9,7 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 import com.example.profile.data.api.ProfileApi
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.di.ProfileFeatureComponent
@@ -19,7 +19,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     private lateinit var binding: FragmentProfileBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -127,11 +131,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        binding.root.showSnackbar(message)
+        binding.root.showToast(message)
     }
 
     private fun showLoading(flag: Boolean) {

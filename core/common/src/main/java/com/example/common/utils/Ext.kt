@@ -16,40 +16,24 @@ fun Activity.showShortToast(@StringRes msg: Int) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
 
-fun Activity.setBarColorBackground(colorId: Int) {
-    window.statusBarColor = ContextCompat.getColor(this, colorId)
-}
-
-fun <T> MutableLiveData<T>.setValueIfNew(newValue: T) {
-    if (this.value != newValue) value = newValue
-}
-
-fun <T> MutableLiveData<T>.postValueIfNew(newValue: T) {
-    if (this.value != newValue) postValue(newValue)
-}
-
 fun View.show() {
     this.visibility = View.VISIBLE
 }
 
 fun View.hide() {
-    this.visibility = View.INVISIBLE
-}
-
-fun View.gone() {
     this.visibility = View.GONE
 }
 
-fun View.showSnackbar(
+fun View.showToast(
     @StringRes message: Int,
-    duration: Int = Snackbar.LENGTH_SHORT
-) = Snackbar
-    .make(this, message, duration)
+    duration: Int = Toast.LENGTH_LONG
+) = Toast
+    .makeText(this.context, message, duration)
     .show()
 
-fun View.showSnackbar(
+fun View.showToast(
     message: CharSequence,
-    duration: Int = Snackbar.LENGTH_SHORT
-) = Snackbar
-    .make(this, message, duration)
+    duration: Int = Toast.LENGTH_LONG
+) = Toast
+    .makeText(this.context, message, duration)
     .show()

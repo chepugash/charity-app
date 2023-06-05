@@ -40,6 +40,7 @@ buildscript {
         timberVersion = '5.0.1'
         coilVersion = '2.3.0'
         firebaseBomVersion = '32.0.0'
+        roomVersion = "2.5.1"
 
         junitVersion = '4.13.2'
         extJunitVersion = '1.1.5'
@@ -49,9 +50,14 @@ buildscript {
 
         timberDep = "com.jakewharton.timber:timber:$timberVersion"
         coilDep = "io.coil-kt:coil:$coilVersion"
+
         firebaseBomDep = "com.google.firebase:firebase-bom:$firebaseBomVersion"
         firebaseFirestoreDep = "com.google.firebase:firebase-firestore-ktx"
         firebaseAuthDep = "com.google.firebase:firebase-auth-ktx"
+
+        roomRuntime = "androidx.room:room-runtime:$roomVersion"
+        roomKtx = "androidx.room:room-ktx:$roomVersion"
+        roomCompiler = "androidx.room:room-compiler:$roomVersion"
 
         coreDep = "androidx.core:core-ktx:$coreVersion"
         materialDep = "com.google.android.material:material:$materialVersion"

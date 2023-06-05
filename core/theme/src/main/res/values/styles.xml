@@ -15,6 +15,15 @@
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
+    <style name="Header2TextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_87</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_header_2</item>
+    </style>
+
     <style name="HeaderTextStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

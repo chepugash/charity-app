@@ -31,12 +31,8 @@ class HistoryViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                getHistoryUseCase().addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        _historyList.value = it.result
-                    } else {
-                        _error.value = it.exception
-                    }
+                getHistoryUseCase().collect { list ->
+                    _historyList.value = list
                 }
             } catch (error: Throwable) {
                 _error.value = error

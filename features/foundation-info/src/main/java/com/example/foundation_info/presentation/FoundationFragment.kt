@@ -1,8 +1,5 @@
 package com.example.foundation_info.presentation
 
-import android.app.SearchManager
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +8,6 @@ import androidx.core.view.isVisible
 import coil.load
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
 import com.example.foundation_info.R
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.databinding.FragmentFoundationBinding
@@ -22,7 +18,11 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     private lateinit var binding: FragmentFoundationBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentFoundationBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,9 +32,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
         subscribe(viewModel)
 
-        arguments?.getLong(ARG_NAME)?.let {
-            getFoundation(it)
-        }
+        getFoundation()
 
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
@@ -42,12 +40,6 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
             }
             toolbar.ivFavourite.setOnClickListener {
 
-            }
-            tvPhone.setOnClickListener {
-                makeCall(tvPhone.text.toString())
-            }
-            tvWebsite.setOnClickListener {
-                makeSearch(tvWebsite.text.toString())
             }
             btnDonate.btnSubmit.setOnClickListener {
 
@@ -76,8 +68,7 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 changeFavouriteMode(it, foundationEntity)
             }
             error.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showError(it)
+                showError(it != null)
             }
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
@@ -89,8 +80,10 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
         viewModel.goBack()
     }
 
-    private fun getFoundation(foundationId: Long) {
-        viewModel.getFoundation(foundationId)
+    private fun getFoundation() {
+        arguments?.getLong(ARG_NAME)?.let {
+            viewModel.getFoundation(it)
+        }
     }
 
     private fun isFavouriteChanged(foundationEntity: FoundationEntity) {
@@ -114,14 +107,13 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
     }
 
     private fun showLoading(flag: Boolean) {
-        with(binding) {
-            loading.isVisible = flag
-            content.isVisible = !flag
-        }
+        binding.loading.isVisible = flag
+        binding.content.isVisible = !flag
     }
 
-    private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+    private fun showError(flag: Boolean) {
+        binding.lError.isVisible = flag
+        binding.content.isVisible = !flag
     }
 
     private fun showViews(entity: FoundationEntity) {
@@ -133,26 +125,18 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
                 tvInfo.text = description
                 tvPhone.text = phone
                 tvWebsite.text = website
-                ivPreview.load("http://192.168.144.30:9999/image?name=${image}") {
+                ivPreview.load(BASE_URL + image) {
                     crossfade(true)
+                    crossfade(DURATION)
+                    placeholder(com.example.theme.R.drawable.ic_photo)
                 }
             }
         }
     }
 
-    private fun makeCall(phone: String) {
-        startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone")))
-    }
-
-    private fun makeSearch(url: String) {
-        val intent = Intent().apply {
-            action = Intent.ACTION_WEB_SEARCH
-            putExtra(SearchManager.QUERY, url)
-        }
-        startActivity(intent)
-    }
-
     companion object {
         private const val ARG_NAME = "foundationId"
+        private const val DURATION = 200
+        private const val BASE_URL = "http://192.168.144.30:9999/image?name="
     }
 }

@@ -1,10 +1,10 @@
 package com.example.history.di
 
 import com.example.common.di.scope.FeatureScope
-import com.example.history.data.FirebaseRepositoryImpl
-import com.example.history.data.firebase.FirebaseApi
-import com.example.history.data.firebase.FirebaseApiImpl
-import com.example.history.domain.repository.FirebaseRepository
+import com.example.history.data.HistoryRepositoryImpl
+import com.example.history.data.firebase.HistoryApi
+import com.example.history.data.firebase.HistoryApiImpl
+import com.example.history.domain.repository.HistoryRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -16,13 +16,13 @@ class HistoryFeatureModule {
     @Provides
     @FeatureScope
     fun provideFirebaseRepository(
-        firebaseApi: FirebaseApi
-    ): FirebaseRepository = FirebaseRepositoryImpl(firebaseApi)
+        historyApi: HistoryApi
+    ): HistoryRepository = HistoryRepositoryImpl(historyApi)
 
     @Provides
     @FeatureScope
     fun provideFirebaseApi(
         auth: FirebaseAuth,
         firestore: FirebaseFirestore,
-    ): FirebaseApi = FirebaseApiImpl(auth, firestore)
+    ): HistoryApi = HistoryApiImpl(auth, firestore)
 }

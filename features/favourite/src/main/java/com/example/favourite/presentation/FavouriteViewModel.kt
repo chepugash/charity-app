@@ -6,16 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.favourite.FavouriteRouter
 import com.example.favourite.domain.entity.FoundationEntity
-import com.example.favourite.domain.entity.UserEntity
-import com.example.favourite.domain.usecase.CreateUserDocumentUseCase
 import com.example.favourite.domain.usecase.GetFavouriteUseCase
-import com.example.favourite.domain.usecase.GetUserUseCase
-import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
 
 class FavouriteViewModel(
-    private val getUserUseCase: GetUserUseCase,
-    private val createUserDocumentUseCase: CreateUserDocumentUseCase,
     private val getFavouriteUseCase: GetFavouriteUseCase,
     private val router: FavouriteRouter
 ) : BaseViewModel() {
@@ -32,38 +26,12 @@ class FavouriteViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    private fun createUserDocument() {
-        viewModelScope.launch {
-            try {
-                createUserDocumentUseCase.invoke()
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            getFavourite()
-                        } else {
-                            _error.value = it.exception
-                        }
-                    }
-            } catch (error: Throwable) {
-                _error.value = error
-            }
-        }
-    }
-
     fun getFavourite() {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                getFavouriteUseCase().addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        _foundationList.value = it.result
-                        val e = it.exception
-                        if (e is FirebaseFirestoreException
-                            && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
-                            createUserDocument()
-                        }
-                    } else {
-                        _error.value = it.exception
-                    }
+                getFavouriteUseCase().collect { list ->
+                    _foundationList.value = list
                 }
             } catch (error: Throwable) {
                 _error.value = error

@@ -3,6 +3,7 @@ package com.example.charityapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
@@ -15,6 +16,7 @@ import com.example.charityapp.di.deps.findComponentDependencies
 import com.example.charityapp.di.main.MainComponent
 import com.example.charityapp.navigation.Navigator
 import com.example.common.base.BaseActivity
+import com.google.android.material.navigation.NavigationBarView.OnItemReselectedListener
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel>() {
@@ -74,6 +76,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
                     }
                     else -> false
                 }
+            }
+
+            bnvMain.setOnItemReselectedListener {
+                return@setOnItemReselectedListener
             }
         }
     }

@@ -13,10 +13,16 @@
 
         <include
             android:id="@+id/loading"
-            layout="@layout/fragment_loading"
+            layout="@layout/layout_loading"
             tools:visibility="gone" />
 
         <include layout="@layout/space" />
+
+        <TextView
+            android:id="@+id/tv_header"
+            style="@style/HeaderTextStyle"
+            android:layout_marginBottom="@dimen/step4"
+            android:text="@string/feature_sign_header" />
 
         <ImageView
             android:id="@+id/iv_user"
@@ -28,7 +34,6 @@
         <TextView
             android:id="@+id/tv_description"
             style="@style/LightTextStyle"
-            android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:text="@string/feature_sign_description" />
 
@@ -39,16 +44,14 @@
             style="@style/HyperlinkTextStyle"
             android:layout_gravity="center"
             android:layout_margin="@dimen/step4"
-            android:text="@string/features_sign_enter"
-            android:textColor="@color/blue_hyperlink" />
+            android:text="@string/feature_sign_enter" />
 
         <TextView
             android:id="@+id/tv_sign_up"
             style="@style/HyperlinkTextStyle"
             android:layout_gravity="center"
             android:layout_margin="@dimen/step4"
-            android:text="@string/features_sign_create_account_link"
-            android:textColor="@color/blue_hyperlink" />
+            android:text="@string/feature_sign_create_account_link" />
 
         <include layout="@layout/space" />
 

@@ -1,13 +1,12 @@
 package com.example.foundation_info.domain.usecase
 
-import com.example.foundation_info.domain.entity.FoundationEntity
-import com.example.foundation_info.domain.repository.FirebaseRepository
+import com.example.foundation_info.domain.repository.FoundationRepository
 import com.google.android.gms.tasks.Task
 import javax.inject.Inject
 
 class CreateUserDocumentUseCase @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val foundationRepository: FoundationRepository
 ) {
 
-    suspend operator fun invoke(): Task<Void> = firebaseRepository.createUserDocument()
+    suspend operator fun invoke(): Task<Void> = foundationRepository.createUserDocument()
 }

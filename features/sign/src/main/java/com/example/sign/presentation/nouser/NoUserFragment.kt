@@ -9,7 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 import com.example.sign.data.api.SignApi
 import com.example.sign.di.SignFeatureComponent
 import com.example.sign_up.databinding.FragmentNoUserBinding
@@ -18,7 +18,11 @@ class NoUserFragment : BaseFragment<NoUserViewModel>() {
 
     private lateinit var binding: FragmentNoUserBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentNoUserBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -90,12 +94,13 @@ class NoUserFragment : BaseFragment<NoUserViewModel>() {
         with(binding) {
             loading.isVisible = flag
             ivUser.isVisible = !flag
+            tvHeader.isVisible = !flag
             tvSignUp.isVisible = !flag
             tvSignIn.isVisible = !flag
         }
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 }

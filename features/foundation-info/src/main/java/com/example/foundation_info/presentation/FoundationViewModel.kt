@@ -6,12 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
-import com.example.foundation_info.domain.entity.UserEntity
 import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
 import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
-import com.example.foundation_info.domain.usecase.GetUserUseCase
 import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
 import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
@@ -19,7 +17,6 @@ import kotlinx.coroutines.launch
 class FoundationViewModel(
     private val getFoundationUseCase: GetFoundationUseCase,
     private val addToFavouriteUseCase: AddToFavouriteUseCase,
-    private val getUserUseCase: GetUserUseCase,
     private val removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
     private val getFavouriteUseCase: GetFavouriteUseCase,
     private val createUserDocumentUseCase: CreateUserDocumentUseCase,
@@ -103,14 +100,15 @@ class FoundationViewModel(
                         } else {
                             val e = it.exception
                             if (e is FirebaseFirestoreException
-                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND
+                            ) {
                                 createUserDocument(foundationEntity)
                             } else {
                                 _error.value = it.exception
                             }
                         }
                     }
-            } catch(error: Throwable) {
+            } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false
@@ -130,7 +128,7 @@ class FoundationViewModel(
                             _error.value = it.exception
                         }
                     }
-            } catch(error: Throwable) {
+            } catch (error: Throwable) {
                 _error.value = error
             } finally {
                 _loading.value = false

@@ -31,7 +31,7 @@ class SignInViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                signInUseCase.invoke(
+                signInUseCase(
                     SignUserEntity(email, password)
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {

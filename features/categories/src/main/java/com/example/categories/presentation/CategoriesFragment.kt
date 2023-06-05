@@ -14,7 +14,7 @@ import com.example.categories.presentation.adapter.CategoryAdapter
 import com.example.categories.presentation.adapter.SpaceItemDecorator
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 
 class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
 
@@ -33,7 +33,11 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
         )
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -76,8 +80,7 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
                 }
             }
             error.observe(viewLifecycleOwner) {
-                if (it == null) return@observe
-                showError(it)
+                showError(it != null)
             }
             loading.observe(viewLifecycleOwner) {
                 showLoading(it)
@@ -86,10 +89,13 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     }
 
     private fun showLoading(flag: Boolean) {
-        with(binding) {
-            loading.isVisible = flag
-            rvCategories.isVisible = !flag
-        }
+        binding.loading.isVisible = flag
+        binding.rvCategories.isVisible = !flag
+    }
+
+    private fun showError(flag: Boolean) {
+        binding.lError.isVisible = flag
+        binding.rvCategories.isVisible = !flag
     }
 
     private fun getCategories() {
@@ -101,6 +107,6 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 }

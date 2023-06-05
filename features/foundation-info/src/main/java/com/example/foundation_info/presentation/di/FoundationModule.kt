@@ -10,7 +10,6 @@ import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
 import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
-import com.example.foundation_info.domain.usecase.GetUserUseCase
 import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
 import com.example.foundation_info.presentation.FoundationViewModel
 import dagger.Module
@@ -38,7 +37,6 @@ class FoundationModule {
     fun provideFoundationViewModel(
         getFoundationUseCase: GetFoundationUseCase,
         addToFavouriteUseCase: AddToFavouriteUseCase,
-        getUserUseCase: GetUserUseCase,
         removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
         getFavouriteUseCase: GetFavouriteUseCase,
         createUserDocumentUseCase: CreateUserDocumentUseCase,
@@ -46,7 +44,6 @@ class FoundationModule {
     ): ViewModel = FoundationViewModel(
         getFoundationUseCase,
         addToFavouriteUseCase,
-        getUserUseCase,
         removeFromFavouriteUseCase,
         getFavouriteUseCase,
         createUserDocumentUseCase,

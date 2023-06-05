@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 import com.example.sign.data.api.SignApi
 import com.example.sign.di.SignFeatureComponent
 import com.example.sign.domain.entity.ApiResult
@@ -17,7 +17,11 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
 
     private lateinit var binding: FragmentSignInBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -56,6 +60,7 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
                     is ApiResult.Success -> {
                         viewModel.launchCategories()
                     }
+
                     is ApiResult.Error -> {
                         showError(it.message)
                     }
@@ -89,10 +94,10 @@ class SignInFragment : BaseFragment<SignInViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 
     private fun showError(message: String) {
-        binding.root.showSnackbar(message)
+        binding.root.showToast(message)
     }
 }

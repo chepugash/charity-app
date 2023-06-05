@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
+        <item name="fontFamily">@font/rubik</item>
     </style>
 </resources>

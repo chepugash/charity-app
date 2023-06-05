@@ -22,6 +22,7 @@ class SignFeatureModule {
     @Provides
     @FeatureScope
     fun provideSignApi(
-        auth: FirebaseAuth
-    ): SignApi = SignApiImpl(auth)
+        auth: FirebaseAuth,
+        firestore: FirebaseFirestore
+    ): SignApi = SignApiImpl(auth, firestore)
 }

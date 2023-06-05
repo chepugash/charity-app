@@ -9,9 +9,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 import com.example.favourite.data.favourite.FavouriteApi
-import com.example.favourite.data.firebase.FirebaseApi
 import com.example.favourite.databinding.FragmentFavouriteBinding
 import com.example.favourite.di.FavouriteFeatureComponent
 import com.example.favourite.presentation.adapter.FoundationAdapter
@@ -34,7 +33,11 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
         )
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentFavouriteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -116,6 +119,6 @@ class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 }

@@ -7,7 +7,7 @@ import com.example.common.di.FeatureApiHolder
 import com.example.common.di.FeatureContainer
 import com.example.common.di.scope.ApplicationScope
 import com.example.favourite.data.favourite.FavouriteApi
-import com.example.history.data.firebase.FirebaseApi
+import com.example.history.data.firebase.HistoryApi
 import com.example.favourite.di.FavouriteFeatureHolder
 import com.example.foundation_info.data.api.foundation.FoundationApi
 import com.example.foundation_info.di.FoundationFeatureHolder
@@ -90,7 +90,7 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
-    @ClassKey(FirebaseApi::class)
+    @ClassKey(HistoryApi::class)
     @IntoMap
     fun provideHistoryFeatureHolder(
         historyFeatureHolder: HistoryFeatureHolder

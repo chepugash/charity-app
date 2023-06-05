@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showSnackbar
+import com.example.common.utils.showToast
 import com.example.payment.data.payment.PaymentApi
 import com.example.payment.databinding.FragmentPaymentBinding
 import com.example.payment.di.PaymentFeatureComponent
-import com.example.payment.domain.entity.TransactionEntity
 
 class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     private lateinit var binding: FragmentPaymentBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentPaymentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,6 +40,7 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
             }
+
         }
     }
 
@@ -71,13 +75,13 @@ class PaymentFragment : BaseFragment<PaymentViewModel>() {
 
     private fun showLoading(flag: Boolean) {
         with(binding) {
-                loading.isVisible = flag
-                content.isVisible = !flag
+            loading.isVisible = flag
+            lContent.isVisible = !flag
         }
     }
 
     private fun showError(error: Throwable) {
-        binding.root.showSnackbar(error.message ?: "Error")
+        binding.root.showToast(error.message ?: "Error")
     }
 
     companion object {

@@ -30,7 +30,9 @@ class CategoriesViewModel(
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _categoryList.value = getCategoriesUseCase.invoke()
+                getCategoriesUseCase().also {
+                    _categoryList.value = it
+                }
             } catch (error: Throwable) {
                 _error.value = error
             } finally {

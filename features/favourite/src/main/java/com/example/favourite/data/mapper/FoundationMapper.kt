@@ -12,7 +12,5 @@ private fun HashMap<String, out Any>.toFoundationEntity(): FoundationEntity = Fo
 
 fun Flow<List<HashMap<String, out Any>>>.toFoundationList(): Flow<List<FoundationEntity>>
     = map { list ->
-        list.map { entity ->
-            entity.toFoundationEntity()
-        }
+        list.map { entity -> entity.toFoundationEntity() }
     }

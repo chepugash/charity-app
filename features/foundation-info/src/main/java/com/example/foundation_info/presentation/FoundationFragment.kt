@@ -29,22 +29,13 @@ class FoundationFragment : BaseFragment<FoundationViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         subscribe(viewModel)
-
         getFoundation()
 
         binding.run {
             toolbar.tb.setNavigationOnClickListener {
                 goBack()
             }
-            toolbar.ivFavourite.setOnClickListener {
-
-            }
-            btnDonate.btnSubmit.setOnClickListener {
-
-            }
-            binding.lError
         }
     }
 

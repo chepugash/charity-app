@@ -18,8 +18,6 @@ class PaymentRepositoryImpl @Inject constructor(
     override suspend fun getUser(): UserEntity? = firebaseApi.getUser()
         ?.toUserEntity()
 
-    override suspend fun createHistoryDocument(): Task<Void> = firebaseApi.createHistoryDocument()
-
     override suspend fun addToHistory(
         transactionEntity: TransactionEntity
     ): Task<Void> = firebaseApi.addToHistory(transactionEntity.toFirebaseTransactionEntity())

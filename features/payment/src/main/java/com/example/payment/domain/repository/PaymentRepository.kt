@@ -8,7 +8,5 @@ interface PaymentRepository {
 
     suspend fun getUser(): UserEntity?
 
-    suspend fun createHistoryDocument(): Task<Void>
-
     suspend fun addToHistory(transactionEntity: TransactionEntity): Task<Void>
 }

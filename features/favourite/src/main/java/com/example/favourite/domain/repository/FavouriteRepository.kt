@@ -9,7 +9,5 @@ interface FavouriteRepository {
 
     suspend fun getUser(): UserEntity?
 
-    suspend fun createUserDocument(): Task<Void>
-
-    suspend fun getFavourite(): Task<ArrayList<FoundationEntity>>
+    suspend fun getFavourite(): Flow<List<FoundationEntity>>
 }

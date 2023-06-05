@@ -1,10 +1,11 @@
 package com.example.history.data.firebase
 
-import com.example.history.domain.entity.TransactionEntity
-import com.google.android.gms.tasks.Task
-import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class HistoryApiImpl @Inject constructor(
@@ -12,29 +13,22 @@ class HistoryApiImpl @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : HistoryApi {
 
-    override suspend fun getHistory(): Task<ArrayList<TransactionEntity>> =
-        firestore.collection(COLLECTION)
-            .document(auth.currentUser?.uid.toString())
-            .get().continueWith { task ->
-                val history = ArrayList<TransactionEntity>()
-                if (task.isSuccessful) {
-                    val document = task.result
-                    if (document.exists()) {
-                        val result = document.get(FIELD) as? ArrayList<HashMap<String, out Any>>
-                        if (result != null) {
-                            for (item in result) {
-                                history.add(FirebaseTransactionEntity(
-                                    date = item["date"] as Timestamp,
-                                    foundationId = item["foundationId"] as Long,
-                                    foundationName = item["foundationName"].toString(),
-                                    sum = item["sum"] as Long
-                                ).toTransactionEntity())
-                            }
-                        }
+    override suspend fun getUser(): FirebaseUser? = auth.currentUser
+
+    override suspend fun getHistory(): Flow<List<HashMap<String, Any>>> {
+        return callbackFlow {
+            val document = firestore.collection(COLLECTION)
+                .document(getUser()?.uid.toString())
+                .addSnapshotListener { snapshot, _ ->
+                    if (snapshot!!.exists()) {
+                        trySend(snapshot.get(FIELD) as List<HashMap<String, Any>>)
                     }
                 }
-                history
+            awaitClose {
+                document.remove()
             }
+        }
+    }
 
     companion object {
         private const val COLLECTION = "users"

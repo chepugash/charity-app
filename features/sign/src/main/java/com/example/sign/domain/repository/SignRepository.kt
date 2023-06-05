@@ -12,4 +12,6 @@ interface SignRepository {
     suspend fun signIn(signUserEntity: SignUserEntity): Task<AuthResult>
 
     suspend fun getUser(): SessionUserEntity?
+
+    suspend fun createUserDocument(): Task<Void>
 }

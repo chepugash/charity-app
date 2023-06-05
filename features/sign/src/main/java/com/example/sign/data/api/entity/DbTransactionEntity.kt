@@ -1,8 +1,8 @@
-package com.example.history.data.firebase
+package com.example.sign.data.api.entity
 
 import com.google.firebase.Timestamp
 
-data class FirebaseTransactionEntity(
+data class DbTransactionEntity(
     val date: Timestamp,
     val foundationId: Long,
     val foundationName: String,

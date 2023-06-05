@@ -10,7 +10,7 @@ import com.google.firebase.auth.AuthResult
 import javax.inject.Inject
 
 class SignRepositoryImpl @Inject constructor(
-    private val signApi: SignApi
+    private val signApi: SignApi,
 ) : SignRepository {
 
     override suspend fun signUp(
@@ -31,4 +31,5 @@ class SignRepositoryImpl @Inject constructor(
         return signApi.getUser()?.toSessionUserEntity()
     }
 
+    override suspend fun createUserDocument(): Task<Void> = signApi.createUserDocument()
 }

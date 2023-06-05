@@ -1,6 +1,5 @@
 package com.example.payment.data.firebase
 
-import com.example.payment.domain.entity.TransactionEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -14,11 +13,6 @@ class FirebaseApiImpl @Inject constructor(
 ) : FirebaseApi {
 
     override suspend fun getUser(): FirebaseUser? = auth.currentUser
-
-    override suspend fun createHistoryDocument(): Task<Void> = firestore
-        .collection(COLLECTION)
-        .document(auth.currentUser?.uid.toString())
-        .set(hashMapOf(FIELD to arrayListOf<FirebaseTransactionEntity>()))
 
     override suspend fun addToHistory(
         firebaseTransactionEntity: FirebaseTransactionEntity

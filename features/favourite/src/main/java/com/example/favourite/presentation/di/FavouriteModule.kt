@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.favourite.FavouriteRouter
-import com.example.favourite.domain.usecase.CreateUserDocumentUseCase
 import com.example.favourite.domain.usecase.GetFavouriteUseCase
 import com.example.favourite.presentation.FavouriteViewModel
 import dagger.Module
@@ -32,11 +31,9 @@ class FavouriteModule {
     @IntoMap
     @ViewModelKey(FavouriteViewModel::class)
     fun provideFavouriteViewModel(
-        createUserDocumentUseCase: CreateUserDocumentUseCase,
         getFavouriteUseCase: GetFavouriteUseCase,
         router: FavouriteRouter
     ): ViewModel = FavouriteViewModel(
-        createUserDocumentUseCase,
         getFavouriteUseCase,
         router
     )

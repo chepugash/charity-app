@@ -1,18 +1,12 @@
 package com.example.common.di.modules
 
-import android.content.Context
 import com.example.common.BuildConfig
 import com.example.common.core.config.AppProperties
 import com.example.common.core.config.NetworkProperties
 import com.example.common.data.network.NetworkApiCreator
 import com.example.common.di.scope.ApplicationScope
-import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
-import com.google.firebase.ktx.initialize
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor

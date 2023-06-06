@@ -8,7 +8,5 @@ class GetFoundationsUseCase @Inject constructor(
     private val foundationsRepository: FoundationsRepository
 ) {
 
-    suspend operator fun invoke(
-        id: Int
-    ): CategoryEntity = foundationsRepository.getFoundations(id)
+    suspend operator fun invoke(id: Int): CategoryEntity = foundationsRepository.getFoundations(id)
 }

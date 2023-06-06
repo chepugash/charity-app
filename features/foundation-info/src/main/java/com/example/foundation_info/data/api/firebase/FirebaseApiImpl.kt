@@ -30,24 +30,6 @@ class FirebaseApiImpl @Inject constructor(
         .document(getUser()?.uid.toString())
         .update(FIELD, FieldValue.arrayRemove(foundationEntity))
 
-//    override suspend fun getFavourite(): Task<ArrayList<Long>> = firestore.collection(COLLECTION)
-//        .document(getUser()?.uid.toString())
-//        .get().continueWith { task ->
-//            val favourite = ArrayList<Long>()
-//            if (task.isSuccessful) {
-//                val document = task.result
-//                if (document.exists()) {
-//                    val result = document.get(FIELD) as? ArrayList<HashMap<String, Any>>
-//                    if (result != null) {
-//                        for (item in result) {
-//                            favourite.add(item["id"] as Long)
-//                        }
-//                    }
-//                }
-//            }
-//            favourite
-//        }
-
     override suspend fun getFavourite(): Flow<List<HashMap<String, Any>>> = callbackFlow {
         val document = firestore.collection(COLLECTION)
             .document(getUser()?.uid.toString())

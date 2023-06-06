@@ -7,7 +7,6 @@ import com.example.common.base.BaseViewModel
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.entity.FoundationEntity
 import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
-import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
 import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
@@ -19,7 +18,6 @@ class FoundationViewModel(
     private val addToFavouriteUseCase: AddToFavouriteUseCase,
     private val removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
     private val getFavouriteUseCase: GetFavouriteUseCase,
-    private val createUserDocumentUseCase: CreateUserDocumentUseCase,
     private val router: FoundationRouter
 ) : BaseViewModel() {
 
@@ -52,34 +50,12 @@ class FoundationViewModel(
         }
     }
 
-    private fun createUserDocument(foundationEntity: FoundationEntity) {
-        viewModelScope.launch {
-            try {
-                createUserDocumentUseCase.invoke()
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            addToFavourite(foundationEntity)
-                        } else {
-                            _error.value = it.exception
-                        }
-                    }
-            } catch (error: Throwable) {
-                _error.value = error
-            }
-        }
-    }
-
     fun isInFavourite(foundationEntity: FoundationEntity) {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                getFavouriteUseCase().addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val favourite = it.result as ArrayList<Long>
-                        _isFavourite.value = favourite.contains(foundationEntity.id.toLong())
-                    } else {
-                        _error.value = it.exception
-                    }
+                getFavouriteUseCase().collect() {
+                    _isFavourite.value = it.contains(foundationEntity.id)
                 }
             } catch (error: Throwable) {
                 _error.value = error
@@ -98,14 +74,7 @@ class FoundationViewModel(
                         if (it.isSuccessful) {
                             _isFavourite.value = true
                         } else {
-                            val e = it.exception
-                            if (e is FirebaseFirestoreException
-                                && e.code == FirebaseFirestoreException.Code.NOT_FOUND
-                            ) {
-                                createUserDocument(foundationEntity)
-                            } else {
-                                _error.value = it.exception
-                            }
+                            _error.value = it.exception
                         }
                     }
             } catch (error: Throwable) {

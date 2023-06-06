@@ -1,7 +1,5 @@
 package com.example.profile.data.api
 
-import com.example.profile.domain.entity.ApiResult
-import com.example.profile.domain.entity.ProfileUserEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseUser
 

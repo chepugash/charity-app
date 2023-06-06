@@ -1,8 +1,8 @@
 package com.example.payment.data
 
 import com.example.payment.data.firebase.FirebaseApi
-import com.example.payment.data.firebase.toFirebaseTransactionEntity
-import com.example.payment.data.firebase.toUserEntity
+import com.example.payment.data.firebase.mapper.toFirebaseTransactionEntity
+import com.example.payment.data.firebase.mapper.toUserEntity
 import com.example.payment.data.payment.PaymentApi
 import com.example.payment.domain.entity.TransactionEntity
 import com.example.payment.domain.entity.UserEntity

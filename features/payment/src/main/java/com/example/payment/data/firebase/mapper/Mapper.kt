@@ -1,5 +1,6 @@
-package com.example.payment.data.firebase
+package com.example.payment.data.firebase.mapper
 
+import com.example.payment.data.firebase.entity.FirebaseTransactionEntity
 import com.example.payment.domain.entity.TransactionEntity
 import com.example.payment.domain.entity.UserEntity
 import com.google.firebase.Timestamp

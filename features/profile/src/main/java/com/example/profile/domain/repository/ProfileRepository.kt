@@ -1,6 +1,5 @@
 package com.example.profile.domain.repository
 
-import com.example.profile.domain.entity.ApiResult
 import com.example.profile.domain.entity.ProfileUserEntity
 import com.google.android.gms.tasks.Task
 

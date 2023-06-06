@@ -6,6 +6,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class FirebaseApiImpl @Inject constructor(
@@ -27,28 +30,14 @@ class FirebaseApiImpl @Inject constructor(
         .document(getUser()?.uid.toString())
         .update(FIELD, FieldValue.arrayRemove(foundationEntity))
 
-    override suspend fun createUserDocument(): Task<Void> = firestore
-        .collection(COLLECTION)
-        .document(auth.currentUser?.uid.toString())
-        .set(hashMapOf(FIELD to arrayListOf<FoundationEntity>()))
-
-    override suspend fun getFavourite(): Task<ArrayList<Long>> = firestore.collection(COLLECTION)
-        .document(getUser()?.uid.toString())
-        .get().continueWith { task ->
-            val favourite = ArrayList<Long>()
-            if (task.isSuccessful) {
-                val document = task.result
-                if (document.exists()) {
-                    val result = document.get(FIELD) as? ArrayList<HashMap<String, Any>>
-                    if (result != null) {
-                        for (item in result) {
-                            favourite.add(item["id"] as Long)
-                        }
-                    }
-                }
+    override suspend fun getFavourite(): Flow<List<HashMap<String, Any>>> = callbackFlow {
+        val document = firestore.collection(COLLECTION)
+            .document(getUser()?.uid.toString())
+            .addSnapshotListener { snapshot, _ ->
+                if (snapshot!!.exists()) trySend(snapshot.get(FIELD) as List<HashMap<String, Any>>)
             }
-            favourite
-        }
+        awaitClose { document.remove() }
+    }
 
     companion object {
         private const val COLLECTION = "users"

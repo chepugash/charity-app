@@ -72,9 +72,5 @@ dependencies {
     implementation lifecycleRuntimeDep
     // endregion
 
-    testImplementation junitDep
-    androidTestImplementation extJunitDep
-    androidTestImplementation espressoDep
-
     implementation project(":core:common")
 }

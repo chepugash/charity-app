@@ -19,7 +19,7 @@ class SignRepositoryImpl @Inject constructor(
         return if (signUserEntity.password == signUserEntity.repeatPassword) {
             signApi.signUp(signUserEntity)
         } else {
-            throw Exception("Password mismatch")
+            error("Password mismatch")
         }
     }
 

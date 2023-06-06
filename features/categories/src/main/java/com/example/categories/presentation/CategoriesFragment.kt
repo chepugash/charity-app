@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.view.isVisible
 import com.example.categories.data.api.CategoriesApi
 import com.example.categories.databinding.FragmentCategoriesBinding
 import com.example.categories.di.CategoriesFeatureComponent
@@ -14,23 +13,19 @@ import com.example.categories.presentation.adapter.CategoryAdapter
 import com.example.categories.presentation.adapter.SpaceItemDecorator
 import com.example.common.base.BaseFragment
 import com.example.common.di.FeatureUtils
-import com.example.common.utils.showToast
+import com.example.common.utils.hide
+import com.example.common.utils.show
 
 class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
 
     private lateinit var binding: FragmentCategoriesBinding
 
     private val adapter: CategoryAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        CategoryAdapter {
-            viewModel.launchFoundations(it)
-        }
+        CategoryAdapter { viewModel.launchFoundations(it) }
     }
 
     private val itemDecoration by lazy(LazyThreadSafetyMode.NONE) {
-        SpaceItemDecorator(
-            this@CategoriesFragment,
-            16.0f
-        )
+        SpaceItemDecorator(this@CategoriesFragment, 16.0f)
     }
 
     override fun onCreateView(
@@ -45,6 +40,8 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addDecorator()
+        setupAdapter()
+
         subscribe(viewModel)
         getCategories()
     }
@@ -74,39 +71,42 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel>() {
         with(viewModel) {
             categoryList.observe(viewLifecycleOwner) { list ->
                 if (list == null) return@observe
+                binding.rvCategories.show()
                 adapter.submitList(list)
-                binding.rvCategories.run {
-                    adapter = this@CategoriesFragment.adapter
-                }
             }
-            error.observe(viewLifecycleOwner) {
-                showError(it != null)
+            error.observe(viewLifecycleOwner) { error ->
+                if (error == null) return@observe
+                showError()
             }
-            loading.observe(viewLifecycleOwner) {
-                showLoading(it)
+            loading.observe(viewLifecycleOwner) { isLoading ->
+                if (isLoading) showLoading()
             }
         }
     }
 
-    private fun showLoading(flag: Boolean) {
-        binding.loading.isVisible = flag
-        binding.rvCategories.isVisible = !flag
+    private fun showLoading() {
+        binding.loading.show()
+        binding.rvCategories.hide()
     }
 
-    private fun showError(flag: Boolean) {
-        binding.lError.isVisible = flag
-        binding.rvCategories.isVisible = !flag
+    private fun showError() {
+        binding.lError.show()
+        binding.rvCategories.hide()
+        binding.loading.hide()
+
     }
 
     private fun getCategories() {
         viewModel.getCategories()
     }
 
-    private fun addDecorator() {
-        binding.rvCategories.addItemDecoration(itemDecoration)
+    private fun setupAdapter() {
+        binding.rvCategories.apply {
+            adapter = this@CategoriesFragment.adapter
+        }
     }
 
-    private fun showError(error: Throwable) {
-        binding.root.showToast(error.message ?: "Error")
+    private fun addDecorator() {
+        binding.rvCategories.addItemDecoration(itemDecoration)
     }
 }

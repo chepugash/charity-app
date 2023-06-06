@@ -6,6 +6,7 @@ import com.example.profile.domain.entity.ApiResult
 import com.example.profile.domain.entity.ProfileUserEntity
 import com.example.profile.domain.repository.ProfileRepository
 import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(

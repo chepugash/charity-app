@@ -53,9 +53,6 @@ class SuccessfulFragment : BaseFragment<SuccessfulViewModel>() {
     }
 
     override fun subscribe(viewModel: SuccessfulViewModel) {
-        with(viewModel) {
-
-        }
     }
 
     private fun goBack() {

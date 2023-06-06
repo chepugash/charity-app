@@ -1,4 +1,4 @@
-package com.example.payment.data.firebase
+package com.example.payment.data.firebase.entity
 
 import com.google.firebase.Timestamp
 

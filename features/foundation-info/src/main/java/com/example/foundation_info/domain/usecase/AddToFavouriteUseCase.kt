@@ -9,7 +9,6 @@ class AddToFavouriteUseCase @Inject constructor(
     private val foundationRepository: FoundationRepository
 ) {
 
-    suspend operator fun invoke(
-        foundationEntity: FoundationEntity
-    ): Task<Void> = foundationRepository.addToFavourite(foundationEntity)
+    suspend operator fun invoke(foundationEntity: FoundationEntity): Task<Void>
+        = foundationRepository.addToFavourite(foundationEntity)
 }

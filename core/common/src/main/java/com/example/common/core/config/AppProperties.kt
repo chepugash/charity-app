@@ -9,7 +9,6 @@ class AppProperties(context: Context) {
 
     private val properties: Map<String, String> = initProperties(context)
 
-    /* инициализация пропертей из config файла в map */
     private fun initProperties(context: Context): Map<String, String> {
         return context.resources.openRawResource(R.raw.config).use {
             val properties = Properties()
@@ -18,7 +17,6 @@ class AppProperties(context: Context) {
         }
     }
 
-    /* Получение настроек сети из config файла по ключам */
     fun networkProperties(): NetworkProperties {
         val connectTimeout = properties["http.timeout.connect"]?.toLong() ?: 0
         val readTimeout = properties["http.timeout.read"]?.toLong() ?: 0
@@ -26,6 +24,5 @@ class AppProperties(context: Context) {
         return NetworkProperties(connectTimeout, readTimeout, writeTimeout)
     }
 
-    /* ПОлучения базового юрл */
     fun getBaseUrl(): String = properties["base_url"] ?: ""
 }

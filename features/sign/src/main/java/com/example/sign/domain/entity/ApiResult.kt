@@ -4,5 +4,5 @@ sealed class ApiResult {
 
     object Success: ApiResult()
 
-    data class Error(val message: String): ApiResult()
+    class Error(val message: String): ApiResult()
 }

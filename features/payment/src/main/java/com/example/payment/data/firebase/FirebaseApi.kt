@@ -1,5 +1,6 @@
 package com.example.payment.data.firebase
 
+import com.example.payment.data.firebase.entity.FirebaseTransactionEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseUser
 

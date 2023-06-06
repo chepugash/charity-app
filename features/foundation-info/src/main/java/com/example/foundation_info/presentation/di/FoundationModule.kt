@@ -7,7 +7,6 @@ import com.example.common.di.viewmodel.ViewModelKey
 import com.example.common.di.viewmodel.ViewModelModule
 import com.example.foundation_info.FoundationRouter
 import com.example.foundation_info.domain.usecase.AddToFavouriteUseCase
-import com.example.foundation_info.domain.usecase.CreateUserDocumentUseCase
 import com.example.foundation_info.domain.usecase.GetFavouriteUseCase
 import com.example.foundation_info.domain.usecase.GetFoundationUseCase
 import com.example.foundation_info.domain.usecase.RemoveFromFavouriteUseCase
@@ -39,14 +38,12 @@ class FoundationModule {
         addToFavouriteUseCase: AddToFavouriteUseCase,
         removeFromFavouriteUseCase: RemoveFromFavouriteUseCase,
         getFavouriteUseCase: GetFavouriteUseCase,
-        createUserDocumentUseCase: CreateUserDocumentUseCase,
         router: FoundationRouter
     ): ViewModel = FoundationViewModel(
         getFoundationUseCase,
         addToFavouriteUseCase,
         removeFromFavouriteUseCase,
         getFavouriteUseCase,
-        createUserDocumentUseCase,
         router
     )
 }

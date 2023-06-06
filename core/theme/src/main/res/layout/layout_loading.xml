@@ -8,6 +8,6 @@
         android:id="@+id/pb_loading"
         style="@style/CommonProgressBar"
         android:layout_gravity="center"
-        android:visibility="visible" />
+        tools:visibility="visible" />
 
 </FrameLayout>

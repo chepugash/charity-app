@@ -18,9 +18,9 @@ class SignApiImpl @Inject constructor(
     override suspend fun signUp(
         userEntity: SignUserEntity
     ): Task<AuthResult> = auth.createUserWithEmailAndPassword(
-            userEntity.email,
-            userEntity.password
-        )
+        userEntity.email,
+        userEntity.password
+    )
 
     override suspend fun signIn(
         userEntity: SignUserEntity
@@ -29,13 +29,17 @@ class SignApiImpl @Inject constructor(
         userEntity.password
     )
 
-    override suspend fun getUser(): FirebaseUser? = auth.currentUser
-
     override suspend fun createUserDocument(): Task<Void> = firestore
         .collection(COLLECTION)
         .document(auth.currentUser?.uid.toString())
-        .set(hashMapOf(FIELD_FAVOURITE to arrayListOf<DbFoundationEntity>(),
-            FIELD_HISTORY to arrayListOf<DbTransactionEntity>()))
+        .set(
+            hashMapOf(
+                FIELD_FAVOURITE to arrayListOf<DbFoundationEntity>(),
+                FIELD_HISTORY to arrayListOf<DbTransactionEntity>()
+            )
+        )
+
+    override suspend fun getUser(): FirebaseUser? = auth.currentUser
 
     companion object {
         private const val COLLECTION = "users"

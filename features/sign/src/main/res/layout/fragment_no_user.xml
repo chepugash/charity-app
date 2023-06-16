@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/step4">
+
+        <include
+            android:id="@+id/loading"
+            layout="@layout/layout_loading"
+            tools:visibility="gone" />
+
+        <include layout="@layout/space" />
+
+        <TextView
+            android:id="@+id/tv_header"
+            style="@style/HeaderTextStyle"
+            android:layout_marginBottom="@dimen/step4"
+            android:text="@string/feature_sign_header" />
+
+        <ImageView
+            android:id="@+id/iv_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/step50"
+            android:layout_marginBottom="@dimen/step4"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/LightTextStyle"
+            android:gravity="center_horizontal"
+            android:text="@string/feature_sign_description" />
+
+        <include layout="@layout/space" />
+
+        <TextView
+            android:id="@+id/tv_sign_in"
+            style="@style/HyperlinkTextStyle"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/step4"
+            android:text="@string/feature_sign_enter" />
+
+        <TextView
+            android:id="@+id/tv_sign_up"
+            style="@style/HyperlinkTextStyle"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/step4"
+            android:text="@string/feature_sign_create_account_link" />
+
+        <include layout="@layout/space" />
+
+    </LinearLayout>
+
+</ScrollView>

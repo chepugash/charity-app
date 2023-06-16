@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_header_2">20sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_step">2sp</dimen>
+
+    <dimen name="step1">4dp</dimen>
+    <dimen name="step2">8dp</dimen>
+    <dimen name="step3">12dp</dimen>
+    <dimen name="step4">16dp</dimen>
+    <dimen name="step5">20dp</dimen>
+    <dimen name="step6">24dp</dimen>
+    <dimen name="step8">32dp</dimen>
+    <dimen name="step14">56dp</dimen>
+    <dimen name="step16">64dp</dimen>
+    <dimen name="step50">200dp</dimen>
+    <dimen name="step30">120dp</dimen>
+    <dimen name="line">1dp</dimen>
+</resources>

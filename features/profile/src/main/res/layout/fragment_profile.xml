@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_profile" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/step1"
+        android:background="@drawable/toolbar_shadow" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/step4">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/step50"
+                android:layout_marginBottom="@dimen/step4"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/step14"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/CommonTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/feature_profile_email" />
+
+                <TextView
+                    android:id="@+id/tv_profile_email"
+                    style="@style/LightTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/step2"
+                    android:layout_weight="1"
+                    tools:text="@string/feature_profile_exact_email" />
+
+            </LinearLayout>
+
+            <include layout="@layout/horizontal_line" />
+
+            <LinearLayout
+                android:id="@+id/l_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/step14"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/CommonTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/feature_profile_name" />
+
+                <TextView
+                    android:id="@+id/tv_profile_name"
+                    style="@style/LightTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/step2"
+                    android:layout_weight="1"
+                    tools:text="@string/feature_profile_exact_name" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_edit" />
+
+            </LinearLayout>
+
+            <include layout="@layout/horizontal_line" />
+
+            <TextView
+                android:id="@+id/tv_history"
+                style="@style/CommonTextStyle"
+                android:layout_height="@dimen/step14"
+                android:gravity="center"
+                android:text="@string/feature_profile_history" />
+
+            <include layout="@layout/horizontal_line" />
+
+            <LinearLayout
+                android:id="@+id/l_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/step14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_change_password"
+                    style="@style/CommonTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/feature_profile_change_password" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_edit" />
+
+            </LinearLayout>
+
+            <include layout="@layout/horizontal_line" />
+
+            <LinearLayout
+                android:id="@+id/l_delete_profile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/step14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_delete_prof"
+                    style="@style/CommonTextStyle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/feature_profile_delete_profile"
+                    android:textColor="@color/red" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/red" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/layout_loading" />
+</LinearLayout>

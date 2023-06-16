@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/step30"
+    app:cardElevation="@dimen/step2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/step3">
+
+        <ImageView
+            android:id="@+id/iv_preview"
+            android:layout_width="@dimen/step30"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_photo" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_margin="@dimen/step2"
+            style="@style/Header2TextStyle"
+            android:elegantTextHeight="true"
+            android:layout_gravity="center_vertical"
+            tools:text="Животные" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

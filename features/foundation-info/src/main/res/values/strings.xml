@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_foundation_address">Адрес:</string>
+    <string name="feature_foundation_website">Сайт:</string>
+    <string name="feature_foundation_phone">Телефон:</string>
+    <string name="feature_foundation_account">ИНН / КПП:</string>
+    <string name="feature_foundation_donate">Пожертвовать</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_favourite_title">Избранное</string>
+    <string name="feature_favourite_no_foundations">Пока что нет избранных фондов</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_payment_success">Пожертвование отправлено</string>
+    <string name="feature_payment_continue">Продолжить</string>
+    <string name="feature_payment_card_number">Номер карты</string>
+    <string name="feature_payment_date">Срок</string>
+    <string name="feature_payment_ccv">CVC</string>
+    <string name="feature_payment_sum">Сумма</string>
+    <string name="feature_payment_input_info">Введите данные для оплаты</string>
+    <string name="feature_payment">Оплата</string>
+</resources>

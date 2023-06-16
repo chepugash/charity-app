@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.categories'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    viewBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    implementation coreDep
+    implementation androidDep
+    implementation materialDep
+    implementation fragmentDep
+
+    implementation coilDep
+
+    // region firebase
+    implementation platform(firebaseBomDep)
+    implementation firebaseFirestoreDep
+    implementation firebaseAuthDep
+    // endregion
+
+    // region retrofit
+    implementation retrofitDep
+    implementation converterGsonDep
+    // endregion
+
+    // region dagger2
+    implementation daggerDep
+    kapt daggerKaptDep
+    // endregion
+
+    // region coroutines
+    implementation coroutinesCoreDep
+    implementation coroutinesAndroidDep
+    implementation coroutinesPlayServiceDep
+    // endregion
+
+    // region mvvm
+    implementation lifecycleViewmodelDep
+    implementation lifecycleLivedataDep
+    implementation lifecycleRuntimeDep
+    // endregion
+
+    implementation project(":core:common")
+}

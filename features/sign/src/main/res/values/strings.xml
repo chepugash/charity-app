@@ -1,0 +1,13 @@
+<resources>
+    <string name="feature_sign_create_account">Создайте аккаунт</string>
+    <string name="feature_sign_email">Email</string>
+    <string name="feature_sign_password">Пароль</string>
+    <string name="feature_sign_do_you_have_acc">Уже есть аккаунт?</string>
+    <string name="feature_sign_enter">Войти</string>
+    <string name="feature_sign_create">создать</string>
+    <string name="feature_sign_repeat_password">Повторите пароль</string>
+    <string name="feature_sign_sign_in">Войдите в аккаунт</string>
+    <string name="feature_sign_create_account_link">Создать аккаунт</string>
+    <string name="feature_sign_description">Чтобы начать помогать, нужно войти в аккаунт</string>
+    <string name="feature_sign_header">Мы заботимся</string>
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/step4">
+
+        <include
+            android:id="@+id/loading"
+            layout="@layout/layout_loading"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_create"
+            style="@style/HeaderTextStyle"
+            android:layout_margin="@dimen/step4"
+            android:text="@string/feature_sign_sign_in" />
+
+        <include layout="@layout/space" />
+
+        <ImageView
+            android:id="@+id/iv_entrance"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/step50"
+            android:layout_marginBottom="@dimen/step4"
+            android:src="@drawable/auth" />
+
+        <include layout="@layout/space" />
+
+        <include
+            android:id="@+id/email"
+            layout="@layout/input_email" />
+
+        <include
+            android:id="@+id/password"
+            layout="@layout/input_password" />
+
+        <include layout="@layout/space" />
+
+        <TextView
+            android:id="@+id/tv_sign_in"
+            style="@style/HyperlinkTextStyle"
+            android:layout_gravity="center"
+            android:text="@string/feature_sign_create_account_link"
+            android:textColor="@color/blue_hyperlink" />
+
+        <include layout="@layout/space" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/step3"
+                android:text="@string/feature_sign_enter" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</ScrollView>
